@@ -49,17 +49,17 @@ export default function ReflectiveObject() {
     uniform float uRippleSize;
     varying vec3 vNormal;
     varying vec3 vViewPosition;
-      
+
     void main() {
       float dist = distance(position, uRipplePos);
-      
+
       float ripple = sin(dist * uRippleSize - uTime * uRippleSpeed) * uRippleStrength / (dist * 2.0 + 1.0);
       vec3 newPosition = position + normal * ripple;
-      
+
       vec4 mvPosition = modelViewMatrix * vec4(newPosition, 1.0);
       vViewPosition = -mvPosition.xyz;
       vNormal = normalMatrix * normal;
-      
+
       gl_Position = projectionMatrix * mvPosition;
     }
     `;
