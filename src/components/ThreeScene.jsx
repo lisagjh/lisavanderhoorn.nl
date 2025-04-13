@@ -42,26 +42,35 @@ export default function ReflectiveObject() {
 
     // === Shaders ===
     const vertexShader = `
-     uniform float uTime;
-    uniform vec3 uRipplePos;
-    uniform float uRippleStrength;
-    uniform float uRippleSpeed;
-    uniform float uRippleSize;
-    varying vec3 vNormal;
-    varying vec3 vViewPosition;
+    uniform float uTime;
+uniform float uLastRippleTime;
+uniform vec3 uRipplePos;
+uniform float uRippleStrength;
+uniform float uRippleSpeed;
+uniform float uRippleSize;
 
-    void main() {
-      float dist = distance(position, uRipplePos);
+varying vec3 vNormal;
+varying vec3 vViewPosition;
 
-      float ripple = sin(dist * uRippleSize - uTime * uRippleSpeed) * uRippleStrength / (dist * 2.0 + 1.0);
-      vec3 newPosition = position + normal * ripple;
+void main() {
+  float dist = distance(position, uRipplePos);
+  float timeSinceRipple = uTime - uLastRippleTime;
 
-      vec4 mvPosition = modelViewMatrix * vec4(newPosition, 1.0);
-      vViewPosition = -mvPosition.xyz;
-      vNormal = normalMatrix * normal;
+  // Optional: fade out over 2 seconds
+  float fade = clamp(1.0 - timeSinceRipple / 2.0, 0.0, 1.0);
 
-      gl_Position = projectionMatrix * mvPosition;
-    }
+  float attenuation = exp(-dist * dist * 2.0);
+  float ripple = sin(dist * uRippleSize - uTime * uRippleSpeed) * uRippleStrength * attenuation * fade;
+
+  vec3 newPosition = position + normal * ripple;
+
+  vec4 mvPosition = modelViewMatrix * vec4(newPosition, 1.0);
+  vViewPosition = -mvPosition.xyz;
+  vNormal = normalMatrix * normal;
+
+  gl_Position = projectionMatrix * mvPosition;
+}
+
     `;
 
     const fragmentShader = `
@@ -83,11 +92,12 @@ export default function ReflectiveObject() {
     // Initialize uniforms with significantly reduced values for the initial state
     const uniforms = {
       uTime: { value: 0 },
+      uLastRippleTime: { value: 0 },
       uRipplePos: { value: ripplePosRef.current },
       uMatcap: { value: null },
-      uRippleStrength: { value: 0.05 }, // Significantly reduced from 0.15
-      uRippleSpeed: { value: 2.0 }, // Reduced from 3.0 for slower, more subtle movement
-      uRippleSize: { value: 10.0 }, // Reduced from 15.0 for wider, gentler ripples
+      uRippleStrength: { value: 0.01 },
+      uRippleSpeed: { value: 0.1 },
+      uRippleSize: { value: 1.0 },
     };
 
     // Load texture before creating material
@@ -142,7 +152,7 @@ export default function ReflectiveObject() {
         if (intersects.length > 0) {
           // Store previous position before updating
           prevRipplePosRef.current.copy(ripplePosRef.current);
-          ripplePosRef.current.copy(intersects[0].point);
+          ripplePosRef.current.lerp(intersects[0].point, 0.5);
           lastInteractionRef.current = Date.now();
           isHoveringRef.current = true;
 
@@ -166,6 +176,8 @@ export default function ReflectiveObject() {
             15.0,
             0.1
           );
+
+          uniforms.uLastRippleTime.value = clock.getElapsedTime(); // store time of interaction
         } else if (isHoveringRef.current) {
           // Just left the object
           isHoveringRef.current = false;
@@ -195,30 +207,23 @@ export default function ReflectiveObject() {
       const timeSinceInteraction = Date.now() - lastInteractionRef.current;
 
       if (!isHoveringRef.current && timeSinceInteraction > 500) {
-        // Gradually reduce ripple parameters back to minimal values
         uniforms.uRippleStrength.value = THREE.MathUtils.lerp(
           uniforms.uRippleStrength.value,
-          0.05, // Return to minimal ripple
-          0.03
+          isHoveringRef.current ? 0.8 : 0.05,
+          0.015
         );
 
         uniforms.uRippleSpeed.value = THREE.MathUtils.lerp(
           uniforms.uRippleSpeed.value,
-          2.0, // Slower in idle state
-          0.03
+          isHoveringRef.current ? 3.0 : 2.0,
+          0.015
         );
 
         uniforms.uRippleSize.value = THREE.MathUtils.lerp(
           uniforms.uRippleSize.value,
-          10.0, // Wider, more gentle waves in idle state
-          0.03
+          isHoveringRef.current ? 15.0 : 10.0,
+          0.015
         );
-
-        // Also interpolate the ripple position back to center when not hovering
-        if (timeSinceInteraction > 2000) {
-          const centerPos = new THREE.Vector3(0, 0, 0);
-          ripplePosRef.current.lerp(centerPos, 0.01);
-        }
       }
 
       // Update uniform with current ripple position
