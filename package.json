@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@astrojs/react": "^4.2.3",
+    "@astrojs/sitemap": "^3.3.0",
     "@splinetool/loader": "^0.9.526",
     "@splinetool/react-spline": "^4.0.0",
     "@types/react": "^19.1.0",

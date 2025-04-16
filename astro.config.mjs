@@ -4,17 +4,13 @@ import path from "path";
 
 import react from "@astrojs/react";
 
-export default defineConfig({
-  output: "static",
+import sitemap from "@astrojs/sitemap";
 
+export default defineConfig({
+  site: "https://lisavanderhoorn.nl/",
+  output: "static",
+  integrations: [react(), sitemap()],
   server: {
     port: 4321, // Set the port for the development server
   },
-
-  alias: {
-    "@scripts": path.resolve("./src/scripts"),
-    "@components": path.resolve("./src/components"),
-  },
-
-  integrations: [react()],
 });
