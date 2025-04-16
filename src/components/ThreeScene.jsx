@@ -48,6 +48,7 @@ uniform vec3 uRipplePos;
 uniform float uRippleStrength;
 uniform float uRippleSpeed;
 uniform float uRippleSize;
+uniform float uViscosity;
 
 varying vec3 vNormal;
 varying vec3 vViewPosition;
@@ -55,38 +56,66 @@ varying vec3 vViewPosition;
 void main() {
   float dist = distance(position, uRipplePos);
   float timeSinceRipple = uTime - uLastRippleTime;
-
-  // Optional: fade out over 2 seconds
-  float fade = clamp(1.0 - timeSinceRipple / 2.0, 0.0, 1.0);
-
-  float attenuation = exp(-dist * dist * 2.0);
-  float ripple = sin(dist * uRippleSize - uTime * uRippleSpeed) * uRippleStrength * attenuation * fade;
-
-  vec3 newPosition = position + normal * ripple;
-
+  
+  // More fluid-like fade with easing
+  float fade = smoothstep(0.0, 1.0, 1.0 - timeSinceRipple / 3.0);
+  
+  // Add viscosity effect - slower wave propagation
+  float viscosityEffect = 1.0 - uViscosity;
+  float ripple = sin(dist * uRippleSize * viscosityEffect - uTime * uRippleSpeed * 0.5) * 
+                 uRippleStrength * 
+                 exp(-dist * uRippleSize * 0.5) * 
+                 fade;
+  
+  // Add secondary ripple for more complex waves
+  float ripple2 = cos(dist * uRippleSize * 0.7 * viscosityEffect - uTime * uRippleSpeed * 0.7) * 
+                  uRippleStrength * 0.3 * 
+                  exp(-dist * uRippleSize * 0.3) * 
+                  fade;
+  
+  // Combine ripples with normal displacement
+  vec3 newPosition = position + normal * (ripple + ripple2) * 0.5;
+  
+  // Add subtle global undulation
+  float globalWave = sin(uTime * 0.3 + position.x * 0.5 + position.y * 0.7 + position.z * 0.3) * 0.02;
+  newPosition += normal * globalWave;
+  
   vec4 mvPosition = modelViewMatrix * vec4(newPosition, 1.0);
   vViewPosition = -mvPosition.xyz;
   vNormal = normalMatrix * normal;
-
+  
   gl_Position = projectionMatrix * mvPosition;
 }
-
     `;
 
     const fragmentShader = `
-      uniform sampler2D uMatcap;
-      varying vec3 vNormal;
-      varying vec3 vViewPosition;
+     uniform sampler2D uMatcap;
+uniform float uTime;
+uniform float uWetness;
 
-      void main() {
-        vec3 viewDir = normalize(vViewPosition);
-        vec3 x = normalize(vec3(viewDir.z, 0.0, -viewDir.x));
-        vec3 y = cross(viewDir, x);
-        vec2 uv = vec2(dot(x, vNormal), dot(y, vNormal)) * 0.5 + 0.5;
+varying vec3 vNormal;
+varying vec3 vViewPosition;
 
-        vec3 color = texture2D(uMatcap, uv).rgb;
-        gl_FragColor = vec4(color, 1.0);
-      }
+void main() {
+  vec3 viewDir = normalize(vViewPosition);
+  vec3 x = normalize(vec3(viewDir.z, 0.0, -viewDir.x));
+  vec3 y = cross(viewDir, x);
+  vec2 uv = vec2(dot(x, vNormal), dot(y, vNormal)) * 0.5 + 0.5;
+  
+  // Sample matcap texture
+  vec3 color = texture2D(uMatcap, uv).rgb;
+  
+  // Add specular highlights for wet look
+  float spec = pow(max(0.0, dot(viewDir, reflect(viewDir, vNormal))), 32.0);
+  color += vec3(spec) * uWetness;
+  
+  // Subtle color variation over time
+  float hueShift = sin(uTime * 0.2) * 0.05;
+  color.r += hueShift * 0.2;
+  color.b -= hueShift * 0.1;
+  
+  gl_FragColor = vec4(color, 1.0);
+}
     `;
 
     // Initialize uniforms with significantly reduced values for the initial state
@@ -95,9 +124,11 @@ void main() {
       uLastRippleTime: { value: 0 },
       uRipplePos: { value: ripplePosRef.current },
       uMatcap: { value: null },
-      uRippleStrength: { value: 0.01 },
-      uRippleSpeed: { value: 0.1 },
-      uRippleSize: { value: 1.0 },
+      uRippleStrength: { value: 0.05 },
+      uRippleSpeed: { value: 1.5 },
+      uRippleSize: { value: 8.0 },
+      uViscosity: { value: 0.3 }, // Higher = more viscous/thick liquid
+      uWetness: { value: 0.1 }, // Controls specular highlights
     };
 
     // Load texture before creating material
@@ -203,35 +234,50 @@ void main() {
       const elapsedTime = clock.getElapsedTime();
       uniforms.uTime.value = elapsedTime;
 
+      // Add subtle uniform changes for more organic feel
+      uniforms.uRippleSize.value = 8.0 + Math.sin(elapsedTime * 0.3) * 0.5;
+      uniforms.uViscosity.value = 0.3 + Math.sin(elapsedTime * 0.2) * 0.05;
+      uniforms.uWetness.value = 0.7 + Math.sin(elapsedTime * 0.5) * 0.1;
+
       // Handle ripple parameters changes
       const timeSinceInteraction = Date.now() - lastInteractionRef.current;
 
       if (!isHoveringRef.current && timeSinceInteraction > 500) {
+        // Slower transitions when not interacting
         uniforms.uRippleStrength.value = THREE.MathUtils.lerp(
           uniforms.uRippleStrength.value,
-          isHoveringRef.current ? 0.8 : 0.05,
-          0.015
+          0.05,
+          0.01
         );
-
         uniforms.uRippleSpeed.value = THREE.MathUtils.lerp(
           uniforms.uRippleSpeed.value,
-          isHoveringRef.current ? 3.0 : 2.0,
-          0.015
+          1.5,
+          0.01
         );
-
-        uniforms.uRippleSize.value = THREE.MathUtils.lerp(
-          uniforms.uRippleSize.value,
-          isHoveringRef.current ? 15.0 : 10.0,
-          0.015
+      } else if (isHoveringRef.current) {
+        // More dramatic response when interacting
+        uniforms.uRippleStrength.value = THREE.MathUtils.lerp(
+          uniforms.uRippleStrength.value,
+          0.5,
+          0.1
+        );
+        uniforms.uRippleSpeed.value = THREE.MathUtils.lerp(
+          uniforms.uRippleSpeed.value,
+          4.0,
+          0.1
+        );
+        uniforms.uViscosity.value = THREE.MathUtils.lerp(
+          uniforms.uViscosity.value,
+          0.1, // Less viscous when interacted with
+          0.1
         );
       }
 
-      // Update uniform with current ripple position
       uniforms.uRipplePos.value.copy(ripplePosRef.current);
 
-      // Gentle rotation
-      meshRef.current.rotation.x += 0.0015;
-      meshRef.current.rotation.y += 0.0015;
+      // More fluid rotation
+      meshRef.current.rotation.x += 0.001 * Math.sin(elapsedTime * 0.2);
+      meshRef.current.rotation.y += 0.001 * Math.cos(elapsedTime * 0.15);
 
       renderer.render(scene, camera);
     };
