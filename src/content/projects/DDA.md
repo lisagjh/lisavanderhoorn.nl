@@ -7,7 +7,7 @@ description: "Redesign the DDA website - the dutch bond of digital agencies"
 bodyText: "Labore esse in aute ipsum sint eu veniam. Consectetur nostrud Lorem mollit est ad. Officia eiusmod ea minim esse id voluptate. Pariatur non labore elit voluptate minim enim. Laboris quis nisi dolor veniam mollit tempor ea quis aliqua cupidatat anim reprehenderit. Exercitation velit cupidatat Lorem nostrud adipisicing eiusmod ut aliqua id anim ullamco tempor excepteur ut."
 image:
   url: "/work-showcase/dda-original.webp"
-  alt: ""
+  alt: "Mockup of my project, the Dutch Digital Agencies website."
 notes: "This project uses an API that is still being used and worked on/with by other students. This means that this project may not work anymore."
 tags: ["Sveltekit", "FDND"]
 relatedPosts:
