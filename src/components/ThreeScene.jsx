@@ -124,10 +124,10 @@ void main() {
       uLastRippleTime: { value: 0 },
       uRipplePos: { value: ripplePosRef.current },
       uMatcap: { value: null },
-      uRippleStrength: { value: 0.05 },
+      uRippleStrength: { value: 0.5 },
       uRippleSpeed: { value: 1.5 },
-      uRippleSize: { value: 8.0 },
-      uViscosity: { value: 0.3 }, // Higher = more viscous/thick liquid
+      uRippleSize: { value: 5.0 },
+      uViscosity: { value: 1.0 }, // Higher = more viscous/thick liquid
       uWetness: { value: 0.1 }, // Controls specular highlights
     };
 

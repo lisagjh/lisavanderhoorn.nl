@@ -48,6 +48,8 @@ body {
 }
 
 main {
+  height: 100%;
+  min-height: 90vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -170,7 +172,47 @@ pre code {
   box-shadow: none;
 }
 
+blockquote {
+  font-size: 1.4em;
+  font-style: italic;
+  color: var(--dark);
+  width: 60%;
+  padding: 2rem 4rem;
+  border-left: 8px solid var(--secondary);
+  line-height: 1.6;
+  position: relative;
+  background: #ededed;
+}
+
+blockquote::before {
+  content: "\201C";
+  color: var(--secondary);
+  font-size: 4rem;
+  position: absolute;
+  left: .5rem;
+  top: -.75rem;
+}
+
+blockquote::after {
+  content: "";
+}
+
+blockquote span {
+  display: block;
+  color: var(--dark);
+  font-style: normal;
+  font-weight: bold;
+  margin-top: 1em;
+}
+
 /* classes */
+.divider {
+  height: 1.5px;
+  width: 100%;
+  background-color: var(--secondary);
+  margin: 1rem 0;
+}
+
 .visually-hidden {
   visibility: hidden;
   width: 0;
@@ -268,30 +310,34 @@ a.back-home:active {
   --secondary: #f0bb78;
 }
 
-/* classesss */
+/* animations */
 
-/* Add this to your CSS file or in the <style> section */
+@supports (animation-timeline: view()) {
+  @keyframes animate-in {
+    0% {
+      opacity: 0;
+      transform: translateY(100%);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 
-.loading-screen {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #000;
-  color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999; /* Ensure it's above everything */
-  transform: translateY(0); /* Initially positioned at the top */
-  transition: transform 0.4s ease-out; /* Sliding animation */
-}
+  @keyframes animate-out {
+    0% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(-100%);
+    }
+  }
 
-.loading-screen.slide-out {
-  transform: translateY(-100%); /* Slide out of view */
-}
-
-.loading-message {
-  font-size: 2rem;
+  .section_full-width {
+    animation: animate-in linear forwards, animate-out linear forwards;
+    animation-timeline: view();
+    animation-range: entry, exit;
+  }
 }
