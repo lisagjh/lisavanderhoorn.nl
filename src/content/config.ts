@@ -38,8 +38,20 @@ const projects = defineCollection({
     notes: z.string().optional(),
   }),
 });
+
+const creative = defineCollection({
+  loader: glob({ pattern: "**/[^_]*.mdx", base: "./src/content/creative" }),
+  schema: z.object({
+    id: z.number(),
+    title: z.string(),
+    date: z.string().optional(),
+    description: z.string().optional(),
+    relatedPosts: z.array(z.string()).optional(),
+  }),
+});
 // Export a single `collections` object to register your collection(s)
 export const collections = {
   blog,
   projects,
+  creative
 };
