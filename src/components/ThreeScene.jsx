@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 
-export default function ReflectiveObject() {
+export default function Shape() {
   const containerRef = useRef(null);
   const rendererRef = useRef(null);
   const meshRef = useRef(null);

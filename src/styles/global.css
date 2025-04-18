@@ -252,6 +252,7 @@ a.back-home:active {
   padding: 1.5rem;
   width: 100vw;
   max-width: 75rem;
+  height: 95vh;
 }
 
 .markdown-post {
