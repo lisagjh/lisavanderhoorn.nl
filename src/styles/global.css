@@ -1,9 +1,27 @@
 /* /* @import url("https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Tinos:ital,wght@0,400;0,700;1,400;1,700&display=swap"); */
 
+@font-face {
+  font-family: "ITC Garamond";
+  src: url("/public/fonts/itc-garamond.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Host Grotesk";
+  src: url("/public/fonts/HostGrotesk.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Host Grotesk Italic";
+  src: url("/public/fonts/HostGrotesk-Italic.woff2") format("woff2");
+  font-display: swap;
+}
+
 :root {
-  --body-font: "Geist", sans-serif;
-  --heading-font: "Grand Bageur", sans-serif;
-  --heading-font: "Tinos", serif;
+  --heading-font: "ITC Garamond", sans-serif;
+  --body-font: "Host Grotesk", sans-serif;
+  --body-italic: "Host Grotesk Italic", sans-serif;
 
   --white: #fcfaf8;
   --black: #101010;
@@ -13,21 +31,17 @@
   --bg: #fcfaf8;
   --text: #101010;
 
-  --primary: hsl(192deg 60% 62%);
-  --secondary: hsl(27deg 75% 72%);
-  --tertiary: #baa6cb;
-}
+  --primary: hsl(222deg 97% 59%);
+  --primary-light: hsl(222deg 100% 88%);
+  --primary-dark: hsl(222deg 37% 44%);
 
-@supports (color: hsl(from white h s l)) {
-  :root {
-    /* accents using relative color syntax */
-    --primary-light: hsl(from var(--primary) h s 90%);
-    --primary-dark: hsl(from var(--primary) h s calc(l - 20%));
-    --secondary-light: hsl(from var(--secondary) h s 92%);
-    --secondary-dark: hsl(from var(--secondary) h s 30%);
-    --tertiary-light: hsl(from var(--tertiary) h s calc(l + 20%));
-    --tertiary-dark: hsl(from var(--tertiary) h s calc(l - 20%));
-  }
+  --secondary: hsl(12deg 96% 48%);
+  --secondary-light: hsl(12deg 100% 91%);
+  --secondary-dark: hsl(12deg 38% 50%);
+
+  --tertiary: hsl(43deg 89% 61%);
+  --tertiary-light: hsl(43deg 100% 80%);
+  --tertiary-dark: hsl(43deg 60% 50%);
 }
 
 * {
@@ -42,9 +56,6 @@ body {
   font-family: var(--body-font);
   background-color: var(--bg);
   color: var(--text);
-
-  background-image: url("/public/assets/svg/bg.svg");
-  background-position: center;
 }
 
 main {
@@ -67,6 +78,7 @@ h6 {
   font-weight: 400;
   letter-spacing: 0px;
   line-height: 1.25;
+  text-box: trim-both cap alphabetic;
 }
 
 h1 {
@@ -189,8 +201,8 @@ blockquote::before {
   color: var(--secondary);
   font-size: 4rem;
   position: absolute;
-  left: .5rem;
-  top: -.75rem;
+  left: 0.5rem;
+  top: -0.75rem;
 }
 
 blockquote::after {

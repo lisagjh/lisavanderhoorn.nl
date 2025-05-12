@@ -1,0 +1,36 @@
+<section class="intro">
+  <h1>Lisa van der Hoorn</h1>
+
+  <div class="wrapper">
+    <p>Frontend Developer</p>
+
+    <img src="/assets/svg/circle.svg" width="200" alt="" />
+  </div>
+</section>
+
+<style>
+  .intro {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2rem;
+    gap: 1rem;
+  }
+
+  h1 {
+    color: var(--primary);
+    line-height: 1.1;
+  }
+
+  .wrapper {
+    position: relative;
+    height: fit-content;
+  }
+
+  img {
+    position: absolute;
+    bottom: -1rem;
+    left: -0.5rem;
+    z-index: -1;
+  }
+</style>
