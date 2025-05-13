@@ -23,7 +23,7 @@
   --body-font: "Host Grotesk", sans-serif;
   --body-italic: "Host Grotesk Italic", sans-serif;
 
-  --white: #fcfaf8;
+  --white: #fefefe;
   --black: #101010;
   --dark: #303030;
   --off-white: #f1efee;
@@ -37,6 +37,7 @@
 
   --secondary: hsl(12deg 96% 48%);
   --secondary-light: hsl(12deg 100% 91%);
+  --secondary-lighter: hsl(12deg 95% 87%);
   --secondary-dark: hsl(12deg 38% 50%);
 
   --tertiary: hsl(43deg 89% 61%);
@@ -239,8 +240,21 @@ blockquote span {
 
 h2.pill {
   font-size: 2rem;
+  text-align: center;
   background-color: var(--bg);
   color: var(--text);
+  padding: 1.5rem;
+  min-width: 8rem;
+  width: fit-content;
+  border-radius: 50px;
+}
+
+a.pill {
+  font-size: 0.9rem;
+  text-align: center;
+  background-color: var(--bg);
+  color: var(--text);
+  text-decoration: none;
   padding: 1.5rem;
   min-width: 8rem;
   width: fit-content;

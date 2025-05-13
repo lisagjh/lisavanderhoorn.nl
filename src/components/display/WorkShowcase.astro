@@ -1,0 +1,84 @@
+---
+import { getCollection } from "astro:content";
+const allProjects = await getCollection("projects");
+---
+
+<section>
+  <div class="wrapper">
+    <h2 class="pill">Work</h2>
+    <p>Check out some projects I've worked on.</p>
+  </div>
+  <ul class="grid">
+    {
+      allProjects.map((project) => (
+        <li>
+          <a href={`/posts/${project.id}`}>
+            <img
+              src={project.data.image.url}
+              alt={project.data.image.alt}
+              loading="lazy"
+              width="180"
+            />
+            <h3>{project.data.title}</h3>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+  <div class="wrapper">
+    <a href="/#" class="pill">More </a>
+  </div>
+</section>
+
+<style>
+  section {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 2rem;
+  }
+
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 2rem;
+    background-color: var(--tertiary-light);
+    border-radius: 10px;
+  }
+
+  ul.grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  li {
+    background-color: var(--white);
+    border-radius: 12px;
+    box-shadow:
+      0px 10px 13px 0px rgba(0, 0, 0, 0.03),
+      0px 18px 11px 0px rgba(0, 0, 0, 0.02),
+      0px 8px 8px 0px rgba(0, 0, 0, 0.04),
+      0px 2px 4px 0px rgba(0, 0, 0, 0.04);
+    list-style: "";
+  }
+
+  li a {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+  }
+
+  h3 {
+    font-size: 1.25rem;
+  }
+
+  .wrapper:has(a) {
+    align-items: end;
+  }
+</style>
