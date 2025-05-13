@@ -84,7 +84,7 @@ h6 {
 
 h1 {
   font-size: 5.61rem;
-}w
+}
 
 h2 {
   font-size: 4.209rem;
@@ -251,12 +251,14 @@ h2.pill {
 }
 
 a.pill {
-  font-size: 0.9rem;
+  --_bg: var(--bg);
+  --_color: var(--text);
+  font-size: 0.95rem;
   text-align: center;
-  background-color: var(--bg);
-  color: var(--text);
+  background-color: var(--_bg);
+  color: var(--_color);
   text-decoration: none;
-  padding: 1.5rem;
+  padding: .75rem;
   min-width: 8rem;
   width: fit-content;
   border-radius: 50px;
