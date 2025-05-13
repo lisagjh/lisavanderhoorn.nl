@@ -9,13 +9,13 @@ const { frontmatter } = Astro.props;
 const allPosts = await getCollection("projects");
 
 // Get full details of related posts
-const relatedPostsData = allPosts
-  .filter((post) => frontmatter.relatedPosts.includes(post.id)) // Use post.id instead of slug
-  .map((post) => ({
-    title: post.data.title,
-    slug: post.id, // Use id for linking
-    image: post.data.image,
-  }));
+// const relatedPostsData = allPosts
+//   .filter((post) => frontmatter.relatedPosts.includes(post.id)) // Use post.id instead of slug
+//   .map((post) => ({
+//     title: post.data.title,
+//     slug: post.id, // Use id for linking
+//     image: post.data.image,
+//   }));
 ---
 
 <BaseLayout pageTitle={`Project - ${frontmatter.title}`}>

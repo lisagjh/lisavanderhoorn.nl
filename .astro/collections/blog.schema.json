@@ -26,9 +26,6 @@
         "description": {
           "type": "string"
         },
-        "author": {
-          "type": "string"
-        },
         "image": {
           "type": "object",
           "properties": {
@@ -65,7 +62,6 @@
         "title",
         "pubDate",
         "description",
-        "author",
         "image",
         "tags"
       ],
