@@ -1,4 +1,4 @@
-<section class="about">
+<section class="about" id="about">
   <div>
     <h2 class="pill">About Me</h2>
     <p>
@@ -25,7 +25,7 @@
       I also like to play around with creative coding sometimes!
     </p>
 
-    <a href="/#" class="pill">Learn more</a>
+    <a href="/#" class="pill">Learn More</a>
   </div>
 </section>
 
@@ -57,8 +57,9 @@
   }
 
   div a.pill {
-    --_bg: var(--primary);
-    --_color: var(--off-white);
+    --_bg: transparent;
+    --_color: var(--text);
+    outline: 1px solid var(--primary-dark);
     align-self: flex-end;
     justify-self: flex-end;
   }
