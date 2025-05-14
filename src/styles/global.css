@@ -51,11 +51,14 @@
   transition: 0.25s ease-in-out;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: var(--body-font);
   background-color: var(--bg);
   color: var(--text);
-  scroll-behavior: smooth;
 }
 
 main {
@@ -65,7 +68,6 @@ main {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  overflow: hidden;
 }
 
 h1,
