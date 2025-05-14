@@ -4,6 +4,101 @@
       link.classList.add("hovered");
     });
   });
+
+  document.addEventListener("DOMContentLoaded", () => {
+    // Get all necessary elements after DOM is loaded
+    const sections = document.querySelectorAll("section");
+    const navLinks = document.querySelectorAll("nav a");
+
+    // Add hover class listener for all links
+    document.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("mouseover", () => {
+        link.classList.add("hovered");
+      });
+    });
+
+    // Handle initial active link based on URL hash
+    const initialHash = window.location.hash;
+    if (initialHash) {
+      const activeLink = document.querySelector(`nav a[href="${initialHash}"]`);
+      if (activeLink) {
+        navLinks.forEach((link) => link.classList.remove("active"));
+        activeLink.classList.add("active");
+      }
+    } else {
+      // If no hash, set the first link as active by default
+      const firstLink = navLinks[0];
+      if (firstLink) firstLink.classList.add("active");
+    }
+
+    // Add click event handler to ensure active class is applied immediately
+    navLinks.forEach((link) => {
+      link.addEventListener("click", (e) => {
+        // Remove active class from all links
+        navLinks.forEach((l) => l.classList.remove("active"));
+
+        // Add active class to clicked link
+        link.classList.add("active");
+
+        // Small delay to let scrolling happen before enabling observer again
+        setTimeout(() => {
+          enableObserver = true;
+        }, 100);
+      });
+    });
+
+    // Flag to temporarily disable observer during manual navigation
+    let enableObserver = true;
+
+    // Set up the Intersection Observer
+    const observerOptions = {
+      root: null,
+      rootMargin: "-20% 0px -20% 0px", // Adjust margin to better detect active section
+      threshold: 0.3, // Lower threshold for easier detection
+    };
+
+    // Create a callback function for the observer
+    const observerCallback = (entries) => {
+      // Skip observer updates during manual navigation
+      if (!enableObserver) return;
+
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const id = entry.target.getAttribute("id");
+          const correspondingLink = document.querySelector(
+            `nav a[href="#${id}"]`
+          );
+
+          if (correspondingLink) {
+            // Only update if this is a new active link
+            if (!correspondingLink.classList.contains("active")) {
+              // Temporarily disable observer to prevent conflicts
+              enableObserver = false;
+
+              // Update active classes
+              navLinks.forEach((link) => link.classList.remove("active"));
+              correspondingLink.classList.add("active");
+
+              // Re-enable observer after a short delay
+              setTimeout(() => {
+                enableObserver = true;
+              }, 100);
+            }
+          }
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(
+      observerCallback,
+      observerOptions
+    );
+
+    // Start observing all sections
+    sections.forEach((section) => {
+      observer.observe(section);
+    });
+  });
 </script>
 
 <header>
@@ -60,15 +155,63 @@
     list-style: "";
   }
 
+  a.active {
+    color: var(--primary);
+    font-weight: bold;
+    border-radius: 6px 6px 0 0;
+    view-transition-name: active-link;
+    z-index: 50;
+  }
+
+  a.active::before {
+    content: "";
+    position: absolute;
+    bottom: -0.1rem;
+    left: 0;
+    height: 2px;
+    width: 100%;
+    background-color: var(--primary);
+    opacity: 1 !important;
+    animation: none;
+  }
+
+  a.active::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: var(--primary-light);
+    height: 100%;
+    width: 100%;
+    border-radius: 2px 2px 0 0;
+    opacity: 50%;
+    z-index: -1;
+    view-transition-name: active-bg;
+    transform-origin: bottom center;
+    animation: active-bg 0.25s ease-in-out forwards;
+  }
+
+  @keyframes active-bg {
+    from {
+      scale: 0.7;
+    }
+    to {
+      scale: 1;
+    }
+  }
+
   a {
     position: relative;
     text-decoration: none;
+    padding: 0.25rem 0.5rem;
   }
 
+  /* Single a::before definition */
   a::before {
     content: "";
     position: absolute;
     bottom: -0.1rem;
+    left: 0;
     height: 2px;
     width: 0%;
     background-color: var(--primary);
@@ -77,33 +220,29 @@
     view-transition-name: active-link;
   }
 
-  a {
-    position: relative; /* Ensure the parent has positioning */
-  }
-
-  /* Create a persistent pseudo-element that's hidden by default */
-  a::before {
-    content: "";
-    position: absolute;
-    bottom: -0.1rem;
-    height: 2px;
-    width: 0%; /* Start with width 0 */
-    background-color: var(--primary);
-    opacity: 0;
-    transition: 0.25s ease-in-out;
-    view-transition-name: active-link;
-  }
-
-  /* Show and animate on hover */
-  a:hover::before {
+  /* Make sure this doesn't conflict with a.active::before */
+  a:hover:not(.active)::before {
     width: 100%;
     opacity: 1;
     animation: show-link 0.25s ease-in-out forwards;
   }
 
-  /* This selector only applies after the element has been hovered at least once */
-  a.hovered:not(:hover)::before {
-    animation: hide-link 0.25s ease-in-out forwards;
+  /* Don't animate the ::before of active links when not hovering */
+  a.hovered:not(:hover):not(.active)::before {
+    animation: hide-link 0.15s ease-in-out forwards;
+  }
+
+  /* Ensure this is specific enough to override other ::before rules */
+  a.active::before {
+    content: "";
+    position: absolute;
+    bottom: -0.1rem;
+    left: 0;
+    height: 2px;
+    width: 100% !important; /* Force width to 100% */
+    background-color: var(--primary);
+    opacity: 1 !important; /* Force opacity to 1 */
+    animation: none !important; /* Prevent animations from affecting it */
   }
 
   @keyframes show-link {

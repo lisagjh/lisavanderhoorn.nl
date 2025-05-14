@@ -1,18 +1,74 @@
 <footer id="contact">
-  <p>© 2025 Lisa van der Hoorn</p>
+  <div class="wrapper">
+    <h4 class="pill">Find Me Online</h4>
+    <ul>
+      <li><a href="mailto:lisagjhoorn@outlook.com">mail</a></li>
+      <li><a href="https://bsky.app/profile/lisah.dev">bluesky</a></li>
+      <li><a href="https://github.com/lisagjh">github</a></li>
+      <li><a href="https://linkedin.com/in/lisavanderhoorn">linkedin</a></li>
+    </ul>
+
+    <p>
+      Thanks for taking a look at my website! If you have any questions or would
+      like to talk, please don't hesitate to reach out.
+    </p>
+  </div>
+
+  <p class="last">built with 💖</p>
 </footer>
 
 <style>
   footer {
     min-width: 100vw;
-    min-height: 50vh;
+    min-height: 60vh;
     height: 100%;
     background-color: var(--primary-dark);
     color: var(--white);
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     padding: 2rem;
     gap: 1rem;
-    margin-top: 5rem;
+    margin-top: 8rem;
+  }
+
+  h4 {
+    font-size: 3rem;
+  }
+
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 2rem;
+    background-color: var(--bg);
+    width: 100%;
+    border-radius: 20px;
+  }
+
+  li {
+    margin-left: 1rem;
+  }
+
+  li::marker {
+    font-size: 1.2rem;
+    color: var(--primary);
+  }
+
+  .wrapper p {
+    font-size: 1rem;
+  }
+
+  p.last {
+    color: var(--primary-lighter);
+    font-size: 0.8rem;
+    font-weight: lighter;
+    align-self: center;
   }
 </style>

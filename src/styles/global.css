@@ -31,6 +31,7 @@
 
   --primary: hsl(222deg 97% 59%);
   --primary-light: hsl(222deg 100% 88%);
+  --primary-lighter: hsl(222deg 95% 95%);
   --primary-dark: hsl(222deg 37% 44%);
 
   --secondary: hsl(12deg 96% 48%);
@@ -244,7 +245,9 @@ blockquote span {
   font-family: var(--heading-font);
 }
 
-h2.pill {
+h2.pill,
+h3.pill,
+h4.pill {
   font-size: 2rem;
   text-align: center;
   background-color: var(--bg);
