@@ -27,7 +27,11 @@ const allPosts = await getCollection("projects");
 
     <p><em>{frontmatter.description}</em></p>
 
-    <a href={frontmatter.livesite}>View this project here</a>
+    {
+      frontmatter.liveiste ? (
+        <a href={frontmatter.livesite}>View this project here</a>
+      ) : null
+    }
 
     <img
       src={frontmatter.image.url}

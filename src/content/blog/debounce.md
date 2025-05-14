@@ -1,4 +1,5 @@
 ---
+id: 1
 title: "JS Debouncing"
 pubDate: 2025-04-25
 description: "In deze post leg ik uit wat debouncing is en hoe ik het heb toegepast in een project tijdens mijn stage."
