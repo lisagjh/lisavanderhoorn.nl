@@ -11,6 +11,7 @@ gsap.registerPlugin(DrawSVGPlugin);
     <p class="split">Frontend Developer</p>
 
     <svg
+    class="svg"
       width="300"
       height="79"
       viewBox="0 0 300 79"
@@ -67,6 +68,6 @@ gsap.registerPlugin(DrawSVGPlugin);
   gsap.fromTo(
     path,
     { drawSVG: "0%" },
-    { drawSVG: "100%", duration: 2.5, ease: "power2.out" }
+    { drawSVG: "95%", duration: 2.5, ease: "power2.out", delay: 0.5 }
   );
 </script>
