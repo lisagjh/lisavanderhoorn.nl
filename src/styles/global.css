@@ -1,20 +1,18 @@
-/* /* @import url("https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Tinos:ital,wght@0,400;0,700;1,400;1,700&display=swap"); */
-
 @font-face {
   font-family: "ITC Garamond";
-  src: url("/public/fonts/itc-garamond.woff2") format("woff2");
+  src: url("/fonts/itc-garamond.woff2") format("woff2");
   font-display: swap;
 }
 
 @font-face {
   font-family: "Host Grotesk";
-  src: url("/public/fonts/HostGrotesk.woff2") format("woff2");
+  src: url("/fonts/HostGrotesk.woff2") format("woff2");
   font-display: swap;
 }
 
 @font-face {
   font-family: "Host Grotesk Italic";
-  src: url("/public/fonts/HostGrotesk-Italic.woff2") format("woff2");
+  src: url("/fonts/HostGrotesk-Italic.woff2") format("woff2");
   font-display: swap;
 }
 
