@@ -24,9 +24,9 @@
   --white: #fefefe;
   --black: #101010;
   --dark: #303030;
-  --off-white: #f1efee;
+  --off-white: #fffafa;
 
-  --bg: #fcfaf8;
+  --bg: #fffafa;
   --text: #101010;
 
   --primary: hsl(222deg 97% 59%);
@@ -250,7 +250,7 @@ h3.pill,
 h4.pill {
   font-size: 2rem;
   text-align: center;
-  background-color: var(--bg);
+  background-color: var(--off-white);
   color: var(--text);
   padding: 1.5rem;
   min-width: 8rem;
