@@ -35,8 +35,8 @@
   --primary-dark: hsl(222deg 37% 44%);
 
   --secondary: hsl(12deg 96% 48%);
-  --secondary-light: hsl(12deg 100% 91%);
-  --secondary-lighter: hsl(12deg 95% 87%);
+  --secondary-light: hsl(12deg 95% 87%);
+  --secondary-lighter: hsl(12deg 100% 93%);
   --secondary-dark: hsl(12deg 38% 50%);
 
   --tertiary: hsl(43deg 89% 61%);

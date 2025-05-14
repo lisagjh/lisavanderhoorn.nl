@@ -206,7 +206,6 @@
     padding: 0.25rem 0.5rem;
   }
 
-  /* Single a::before definition */
   a::before {
     content: "";
     position: absolute;
@@ -217,32 +216,28 @@
     background-color: var(--primary);
     opacity: 0;
     transition: 0.25s ease-in-out;
-    view-transition-name: active-link;
   }
 
-  /* Make sure this doesn't conflict with a.active::before */
   a:hover:not(.active)::before {
     width: 100%;
     opacity: 1;
     animation: show-link 0.25s ease-in-out forwards;
   }
 
-  /* Don't animate the ::before of active links when not hovering */
   a.hovered:not(:hover):not(.active)::before {
     animation: hide-link 0.15s ease-in-out forwards;
   }
 
-  /* Ensure this is specific enough to override other ::before rules */
   a.active::before {
     content: "";
     position: absolute;
     bottom: -0.1rem;
     left: 0;
     height: 2px;
-    width: 100% !important; /* Force width to 100% */
+    width: 100% !important; 
     background-color: var(--primary);
-    opacity: 1 !important; /* Force opacity to 1 */
-    animation: none !important; /* Prevent animations from affecting it */
+    opacity: 1 !important; 
+    animation: none !important; 
   }
 
   @keyframes show-link {
