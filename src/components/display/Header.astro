@@ -126,21 +126,45 @@
     justify-content: space-between;
     align-items: center;
     justify-self: center;
-    background: linear-gradient(0deg, transparent 0%, var(--white) 90%);
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(1px);
-    -webkit-backdrop-filter: blur(5px);
     position: sticky;
     top: 0;
-    width: 100vw;
+    width: 90vw;
     max-width: 75rem;
     z-index: 50;
-    border-radius: 0 0 12px 12px;
   }
 
   nav {
     width: 100%;
     max-width: 65rem;
+    background: linear-gradient(0deg, transparent 0%, var(--white) 90%);
+    border-radius: 0 0 12px 12px;
+    backdrop-filter: blur(1px);
+    -webkit-backdrop-filter: blur(5px);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  @supports (container-type: scroll-state) {
+    header {
+      container-type: scroll-state;
+      container-name: header;
+    }
+
+    nav {
+      width: 100%;
+      max-width: 65rem;
+      border-radius: 0;
+      box-shadow: 0 0px 2px rgba(0, 0, 0, 0.1);
+    }
+
+    @container scroll-state(stuck: top) {
+      nav {
+        background: linear-gradient(0deg, transparent 0%, var(--white) 90%);
+        border-radius: 0 0 12px 12px;
+        backdrop-filter: blur(1px);
+        -webkit-backdrop-filter: blur(5px);
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+      }
+    }
   }
 
   ul {
