@@ -34,7 +34,7 @@ const allPosts = await getCollection("projects");
     }
 
     {
-      frontmatter.image.url && (
+      frontmatter.image && (
         <Image
           src={frontmatter.image.url}
           width="300"

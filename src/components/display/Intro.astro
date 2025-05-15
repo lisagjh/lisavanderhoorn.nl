@@ -1,7 +1,4 @@
 ---
-import gsap from "gsap";
-import { DrawSVGPlugin } from "gsap/DrawSVGPlugin";
-gsap.registerPlugin(DrawSVGPlugin);
 ---
 
 <section class="intro">
@@ -11,7 +8,7 @@ gsap.registerPlugin(DrawSVGPlugin);
     <p class="split">Frontend Developer</p>
 
     <svg
-    class="svg"
+      class="svg"
       width="300"
       height="79"
       viewBox="0 0 300 79"
@@ -59,8 +56,8 @@ gsap.registerPlugin(DrawSVGPlugin);
 </style>
 
 <script type="module">
-  import gsap from "https://cdn.skypack.dev/gsap";
-  import { DrawSVGPlugin } from "https://cdn.skypack.dev/gsap/DrawSVGPlugin"; // Gebruik CDN voor premium plugin
+  import { gsap } from "gsap";
+  import { DrawSVGPlugin } from "gsap/DrawSVGPlugin";
 
   gsap.registerPlugin(DrawSVGPlugin);
 
