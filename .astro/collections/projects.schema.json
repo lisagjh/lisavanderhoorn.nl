@@ -53,6 +53,9 @@
         "notes": {
           "type": "string"
         },
+        "lang": {
+          "type": "string"
+        },
         "$schema": {
           "type": "string"
         }

@@ -4,6 +4,7 @@ title: "Introduction to PHP"
 pubDate: 2025-05-14
 description: "Mijn aantekeningen bij het leren van PHP."
 tags: ["PHP", "learning in public"]
+lang: "nl"
 ---
 
 # Table of Contents

@@ -19,6 +19,7 @@ const blog = defineCollection({
       .optional(),
     tags: z.array(z.string()),
     relatedPosts: z.array(z.string()).optional(),
+    lang: z.string().optional(),
   }),
 });
 
@@ -38,6 +39,7 @@ const projects = defineCollection({
     livesite: z.string().optional(),
     bodytext: z.string().optional(),
     notes: z.string().optional(),
+    lang: z.string().optional(),
   }),
 });
 // Export a single `collections` object to register your collection(s)

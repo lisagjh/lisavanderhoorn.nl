@@ -18,7 +18,7 @@ const allPosts = await getCollection("projects");
 //   }));
 ---
 
-<BaseLayout pageTitle={`Project - ${frontmatter.title}`}>
+<BaseLayout pageTitle={`${frontmatter.title}`}>
   <section class="markdown-post">
     <a class="back-home" href="/">Back to home</a>
     <h2>{frontmatter.title}</h2>
@@ -218,23 +218,27 @@ const allPosts = await getCollection("projects");
     max-width: 100%;
   }
 
-  :global(h2, h3, h4, h5, h6) {
+  :global(.markdown-post h1, .markdown-post h2, .markdown-post h3, .markdown-post h4, .markdown-post h5, .markdown-post h6) {
     font-family: var(--body-font);
   }
 
-  :global(h2) {
+  :global(.markdown-post h1) {
     font-size: 2.5rem;
   }
 
-  :global(h3) {
-    font-size: 2.25rem;
-  }
-
-  :global(h4) {
+  :global(.markdown-post h2) {
     font-size: 2rem;
   }
 
-  :global(h5) {
+  :global(.markdown-post h3) {
     font-size: 1.75rem;
+  }
+
+  :global(.markdown-post h4) {
+    font-size: 1.5rem;
+  }
+
+  :global(.markdown-post h5) {
+    font-size: 1.25rem;
   }
 </style>

@@ -7,9 +7,8 @@ image:
   url: "/blog-content/demo-scroll-state.gif"
   alt: "Demo of the sticky header and nav with scroll-state"
 tags: ["CSS", "learning in public"]
+lang: "en"
 ---
-
-# CSS scroll-state()
 
 A while ago I read about CSS scroll-state. While building the new version of my website, I got to implement this new feature. This is an extension upon the container queries, to track the state of an element and figure out if it's scrolling or sticky somewhere. This allows us to add an animation or styling when an element is sticky at the top, like a `nav` for example.
 
@@ -48,16 +47,15 @@ To prevent issues on browsers that do not support this feature, I've wrapped the
 
 And then the part that makes the magic work: `@container scroll-state(stuck: top)`. This waits for the header to be stuck at the top of the page. Within this query I have added the different styling for the nav.
 
-
 ```css
 @container scroll-state(stuck: top) {
-	nav {
-		background: linear-gradient(0deg, transparent 0%, var(--white) 90%);
-		border-radius: 0 0 12px 12px;
-		backdrop-filter: blur(1px);
-		-webkit-backdrop-filter: blur(5px);
-		box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
-	}
+  nav {
+    background: linear-gradient(0deg, transparent 0%, var(--white) 90%);
+    border-radius: 0 0 12px 12px;
+    backdrop-filter: blur(1px);
+    -webkit-backdrop-filter: blur(5px);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  }
 }
 ```
 
