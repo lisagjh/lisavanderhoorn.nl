@@ -1,26 +1,12 @@
 ---
+
 ---
 
 <section class="intro">
   <h1>Lisa van der Hoorn</h1>
 
-  <div class="wrapper">
-    <p class="split">Frontend Developer</p>
-
-    <svg
-      class="svg"
-      width="300"
-      height="79"
-      viewBox="0 0 300 79"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        d="M3.5 39.7614C6.55574 62.1702 55.7596 71.3385 113 72.0699C145.219 72.4816 179.985 70.2202 210.5 66.1424C258.831 59.6837 296.5 48.6683 296.5 36.5C296.5 18.4565 256.008 8.04331 206 4.47777C164.671 1.53098 116.842 3.26141 80 9.22724C42.8325 15.2458 16.8475 25.5751 20 39.7614C22.427 50.6828 48.0589 59.1127 80 65.0601C125.453 73.5234 183.683 76.9594 206 75.3933C244 72.7268 268.5 70 296.5 59.7614"
-        stroke="#F4C242"
-        stroke-width="6"
-        stroke-linecap="round"></path>
-    </svg>
+  <div class="wrapper is-hidden">
+    <p class="split">Frontend <span class="dev">Developer</span></p>
   </div>
 </section>
 
@@ -53,18 +39,83 @@
     z-index: -1;
     width: 13rem;
   }
+
+  .wrapper.is-hidden {
+    visibility: hidden;
+    opacity: 0;
+  }
 </style>
 
 <script type="module">
-  import { gsap } from "gsap";
-  import { DrawSVGPlugin } from "gsap/DrawSVGPlugin";
+  import { gsap } from "../../node_modules/gsap";
+  import { SplitText } from "../../node_modules/gsap/SplitText";
+  import { ScrambleTextPlugin } from "../../node_modules/gsap/ScrambleTextPlugin.js";
+  gsap.registerPlugin(SplitText);
+  gsap.registerPlugin(ScrambleTextPlugin);
 
-  gsap.registerPlugin(DrawSVGPlugin);
+  const wrapper = document.querySelector(".wrapper");
+  const split = new SplitText(wrapper, {
+    type: "chars",
+    linesClass: "split",
+    mask: "span",
+  });
 
-  const path = document.querySelector("svg path");
+  setTimeout(() => {
+    wrapper.classList.remove("is-hidden");
+  }, 200);
+
   gsap.fromTo(
-    path,
-    { drawSVG: "0%" },
-    { drawSVG: "95%", duration: 2.5, ease: "power2.out", delay: 0.5 }
+    split.chars,
+    {
+      y: "50%",
+      opacity: 0,
+      rotate: () => Math.random() * 20 - 10,
+    },
+    {
+      y: "0%",
+      opacity: 1,
+      duration: 0.25,
+      delay: 0.35,
+      rotate: 0,
+      stagger: {
+        each: 0.005,
+      },
+    }
   );
+
+  const dev = document.querySelector(".dev"); // voeg dit toe boven je listeners
+  const devSplit = new SplitText(document.querySelector(".dev"), {
+    type: "chars",
+    linesClass: "split",
+    mask: "span",
+  });
+
+  const original = "Developer";
+  const replacement = "Nerd";
+
+  // Hover in → naar “Nerd” met glitch
+  wrapper.addEventListener("mouseenter", () => {
+    gsap.to(dev, {
+      scrambleText: {
+        text: replacement,
+        chars: "qwertyuioasdfghjklzxcvbnm",
+        speed: 0.5,
+      },
+      duration: 0.65,
+      ease: "power2.inOut",
+    });
+  });
+
+  // Hover uit → terug naar “Developer” met glitch
+  wrapper.addEventListener("mouseleave", () => {
+    gsap.to(dev, {
+      scrambleText: {
+        text: original,
+        chars: "qwertyuioasdfghjklzxcvbnm",
+        speed: 0.5,
+      },
+      duration: 0.65,
+      ease: "power2.inOut",
+    });
+  });
 </script>
