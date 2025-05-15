@@ -33,12 +33,16 @@ const allPosts = await getCollection("projects");
       ) : null
     }
 
-    <img
-      src={frontmatter.image.url}
-      width="300"
-      height="200"
-      alt={frontmatter.image.alt}
-    />
+    {
+      frontmatter.image.url && (
+        <Image
+          src={frontmatter.image.url}
+          width="300"
+          height="200"
+          alt={frontmatter.image.alt}
+        />
+      )
+    }
 
     <slot />
 

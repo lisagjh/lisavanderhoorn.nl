@@ -9,14 +9,44 @@ image:
 tags: ["PHP", "learning in public"]
 ---
 
+# Table of Contents
+
+- [Introduction to PHP](#introduction-to-php)
+  - [History of PHP](#history-of-php)
+  - [How is PHP used in HTML?](#how-is-php-used-in-html)
+  - [How is PHP executed?](#how-is-php-executed)
+  - [PHP comments](#php-comments)
+    - [Example - Todo list](#voorbeeld---todo-list)
+- [PHP strings & variables](#php-strings--variables)
+  - [Escape Sequences](#escape-sequences)
+  - [String Concatenation](#string-concatenation)
+  - [Variables](#variables)
+    - [Variable parsing](#variable-parsing)
+    - [Curly braces](#curly-braces)
+  - [Concatenating Assignment Operator](#concatenating-assignment-operator)
+  - [Assign by Reference](#assign-by-reference)
+- [Numbers](#numbers)
+  - [Mathematical Assignment Operators](#mathematical-assignment-operators)
+  - [Table Overview Operators](#tabel-overzicht-operators)
+- [PHP Functions](#php-functions)
+  - [Introduction to Functions](#introduction-to-functions)
+    - [Multiple Parameters](#multiple-parameters)
+    - [Default Parameters](#default-parameters)
+    - [Pass by Reference](#pass-by-reference)
+    - [Variable Scope](#variable-scope)
+  - [Introduction to Built-In Functions](#introduction-to-built-in-functions)
+    - [Working with Variables](#werken-met-variables)
+    - [Working with Substrings](#werken-met-substrings)
+- [Bronnen](#bronnen)
+
 # Introduction to PHP
 
 ## History of PHP
 
-In 1994 is PHP gecreeërd. 
+In 1994 is PHP gecreeërd.
 
 PHP is een van de fundamentele technologieën van web development, en een van de meest gebruikte server side technologieën. Het word vooral veel gebruikt met populaire CMS'en: WordPress, Drupal, Joomla.
-Ook is veel van de underlying code van WooCommerce and Magento gebaseerd op PHP. 
+Ook is veel van de underlying code van WooCommerce and Magento gebaseerd op PHP.
 
 PHP heeft veel built-in functionaliteit voor interactie met data. Vanilla PHP alleen kan ook gebruikt worden om web app backends te bouwen. Maar er zijn ook verschillende krachtige frameworks: Laravel, CakePHP, Symfony.
 
@@ -30,7 +60,7 @@ PHP is ontworpen om goed samen te werken met HTML, waardoor het in-line gebruikt
 
 ![[Screenshot 2025-04-07 at 21.04.34.png]]
 
-Het begin van een PHP line start met: `<?php` en eindigt met `?>`.  Bijvoorbeeld:
+Het begin van een PHP line start met: `<?php` en eindigt met `?>`. Bijvoorbeeld:
 
 ```html
 <p>This HTML will get delivered as is</p>
@@ -161,20 +191,21 @@ Het is belangrijk om duidelijk te maken wat een string is en wat niet in een PHP
 
 ## Escape Sequences
 
-Aan het begin en eind van een string gebruiken we aanhalingstekens. Deze laten de computer weten dat alles daar tussen een stukje data is. 
+Aan het begin en eind van een string gebruiken we aanhalingstekens. Deze laten de computer weten dat alles daar tussen een stukje data is.
 
-Als je binnen die string iets tussen aanhalingstekens  zet, herkent PHP dit niet en krijg je een syntax error.
+Als je binnen die string iets tussen aanhalingstekens zet, herkent PHP dit niet en krijg je een syntax error.
+
 ```php
 echo "She said "hi" to the dog."; //syntax error, unexpected 'hi' (T_STRING)
 ```
 
-Dit kan je oplossen door `\` backslashes om het deel van de string te zetten met de aanhalingstekens. Dit noem je een *escape sequence*.
+Dit kan je oplossen door `\` backslashes om het deel van de string te zetten met de aanhalingstekens. Dit noem je een _escape sequence_.
 
 Bij het printen van meerdere strings heb je ook een escape sequence nodig:
 
 ```php
 echo "1. Go to gym";
-echo "2. Cook dinner"; 
+echo "2. Cook dinner";
 
 /* output:
 1. Go to gym2. Cook dinner
@@ -185,7 +216,7 @@ Hier kun je `\n` er voor zetten, om aan te geven dat het op een nieuwe regel moe
 
 ```php
 echo "1. Go to gym";
-echo "\n2. Cook dinner"; 
+echo "\n2. Cook dinner";
 
 1. Go to gym
 2. Cook dinner
@@ -198,7 +229,6 @@ echo "\n2. Something else";
 echo "\n3. Learn to have \"fun\"";
 ```
 
-
 ## String Concatenation
 
 ```php
@@ -207,10 +237,9 @@ echo "\nMy name is:" . " " . "Lisa";
 echo "\n" . "tur" . "duck" . "en";
 ```
 
-
 ## Variables
 
-In PHP gebruik je het `$` teken om een variabele te definiëren. Variable names kunnen nummers, letters en underscores (`_`) bevatten, maar moeten altijd beginnen met een letter of underscore. De variable names zijn case sensitive, dus `$my_example` en `$My_example` worden als twee verschillende variables gezien.
+In PHP gebruik je het `$` teken om een variabele te definiëren. Variable names kunnen nummers, letters en underscores (`_`) bevatten, maar moeten altijd beginnen met een letter of underscore. De variable names zijn case sensitive, dus `$my_example` en `$My_example` worden als twee verschillende variables gezien.
 
 ![[Screenshot 2025-05-13 at 15.57.34.png]]
 
@@ -223,7 +252,6 @@ $language = "php";
 echo "I am" . $name;
 echo "\n" . $language
 ```
-
 
 ### Variable parsing
 
@@ -238,7 +266,7 @@ echo "I have a $color dog named $dog_name and her favorite food is $favorite_foo
 
 #### curly braces
 
-Dit voorbeeld geeft een error, omdat `toys` niet bestaat. 
+Dit voorbeeld geeft een error, omdat `toys` niet bestaat.
 
 ```php
 $toy = "frisbee";
@@ -274,23 +302,25 @@ Wanneer we een variabele toewijzen aan een andere variabele, reserveert de compu
 De nieuwe variabele is een kopie van de waarde van de originele variabele, maar het is een onafhankelijke variabele; verandering bij de een heeft geen invloed op de ander.
 
 **Voorbeeld:**
+
 ```php
-$first_player_rank = "Beginner"; 
-$second_player_rank = $first_player_rank; 
+$first_player_rank = "Beginner";
+$second_player_rank = $first_player_rank;
 echo $second_player_rank; // Prints: Beginner
 
 $first_player_rank = "Intermediate"; // Reassign the value of $first_player_rank
 echo $second_player_rank; // Still Prints: Beginner
 ```
 
-Je kan ook een alias maken, een bijnaam. In plaats van een kopie van de originele variabele waarde, maken we een nieuwe naam die naar de zelfde plek in het geheugen verwijst. Hier word een andere operator voor gebruikt, de reference assignment oeprator – `=&`. 
+Je kan ook een alias maken, een bijnaam. In plaats van een kopie van de originele variabele waarde, maken we een nieuwe naam die naar de zelfde plek in het geheugen verwijst. Hier word een andere operator voor gebruikt, de reference assignment oeprator – `=&`.
 
-Als we "assign by reference" gebruiken, zeggen we dat de variabele aan de linker kant van de operator verwijzen naar exact dezelfde data als de variabele rechts. Met assignment by reference,  veranderingen aan de ene variabele hebben wel invloed op de ander.
+Als we "assign by reference" gebruiken, zeggen we dat de variabele aan de linker kant van de operator verwijzen naar exact dezelfde data als de variabele rechts. Met assignment by reference, veranderingen aan de ene variabele hebben wel invloed op de ander.
 
 **Voorbeeld:**
+
 ```php
 $first_player_rank = "Beginner";
-$second_player_rank =& $first_player_rank; 
+$second_player_rank =& $first_player_rank;
 echo $second_player_rank; // Prints: Beginner
 
 $first_player_rank = "Intermediate"; // Reassign the value of $first_player_rank
@@ -299,6 +329,7 @@ echo $second_player_rank; // Prints: Intermediate
 ```
 
 **Voorbeeld assign by reference:**
+
 ```php
 /* Imagine a lot of code here */
 $very_bad_unclear_name = "15 chicken wings";
@@ -311,9 +342,9 @@ echo "\nYour order is: $very_bad_unclear_name.";
 ```
 
 ```php
-$name = "Tadpole";  
-$title = ", Princess of Dogulon";  
-$name .= $title;  
+$name = "Tadpole";
+$title = ", Princess of Dogulon";
+$name .= $title;
 echo $name;
 ```
 
@@ -332,7 +363,7 @@ echo "\n"; // new line
 echo $my_float; // Prints 89.9
 ```
 
-Er zijn ook verschillende operators die we kunnen gebruiken. 
+Er zijn ook verschillende operators die we kunnen gebruiken.
 
 ```php
 echo 5 + 1; // Prints: 6
@@ -345,7 +376,7 @@ Op deze manier kunnen we ook rekenen met variabelen:
 
 ```php
 $tadpole_age = 7;
-$lily_age = 6; 
+$lily_age = 6;
 $age_difference = $tadpole_age - $lily_age;
 echo $age_difference; // Prints 1
 ```
@@ -362,7 +393,8 @@ $days_per_language = $days / $num_languages;
 echo $days_per_language;
 ```
 
-Maar ook een exponentiation operatotr – `**`. 
+Maar ook een exponentiation operatotr – `**`.
+
 ```php
 echo 4 ** 2; // Prints: 16`
 ```
@@ -406,8 +438,6 @@ The acronym PEMDAS can be helpful for remembering the order of precedence for th
 | Modulo         | `%`        | `echo 11 % 3;`     | 2          |
 | Exponentiation | `**`       | `echo 8 ** 2;`     | 64         |
 
-
-
 ## Mathematical Assignment Operators
 
 ```php
@@ -424,15 +454,14 @@ $savings -= $bike_cost;
 echo $savings; // Prints: 725
 ```
 
-
 PHP heeft ook `increment operators`:
 
 ```php
-$age = 89; 
+$age = 89;
 $age++;
 echo $age; // Prints: 90
 
-$days_til_vacation = 7; 
+$days_til_vacation = 7;
 $days_til_vacation--;
 echo $days_til_vacation; // Prints: 6
 ```
@@ -443,7 +472,7 @@ echo $days_til_vacation; // Prints: 6
 | -------------- | ---------------- | ----------------- |
 | Add            | $x = $x + $y     | $x += $y          |
 | Subtract       | $x = $x - $y     | $x -= $y          |
-| Multiply       | $x = $x * $y     | $x *= $y          |
+| Multiply       | $x = $x \* $y    | $x \*= $y         |
 | Divide         | $x = $x / $y     | $x /= $y          |
 | Modulo         | $x = $x % $y     | $x %= $y          |
 
@@ -469,7 +498,6 @@ function greetLearner()
 // invoke function:
 greetLearner();
 ```
-
 
 ```php
 function printStringReturnNumber()
@@ -500,11 +528,10 @@ function second()
 function third()
 {
   return "You're a coding hero!\n";
-} 
+}
 
 echo first() . " " . second() . " " . third() ;
 ```
-
 
 ```php
 function sayCustomHello($name)
@@ -517,7 +544,6 @@ sayCustomHello("Aisle Nevertell"); // Prints: Hello, Aisle Nevertell!
 sayCustomHello("Codecademy learner"); // Prints: Hello, Codecademy Learner!
 
 ```
-
 
 ```php
 function increaseEnthusiasm($val)
@@ -534,7 +560,6 @@ echo increaseEnthusiasm("henlo");
 echo repeatThreeTimes("hi");
 echo increaseEnthusiasm(repeatThreeTimes("HI"));
 ```
-
 
 ### Multiple Parameters
 
@@ -578,7 +603,6 @@ echo calculateArea(3, 5); // 15
 echo calculateVolume(3, 5, 2); // 30
 ```
 
-
 ### Default Parameters
 
 Je kan errors voorkomen door een default parameters mee te geven aan de functie. Als er dan geen argument word meegegeven als de functie invoked word, word deze gebruikt. Als er wel een argument word meegegeven, word deze overschreven.
@@ -593,7 +617,6 @@ greetFriend("Marvin"); // Prints: Hello, Marvin!
 
 greetFriend(); // Prints: Hello, old chum!
 ```
-
 
 ### Pass by Reference
 
@@ -623,7 +646,6 @@ addXPermanently($word); // Prints: HelloX
 echo $word; // Prints: HelloX
 ```
 
-
 **Voorbeeld**
 
 ```php
@@ -631,7 +653,7 @@ $string_one = "you have teeth";
 $string_two = "toads are nice";
 $string_three = "brown is my favorite color";
 
-function convertToQuestion(&$str) // gebruik van & 
+function convertToQuestion(&$str) // gebruik van &
 {
 $str = "Do you think " . $str . "?\n";
 // redefinieren van string argument
@@ -642,7 +664,6 @@ echo convertToQuestion($string_one);
 echo convertToQuestion($string_two);
 echo convertToQuestion($string_three)
 ```
-
 
 ### Variable Scope
 
@@ -656,19 +677,7 @@ function calculateDaysLeft($feed_quantity, $number, $rate)
 echo calculateDaysLeft(300, 2, 30);
 ```
 
-
-
-
 ![[Screenshot 2025-05-14 at 15.13.55.png]]
-
-
-
-
-
-
-
-
-
 
 ## Introduction to Built-In Functions
 
@@ -680,7 +689,6 @@ echo "This also works!\n";
 echo "Buuuut!", " ", "This", " ", "does!", "\n";
 //echo("This would NOT work", "\n");
 ```
-
 
 ### Werken met Variables
 
@@ -716,9 +724,8 @@ echo strtolower("HeLLo"); // Prints: hello
 `strrepeat()` neemt een string als eerste argument, en een nummer als het tweede. Het returned een string die de argument string zo vaak herhaald als het argument nummer.
 
 ```php
-echo str_repeat("hi", 10); // Prints: hihihihihihihihihihi 
+echo str_repeat("hi", 10); // Prints: hihihihihihihihihihi
 ```
-
 
 ### Werken met Substrings
 
@@ -730,14 +737,7 @@ $story = "I was like, \"Dude, like just tell me what you like think because like
 echo substr_count($story, "like"); // Prints: 8
 ```
 
-
-
-
-
-
-
 # Bronnen
-
 
 - [Officiële PHP docs](https://www.php.net/manual/en/language.types.string.php)
 - [Variables - codecademy](https://www.codecademy.com/resources/docs/php/variables)
