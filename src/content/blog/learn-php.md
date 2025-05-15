@@ -47,15 +47,11 @@ Ook is veel van de underlying code van WooCommerce and Magento gebaseerd op PHP.
 
 PHP heeft veel built-in functionaliteit voor interactie met data. Vanilla PHP alleen kan ook gebruikt worden om web app backends te bouwen. Maar er zijn ook verschillende krachtige frameworks: Laravel, CakePHP, Symfony.
 
-![[Screenshot 2025-04-07 at 21.03.54.png]]
-
 ## How is PHP used in HTML?
 
 PHP word gebruikt om dynamische web pages te bouwen.
 
 PHP is ontworpen om goed samen te werken met HTML, waardoor het in-line gebruikt kan worden in een HTML document. Als de website gerendered word, word de PHP uitgevoerd, en als HTML toegevoegd.
-
-![[Screenshot 2025-04-07 at 21.04.34.png]]
 
 Het begin van een PHP line start met: `<?php` en eindigt met `?>`. Bijvoorbeeld:
 
@@ -237,8 +233,6 @@ echo "\n" . "tur" . "duck" . "en";
 ## Variables
 
 In PHP gebruik je het `$` teken om een variabele te definiëren. Variable names kunnen nummers, letters en underscores (`_`) bevatten, maar moeten altijd beginnen met een letter of underscore. De variable names zijn case sensitive, dus `$my_example` en `$My_example` worden als twee verschillende variables gezien.
-
-![[Screenshot 2025-05-13 at 15.57.34.png]]
 
 Een veel gebruikte conventie bij benaming is het gebruik van een underscore tussen twee woorden, oftewel `snake_case`.
 
@@ -674,8 +668,6 @@ function calculateDaysLeft($feed_quantity, $number, $rate)
 echo calculateDaysLeft(300, 2, 30);
 ```
 
-![[Screenshot 2025-05-14 at 15.13.55.png]]
-
 ## Introduction to Built-In Functions
 
 PHP heeft een aantal built-in functions. Deze functies – ook bekend als internal functions – kunnen aangeroepen worden zonder dat wij ze zelf te hoeven schrijven.
@@ -734,7 +726,7 @@ $story = "I was like, \"Dude, like just tell me what you like think because like
 echo substr_count($story, "like"); // Prints: 8
 ```
 
-# Bronnen
+#### Bronnen
 
 - [Officiële PHP docs](https://www.php.net/manual/en/language.types.string.php)
 - [Variables - codecademy](https://www.codecademy.com/resources/docs/php/variables)
