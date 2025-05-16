@@ -1,11 +1,7 @@
----
-
----
-
 <section class="intro">
-  <h1>Lisa van der Hoorn</h1>
+  <h1 class="title">Lisa van der Hoorn</h1>
 
-  <div class="wrapper is-hidden">
+  <div class="wrapper">
     <p class="split">Frontend <span class="dev">Developer</span></p>
   </div>
 </section>
@@ -30,6 +26,8 @@
   .wrapper {
     position: relative;
     height: fit-content;
+    width: fit-content;
+    min-width: max-content;
   }
 
   svg {
@@ -38,11 +36,6 @@
     left: -1.5rem;
     z-index: -1;
     width: 13rem;
-  }
-
-  .wrapper.is-hidden {
-    visibility: hidden;
-    opacity: 0;
   }
 </style>
 
@@ -54,68 +47,98 @@
   gsap.registerPlugin(ScrambleTextPlugin);
 
   const wrapper = document.querySelector(".wrapper");
+
   const split = new SplitText(wrapper, {
-    type: "chars",
+    type: "words",
     linesClass: "split",
     mask: "span",
   });
 
+  // Show the wrapper after a short delay
   setTimeout(() => {
-    wrapper.classList.remove("is-hidden");
+    wrapper.classList.remove("js-hidden");
   }, 200);
 
   gsap.fromTo(
-    split.chars,
+    split.words,
     {
       y: "50%",
       opacity: 0,
-      rotate: () => Math.random() * 20 - 10,
+      rotate: () => Math.random() * 20 - 15,
     },
     {
       y: "0%",
       opacity: 1,
       duration: 0.25,
-      delay: 0.35,
+      delay: 0.95,
       rotate: 0,
+      stagger: {
+        each: 0.05,
+      },
+    }
+  );
+
+  const dev = document.querySelector(".dev");
+
+  const original = "Developer";
+  const replacement = "Nerd";
+
+  let timer;
+
+  wrapper.addEventListener("mouseenter", () => {
+    if (timer) clearTimeout(timer);
+    timer = setTimeout(() => {
+      gsap.to(dev, {
+        scrambleText: {
+          text: replacement,
+          chars: "qwertyuioasdfghjklzxcvbnm",
+          speed: 0.5,
+        },
+        duration: 0.65,
+        ease: "power2.inOut",
+      });
+    }, 250);
+  });
+
+  wrapper.addEventListener("mouseleave", () => {
+    if (timer) clearTimeout(timer);
+    timer = setTimeout(() => {
+      gsap.to(dev, {
+        scrambleText: {
+          text: original,
+          chars: "qwertyuioasdfghjklzxcvbnm",
+          speed: 0.5,
+        },
+        duration: 0.65,
+        ease: "power2.inOut",
+      });
+    }, 250);
+  });
+
+  const title = document.querySelector(".title");
+
+  const titleSplit = new SplitText(title, {
+    type: "words",
+    linesClass: "split",
+    mask: "span",
+  });
+
+  gsap.fromTo(
+    titleSplit.words,
+    {
+      y: "200%",
+      opacity: 0,
+    },
+    {
+      y: "0%",
+      opacity: 1,
+      duration: 0.25,
+      delay: 0.15,
+      rotate: 0,
+      ease: "power2.inOut",
       stagger: {
         each: 0.005,
       },
     }
   );
-
-  const dev = document.querySelector(".dev"); // voeg dit toe boven je listeners
-  const devSplit = new SplitText(document.querySelector(".dev"), {
-    type: "chars",
-    linesClass: "split",
-    mask: "span",
-  });
-
-  const original = "Developer";
-  const replacement = "Nerd";
-
-  // Hover in → naar “Nerd” met glitch
-  wrapper.addEventListener("mouseenter", () => {
-    gsap.to(dev, {
-      scrambleText: {
-        text: replacement,
-        chars: "qwertyuioasdfghjklzxcvbnm",
-        speed: 0.5,
-      },
-      duration: 0.65,
-      ease: "power2.inOut",
-    });
-  });
-
-  // Hover uit → terug naar “Developer” met glitch
-  wrapper.addEventListener("mouseleave", () => {
-    gsap.to(dev, {
-      scrambleText: {
-        text: original,
-        chars: "qwertyuioasdfghjklzxcvbnm",
-        speed: 0.5,
-      },
-      duration: 0.65,
-      ease: "power2.inOut",
-    });
-  });
 </script>
