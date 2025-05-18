@@ -1,7 +1,7 @@
 <section class="intro">
   <h1 class="title">Lisa van der Hoorn</h1>
 
-  <div class="wrapper">
+  <div class="wrapper js-hidden">
     <p class="split">Frontend <span class="dev">Developer</span></p>
   </div>
 </section>
@@ -30,6 +30,10 @@
     min-width: max-content;
   }
 
+  .js-hidden {
+    opacity: 0;
+  }
+
   svg {
     position: absolute;
     bottom: -1.75rem;
@@ -48,16 +52,43 @@
 
   const wrapper = document.querySelector(".wrapper");
 
+  // Show the wrapper after a short delay
+  setTimeout(() => {
+    wrapper.classList.remove("js-hidden");
+  }, 200);
+
+  const title = document.querySelector(".title");
+
+  const titleSplit = new SplitText(title, {
+    type: "lines",
+    linesClass: "split",
+    mask: "lines",
+  });
+
+  gsap.fromTo(
+    titleSplit.lines,
+    {
+      y: "200%",
+      opacity: 0,
+    },
+    {
+      y: "0%",
+      opacity: 1,
+      duration: 0.45,
+      delay: 0.15,
+      rotate: 0,
+      ease: "expoScale(0.5,7,none)",
+      stagger: {
+        each: 0.05,
+      },
+    }
+  );
+
   const split = new SplitText(wrapper, {
     type: "words",
     linesClass: "split",
     mask: "span",
   });
-
-  // Show the wrapper after a short delay
-  setTimeout(() => {
-    wrapper.classList.remove("js-hidden");
-  }, 200);
 
   gsap.fromTo(
     split.words,
@@ -114,31 +145,4 @@
       });
     }, 250);
   });
-
-  const title = document.querySelector(".title");
-
-  const titleSplit = new SplitText(title, {
-    type: "words",
-    linesClass: "split",
-    mask: "span",
-  });
-
-  gsap.fromTo(
-    titleSplit.words,
-    {
-      y: "200%",
-      opacity: 0,
-    },
-    {
-      y: "0%",
-      opacity: 1,
-      duration: 0.25,
-      delay: 0.15,
-      rotate: 0,
-      ease: "power2.inOut",
-      stagger: {
-        each: 0.005,
-      },
-    }
-  );
 </script>
