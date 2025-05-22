@@ -59,86 +59,6 @@
     wrapper.classList.remove("js-hidden");
   }, 200);
 
-  // --- title
-
-  const title = document.querySelector(".title");
-  const originalText = title.textContent;
-
-  // Clear the container and set up for scrolling
-  title.innerHTML = "";
-  title.style.overflow = "hidden";
-  title.style.position = "relative";
-  title.style.height = "1.5em"; // Adjust based on your font size
-
-  // Create two identical content elements for seamless scrolling
-  const createTextElement = () => {
-    const textElement = document.createElement("div");
-    textElement.textContent = originalText;
-    textElement.style.position = "absolute";
-    textElement.style.width = "100%";
-    return textElement;
-  };
-
-  const text1 = createTextElement();
-  const text2 = createTextElement();
-
-  // Add both to the container
-  title.appendChild(text1);
-  title.appendChild(text2);
-
-  // Set up initial positions
-  gsap.set(text1, { y: 0 });
-  gsap.set(text2, { y: "100%" });
-
-  // Create the continuous scrolling timeline
-  const tl = gsap.timeline({
-    repeat: -1,
-    repeatDelay: 0,
-  });
-
-  // First text scrolls up and out
-  tl.to(text1, {
-    y: "-100%",
-    duration: 2,
-    ease: "none", // Linear movement for smooth scrolling
-  });
-
-  // Second text scrolls up from bottom to center
-  // Running at the same time as the first animation
-  tl.to(
-    text2,
-    {
-      y: "0%",
-      duration: 2,
-      ease: "none",
-    },
-    "<"
-  ); // Start at the same time as previous animation
-
-  // Second text continues scrolling up and out
-  tl.to(text2, {
-    y: "-100%",
-    duration: 2,
-    ease: "none",
-  });
-
-  // First text reappears from bottom
-  tl.to(
-    text1,
-    {
-      y: "0%",
-      duration: 2,
-      ease: "none",
-    },
-    "<"
-  ); // Start at the same time as previous animation
-
-  // Optional: Control speed
-  // tl.timeScale(0.5); // Slower
-  // tl.timeScale(1.5); // Faster
-
-  // --- next
-
   const split = new SplitText(wrapper, {
     type: "words",
     linesClass: "split",
@@ -155,8 +75,8 @@
     {
       y: "0%",
       opacity: 1,
-      duration: 1,
-      delay: 0.95,
+      duration: 0.75,
+      delay: 0.75,
       rotate: 0,
       stagger: {
         each: 0.05,
@@ -177,11 +97,11 @@
       gsap.to(dev, {
         scrambleText: {
           text: replacement,
-          chars: "qwertyuioasdfghjklzxcvbnm",
-          speed: 0.5,
+          chars: "abcdefghijklmnopqrstuvwxyz",
+          speed: 0.15,
         },
-        duration: 0.65,
-        ease: "power2.inOut",
+        duration: 0.45,
+        ease: "power2.in",
       });
     }, 250);
   });
@@ -192,10 +112,10 @@
       gsap.to(dev, {
         scrambleText: {
           text: original,
-          chars: "qwertyuioasdfghjklzxcvbnm",
-          speed: 0.5,
+          chars: "abcdefghijklmnopqrstuvwxyz",
+          speed: 0.15,
         },
-        duration: 0.65,
+        duration: 0.45,
         ease: "power2.inOut",
       });
     }, 250);
