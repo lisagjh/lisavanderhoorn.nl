@@ -8,7 +8,7 @@ const allPosts = await getCollection("blog");
 
 <Layout>
   <section class="wrapper">
-    <button onclick="history.back()">Ga terug</button>
+    <button class="back" onclick="history.back()">Back Home</button>
     <h2 class="pill">CSS Day</h2>
     <p>I tried out some new CSS features. Read about them here!</p>
 
@@ -41,13 +41,19 @@ const allPosts = await getCollection("blog");
     border-radius: 10px;
   }
 
+  h2 {
+    width: 100%;
+    text-align: start;
+    font-size: 3.5rem;
+  }
+
   ul.grid {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
   }
 
-  @media (width >= 37rem) {
+  @media (width >= 42rem) {
     ul.grid {
       display: grid;
       grid-template-columns: repeat(5, 1fr);

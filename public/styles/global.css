@@ -227,6 +227,24 @@ blockquote span {
 }
 
 /* classes */
+.back {
+  --_border: var(--tertiary);
+  background: var(--white);
+  background-color: var(--white);
+  border-radius: 3.125rem;
+  border: 3px solid var(--_border);
+  box-shadow: 0px 0px 0px 3px var(--white);
+  width: fit-content;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+.back:hover {
+  background: var(--_border);
+  opacity: 1;
+}
+
 .divider {
   height: 1.5px;
   width: 100%;
