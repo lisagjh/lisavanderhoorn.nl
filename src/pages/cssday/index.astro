@@ -15,7 +15,7 @@ const allPosts = await getCollection("blog");
     <ul class="grid">
       {
         allPosts
-        .filter((post) => post.data.tags?.includes("cssday"))
+        .filter((post) => post.tags?.includes("cssday"))
         .map((post, index) => (
             <li transition:name={`post-${post.id}`} data-index={index}>
               <a href={`/cssday/${post.id}`}>
