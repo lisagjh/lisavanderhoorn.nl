@@ -60,6 +60,9 @@
         "lang": {
           "type": "string"
         },
+        "note": {
+          "type": "string"
+        },
         "$schema": {
           "type": "string"
         }
@@ -68,8 +71,7 @@
         "id",
         "title",
         "pubDate",
-        "description",
-        "tags"
+        "description"
       ],
       "additionalProperties": false
     }

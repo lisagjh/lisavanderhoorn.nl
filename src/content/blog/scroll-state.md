@@ -6,7 +6,7 @@ description: "Learning about CSS scroll-state"
 image:
   url: "/blog-content/demo-scroll-state.gif"
   alt: "Demo of the sticky header and nav with scroll-state"
-tags: ["CSS", "learning in public"]
+tags: ["CSS", "cssday", "learning in public"]
 lang: "en"
 ---
 

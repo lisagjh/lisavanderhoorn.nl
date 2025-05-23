@@ -7,18 +7,10 @@ const { frontmatter } = Astro.props;
 
 // Fetch all posts
 const allPosts = await getCollection("projects");
-
-// Get full details of related posts
-// const relatedPostsData = allPosts
-//   .filter((post) => frontmatter.relatedPosts.includes(post.id)) // Use post.id instead of slug
-//   .map((post) => ({
-//     title: post.data.title,
-//     slug: post.id, // Use id for linking
-//     image: post.data.image,
-//   }));
 ---
 
 <BaseLayout pageTitle={`${frontmatter.title}`}>
+  <h1>CSS LAYOUT</h1>
   <section class="markdown-post" transition:name={`post-${frontmatter.id}`}>
     <button class="back-home" onclick="history.back()">Ga terug</button>
 
@@ -67,29 +59,6 @@ const allPosts = await getCollection("projects");
         </div>
       ) : null
     }
-
-    <!-- {
-      relatedPostsData.length > 0 && (
-        <section class="related-posts">
-          <h3>Related Posts</h3>
-          <ul>
-            {relatedPostsData.map((post) => (
-              <li class="related">
-                <a href={`/posts/${post.slug}`}>
-                  <Image
-                    src={post.image.url}
-                    width="100"
-                    height="70"
-                    alt={post.image.alt}
-                  />
-                  <h4>{post.title}</h4>
-                </a>
-              </li>
-            ))}
-          </ul>
-        </section>
-      )
-    } -->
   </section>
 </BaseLayout>
 
