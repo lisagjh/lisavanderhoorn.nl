@@ -9,21 +9,15 @@ const { frontmatter } = Astro.props;
 const allPosts = await getCollection("blog");
 
 const relatedPostsData = allPosts
-  .filter((post) => frontmatter.relatedPosts.includes(post.id)) // Use post.id instead of slug)))
-
   .filter(
     (post) =>
+      Array.isArray(frontmatter.relatedPosts) &&
       frontmatter.relatedPosts.includes(post.id) &&
       post.data.tags?.includes("cssday")
-  ) // Use post.id instead of slug)))
+  )
   .map((post) => ({
     title: post.data.title,
-    // date: new Date(post.data.pubDate).toLocaleDateString("nl-NL", {
-    //   year: "numeric",
-    //   month: "2-digit",
-    //   day: "2-digit",
-    // }),
-    slug: post.id, // Use id for linking
+    slug: post.id,
     description: post.data.description,
     image: post.data.image,
   }));
