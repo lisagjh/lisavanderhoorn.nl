@@ -1,120 +1,21 @@
 <script>
-  document.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("mouseover", () => {
-      link.classList.add("hovered");
-    });
-  });
-
-  document.addEventListener("DOMContentLoaded", () => {
-    // Get all necessary elements after DOM is loaded
-    const sections = document.querySelectorAll("section");
-    const navLinks = document.querySelectorAll("nav a");
-
-    // Add hover class listener for all links
-    document.querySelectorAll("a").forEach((link) => {
-      link.addEventListener("mouseover", () => {
-        link.classList.add("hovered");
-      });
-    });
-
-    // Handle initial active link based on URL hash
-    const initialHash = window.location.hash;
-    if (initialHash) {
-      const activeLink = document.querySelector(`nav a[href="${initialHash}"]`);
-      if (activeLink) {
-        navLinks.forEach((link) => link.classList.remove("active"));
-        activeLink.classList.add("active");
-      }
-    } else {
-      // If no hash, set the first link as active by default
-      const firstLink = navLinks[0];
-      if (firstLink) firstLink.classList.add("active");
-    }
-
-    // Add click event handler to ensure active class is applied immediately
-    navLinks.forEach((link) => {
-      link.addEventListener("click", (e) => {
-        // Remove active class from all links
-        navLinks.forEach((l) => l.classList.remove("active"));
-
-        // Add active class to clicked link
-        link.classList.add("active");
-
-        // Small delay to let scrolling happen before enabling observer again
-        setTimeout(() => {
-          enableObserver = true;
-        }, 100);
-      });
-    });
-
-    // Flag to temporarily disable observer during manual navigation
-    let enableObserver = true;
-
-    // Set up the Intersection Observer
-    const observerOptions = {
-      root: null,
-      rootMargin: "-20% 0px -20% 0px", // Adjust margin to better detect active section
-      threshold: 0.3, // Lower threshold for easier detection
-    };
-
-    // Create a callback function for the observer
-    const observerCallback = (entries) => {
-      // Skip observer updates during manual navigation
-      if (!enableObserver) return;
-
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const id = entry.target.getAttribute("id");
-          const correspondingLink = document.querySelector(
-            `nav a[href="#${id}"]`
-          );
-
-          if (correspondingLink) {
-            // Only update if this is a new active link
-            if (!correspondingLink.classList.contains("active")) {
-              // Temporarily disable observer to prevent conflicts
-              enableObserver = false;
-
-              // Update active classes
-              navLinks.forEach((link) => link.classList.remove("active"));
-              correspondingLink.classList.add("active");
-
-              // Re-enable observer after a short delay
-              setTimeout(() => {
-                enableObserver = true;
-              }, 100);
-            }
-          }
-        }
-      });
-    };
-
-    const observer = new IntersectionObserver(
-      observerCallback,
-      observerOptions
-    );
-
-    // Start observing all sections
-    sections.forEach((section) => {
-      observer.observe(section);
-    });
-  });
+  // TODO create active state based on whats in view + the url ig not on /
 </script>
 
-<header>
+<header transition:name="header">
   <nav>
     <ul>
       <li>
-        <a href="#about">About</a>
+        <a href="/#about">About</a>
       </li>
       <li>
-        <a href="#work">Work</a>
+        <a href="/#work">Work</a>
       </li>
       <li>
-        <a href="#blog">Blog</a>
+        <a href="/#blog">Blog</a>
       </li>
       <li>
-        <a href="#contact">Contact</a>
+        <a href="/#contact">Contact</a>
       </li>
     </ul>
   </nav>
@@ -126,21 +27,47 @@
     justify-content: space-between;
     align-items: center;
     justify-self: center;
-    background: linear-gradient(0deg, transparent 0%, var(--white) 90%);
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(1px);
-    -webkit-backdrop-filter: blur(5px);
+    justify-content: center;
     position: sticky;
     top: 0;
-    width: 100vw;
+    width: 100%;
     max-width: 75rem;
     z-index: 50;
-    border-radius: 0 0 12px 12px;
   }
 
   nav {
+    display: flex;
+    justify-self: center;
     width: 100%;
-    max-width: 65rem;
+    max-width: 95vw;
+    background: linear-gradient(0deg, transparent 0%, var(--white) 90%);
+    border-radius: 0 0;
+    backdrop-filter: blur(1px);
+    -webkit-backdrop-filter: blur(5px);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  @supports (container-type: scroll-state) {
+    header {
+      container-type: scroll-state;
+      container-name: header;
+    }
+
+    nav {
+      width: 100%;
+      border-radius: 0;
+      box-shadow: 0 0px 2px rgba(0, 0, 0, 0.1);
+    }
+
+    @container scroll-state(stuck: top) {
+      nav {
+        background: linear-gradient(0deg, transparent 0%, var(--white) 90%);
+        border-radius: 0 0 12px 12px;
+        backdrop-filter: blur(1px);
+        -webkit-backdrop-filter: blur(5px);
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+      }
+    }
   }
 
   ul {
@@ -234,10 +161,10 @@
     bottom: -0.1rem;
     left: 0;
     height: 2px;
-    width: 100% !important; 
+    width: 100% !important;
     background-color: var(--primary);
-    opacity: 1 !important; 
-    animation: none !important; 
+    opacity: 1 !important;
+    animation: none !important;
   }
 
   @keyframes show-link {
@@ -259,6 +186,23 @@
     to {
       opacity: 0;
       width: 0%;
+    }
+  }
+
+  ul li {
+    --delay: calc((sibling-index() - 1) * 0.1s);
+    animation: fade-slide-in 0.75s var(--delay)
+      cubic-bezier(0.175, 0.885, 0.32, 1.575) both;
+  }
+
+  @keyframes fade-slide-in {
+    from {
+      opacity: 0;
+      transform: translateY(-1rem);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
     }
   }
 </style>

@@ -1,4 +1,5 @@
 ---
+id: 1
 title: "JS Debouncing"
 pubDate: 2025-04-25
 description: "In deze post leg ik uit wat debouncing is en hoe ik het heb toegepast in een project tijdens mijn stage."
@@ -6,6 +7,7 @@ image:
   url: "https://docs.astro.build/assets/rose.webp"
   alt: "The Astro logo on a dark background with a pink glow."
 tags: ["JS", "stage", "learning in public"]
+lang: "nl"
 ---
 
 # Debouncing

@@ -7,14 +7,20 @@ import { defineCollection, z } from "astro:content";
 const blog = defineCollection({
   loader: glob({ pattern: "**/[^_]*.md", base: "./src/content/blog" }),
   schema: z.object({
+    id: z.number(),
     title: z.string(),
     pubDate: z.date(),
     description: z.string(),
-    image: z.object({
-      url: z.string(),
-      alt: z.string(),
-    }),
-    tags: z.array(z.string()),
+    image: z
+      .object({
+        url: z.string(),
+        alt: z.string(),
+      })
+      .optional(),
+    tags: z.array(z.string()).optional(),
+    relatedPosts: z.array(z.string()).optional(),
+    lang: z.string().optional(),
+    note: z.string().optional(),
     relatedPosts: z.array(z.string()).optional(),
   }),
 });
@@ -35,6 +41,7 @@ const projects = defineCollection({
     livesite: z.string().optional(),
     bodytext: z.string().optional(),
     notes: z.string().optional(),
+    lang: z.string().optional(),
   }),
 });
 // Export a single `collections` object to register your collection(s)

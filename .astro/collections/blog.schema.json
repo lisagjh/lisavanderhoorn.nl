@@ -4,6 +4,9 @@
     "blog": {
       "type": "object",
       "properties": {
+        "id": {
+          "type": "number"
+        },
         "title": {
           "type": "string"
         },
@@ -54,16 +57,21 @@
             "type": "string"
           }
         },
+        "lang": {
+          "type": "string"
+        },
+        "note": {
+          "type": "string"
+        },
         "$schema": {
           "type": "string"
         }
       },
       "required": [
+        "id",
         "title",
         "pubDate",
-        "description",
-        "image",
-        "tags"
+        "description"
       ],
       "additionalProperties": false
     }

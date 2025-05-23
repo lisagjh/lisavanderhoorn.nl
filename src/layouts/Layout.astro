@@ -25,8 +25,7 @@ const { pageTitle } = Astro.props;
     <Analytics />
     <SpeedInsights />
   </head>
-  <body>
-    <Header />
+  <body transition:persist>
     <main>
       <slot />
     </main>
@@ -34,18 +33,9 @@ const { pageTitle } = Astro.props;
   </body>
 </html>
 
-<style>
-  html,
-  body {
-    margin: 0;
-    width: 100%;
-    min-height: 100%;
-  }
+<script type="module">
+  import { gsap } from "../../node_modules/gsap";
+  import { SplitText } from "../../node_modules/gsap/SplitText";
 
-  main {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    gap: 5rem;
-  }
-</style>
+  gsap.registerPlugin(SplitText);
+</script>

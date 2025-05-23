@@ -12,6 +12,7 @@ tags: ["Sveltekit", "FDND", "ThreeJS"]
 relatedPosts:
   - dda
   - dda-viewtransitions
+lang: "en"
 ---
 
 At FDND, we had a special sprint where we got to let our creativity run free and build fun stuff, letting go of the styleguide of our client. Each week, we got a new random prompt focused on a new-ish technology.
