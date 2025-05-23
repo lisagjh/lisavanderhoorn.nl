@@ -7,6 +7,20 @@ const { frontmatter } = Astro.props;
 
 // Fetch all posts
 const allPosts = await getCollection("projects");
+
+const relatedPostsData = allPosts
+  .filter((post) => frontmatter.relatedPosts.includes(post.id)) // Use post.id instead of slug)))
+
+  .filter(
+    (post) =>
+      frontmatter.relatedPosts.includes(post.id) &&
+      post.data.tags?.includes("cssday")
+  ) // Use post.id instead of slug)))
+  .map((post) => ({
+    title: post.data.title,
+    slug: post.id, // Use id for linking
+    image: post.data.image,
+  }));
 ---
 
 <BaseLayout pageTitle={`${frontmatter.title}`}>
@@ -58,6 +72,21 @@ const allPosts = await getCollection("projects");
           <p>{frontmatter.notes}</p>
         </div>
       ) : null
+    }
+
+    {
+      relatedPostsData.length > 0 && (
+        <div class="related-posts">
+          <h3>Related posts</h3>
+          <ul>
+            {relatedPostsData.map((post) => (
+              <li>
+                <a href={`/cssday/${post.slug}`}>{post.title}</a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )
     }
   </section>
 </BaseLayout>
