@@ -6,7 +6,7 @@ import { getCollection } from "astro:content";
 const { frontmatter } = Astro.props;
 
 // Fetch all posts
-const allPosts = await getCollection("projects");
+const allPosts = await getCollection("blog");
 
 const relatedPostsData = allPosts
   .filter((post) => frontmatter.relatedPosts.includes(post.id)) // Use post.id instead of slug)))
@@ -18,17 +18,22 @@ const relatedPostsData = allPosts
   ) // Use post.id instead of slug)))
   .map((post) => ({
     title: post.data.title,
+    // date: new Date(post.data.pubDate).toLocaleDateString("nl-NL", {
+    //   year: "numeric",
+    //   month: "2-digit",
+    //   day: "2-digit",
+    // }),
     slug: post.id, // Use id for linking
+    description: post.data.description,
     image: post.data.image,
   }));
 ---
 
 <BaseLayout pageTitle={`${frontmatter.title}`}>
-  <h1>CSS LAYOUT</h1>
   <section class="markdown-post" transition:name={`post-${frontmatter.id}`}>
-    <button class="back-home" onclick="history.back()">Ga terug</button>
+    <button class="back" onclick="history.back()">Ga terug</button>
 
-    <h2 transition:name={`title-${frontmatter.id}`}>{frontmatter.title}</h2>
+    <h1 transition:name={`title-${frontmatter.id}`}>{frontmatter.title}</h1>
 
     {frontmatter.date ? <p class="date">{frontmatter.date}</p> : null}
 
@@ -77,11 +82,15 @@ const relatedPostsData = allPosts
     {
       relatedPostsData.length > 0 && (
         <div class="related-posts">
-          <h3>Related posts</h3>
+          <h4>Related posts</h4>
           <ul>
             {relatedPostsData.map((post) => (
               <li>
-                <a href={`/cssday/${post.slug}`}>{post.title}</a>
+                <a href={`/cssday/${post.slug}`}>
+                  <h5>{post.title}</h5>
+                  <p>{post.description}</p>
+                  <img src={post.image.url} alt={post.image.alt} />
+                </a>
               </li>
             ))}
           </ul>
@@ -167,58 +176,43 @@ const relatedPostsData = allPosts
   }
 
   .related-posts {
-    width: fit-content;
-    padding: 1rem 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 100%;
+    padding: 2rem 1rem;
     border-radius: 0.1rem;
     overflow: hidden;
+    border: 0.5vmin solid var(--primary);
+    border-radius: 0.5vmin;
   }
 
-  ul {
+  .related-posts ul {
     display: flex;
     flex-direction: row;
-    align-items: stretch;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    gap: 1rem;
-    scroll-behavior: smooth;
   }
 
-  li {
-    flex: 0 0 auto;
-    scroll-snap-align: start;
+  .related-posts li {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    list-style-type: none;
-    width: 15rem;
+    padding: 1rem;
+    min-width: 18rem;
+    width: fit-content;
+    border: 1px solid red;
   }
 
-  .related-posts a {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
+  .related-posts li a {
     text-decoration: none;
-    color: var(--primary-light);
   }
 
-  .related-posts img {
-    border-radius: 0.2rem;
-    width: 100%;
-    object-fit: cover;
-  }
-
-  .highlight {
-    color: var(--primary-light);
-  }
-
+  /* markdown styling */
   :global(.markdown-post pre) {
     max-width: 100%;
   }
 
   :global(
-      .markdown-post h1,
       .markdown-post h2,
       .markdown-post h3,
       .markdown-post h4,
@@ -229,7 +223,8 @@ const relatedPostsData = allPosts
   }
 
   :global(.markdown-post h1) {
-    font-size: 2.5rem;
+    font-size: calc(1rem * 1vw);
+    letter-spacing: 1px;
   }
 
   :global(.markdown-post h2) {
