@@ -12,9 +12,9 @@ const allPosts = await getCollection("blog");
   <ul class="grid">
     {
       allPosts.map((post) => (
-        <li>
+        <li transition:name={`post-${post.id}`}>
           <a href={`/blog/${post.id}`}>
-            <h3>{post.data.title}</h3>
+            <h3 transition:name={`title-${post.id}`}>{post.data.title}</h3>
             <p>{post.data.description}</p>
           </a>
         </li>
@@ -96,6 +96,16 @@ const allPosts = await getCollection("blog");
       max-width: 90%;
       justify-self: center;
       align-self: center;
+      scroll-marker-group: after;
+
+      > li::scroll-marker {
+        content: "O";
+        transition: 0.25s ease-in-out;
+      }
+
+      > li::scroll-marker:target-current {
+        background: var(--primary);
+      }
 
       &::scroll-button(left) {
         content: url(/public/assets/svg/arrow-left.svg) / "Scroll Left";

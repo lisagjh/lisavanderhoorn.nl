@@ -1,120 +1,21 @@
 <script>
-  document.querySelectorAll("a").forEach((link) => {
-    link.addEventListener("mouseover", () => {
-      link.classList.add("hovered");
-    });
-  });
-
-  document.addEventListener("DOMContentLoaded", () => {
-    // Get all necessary elements after DOM is loaded
-    const sections = document.querySelectorAll("section");
-    const navLinks = document.querySelectorAll("nav a");
-
-    // Add hover class listener for all links
-    document.querySelectorAll("a").forEach((link) => {
-      link.addEventListener("mouseover", () => {
-        link.classList.add("hovered");
-      });
-    });
-
-    // Handle initial active link based on URL hash
-    const initialHash = window.location.hash;
-    if (initialHash) {
-      const activeLink = document.querySelector(`nav a[href="${initialHash}"]`);
-      if (activeLink) {
-        navLinks.forEach((link) => link.classList.remove("active"));
-        activeLink.classList.add("active");
-      }
-    } else {
-      // If no hash, set the first link as active by default
-      const firstLink = navLinks[0];
-      if (firstLink) firstLink.classList.add("active");
-    }
-
-    // Add click event handler to ensure active class is applied immediately
-    navLinks.forEach((link) => {
-      link.addEventListener("click", (e) => {
-        // Remove active class from all links
-        navLinks.forEach((l) => l.classList.remove("active"));
-
-        // Add active class to clicked link
-        link.classList.add("active");
-
-        // Small delay to let scrolling happen before enabling observer again
-        setTimeout(() => {
-          enableObserver = true;
-        }, 500);
-      });
-    });
-
-    // Flag to temporarily disable observer during manual navigation
-    let enableObserver = true;
-
-    // Set up the Intersection Observer
-    const observerOptions = {
-      root: null,
-      rootMargin: "-20% 0px -20% 0px", // Adjust margin to better detect active section
-      threshold: 0.1, // Lower threshold for easier detection
-    };
-
-    // Create a callback function for the observer
-    const observerCallback = (entries) => {
-      // Skip observer updates during manual navigation
-      if (!enableObserver) return;
-
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          const id = entry.target.getAttribute("id");
-          const correspondingLink = document.querySelector(
-            `nav a[href="#${id}"]`
-          );
-
-          if (correspondingLink) {
-            // Only update if this is a new active link
-            if (!correspondingLink.classList.contains("active")) {
-              // Temporarily disable observer to prevent conflicts
-              enableObserver = false;
-
-              // Update active classes
-              navLinks.forEach((link) => link.classList.remove("active"));
-              correspondingLink.classList.add("active");
-
-              // Re-enable observer after a short delay
-              setTimeout(() => {
-                enableObserver = true;
-              }, 100);
-            }
-          }
-        }
-      });
-    };
-
-    const observer = new IntersectionObserver(
-      observerCallback,
-      observerOptions
-    );
-
-    // Start observing all sections
-    sections.forEach((section) => {
-      observer.observe(section);
-    });
-  });
+  // TODO create active state based on whats in view + the url ig not on /
 </script>
 
-<header>
+<header transition:name="header">
   <nav>
     <ul>
       <li>
-        <a href="#about">About</a>
+        <a href="/#about">About</a>
       </li>
       <li>
-        <a href="#work">Work</a>
+        <a href="/#work">Work</a>
       </li>
       <li>
-        <a href="#blog">Blog</a>
+        <a href="/#blog">Blog</a>
       </li>
       <li>
-        <a href="#contact">Contact</a>
+        <a href="/#contact">Contact</a>
       </li>
     </ul>
   </nav>

@@ -25,7 +25,7 @@ const { pageTitle } = Astro.props;
     <Analytics />
     <SpeedInsights />
   </head>
-  <body>
+  <body transition:persist>
     <main>
       <slot />
     </main>

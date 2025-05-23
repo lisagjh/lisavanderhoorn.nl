@@ -21,7 +21,7 @@ const allProjects = projects.sort((a, b) => a.data.id - b.data.id);
     /> -->
     {
       allProjects.map((project, index) => (
-        <li class={index % 2 !== 0 ? "odd" : ""}>
+        <li class={index % 2 !== 0 ? "odd" : "even"}>
           <a href={`/posts/${project.id}`}>
             <img
               src={project.data.image.url}
@@ -168,13 +168,16 @@ const allProjects = projects.sort((a, b) => a.data.id - b.data.id);
         }
       } */
 
-      ul li {
+      ul li.even {
         --delay: calc((sibling-index() + 1) * 0.25s);
-        animation: fade-slide-in 0.75s var(--delay) ease-out both;
+        animation: fade-slide-in 0.75s var(--delay)
+          cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
       }
 
       ul li.odd {
-        animation: fade-slide-in-odd 0.75s var(--delay) ease-out both;
+        --delay: calc((sibling-index() + 1) * 0.25s);
+        animation: fade-slide-in-odd 0.75s var(--delay)
+          cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
       }
 
       @keyframes fade-slide-in {

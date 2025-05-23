@@ -19,9 +19,9 @@ const allPosts = await getCollection("projects");
 ---
 
 <BaseLayout pageTitle={`${frontmatter.title}`}>
-  <section class="markdown-post">
+  <section class="markdown-post" transition:name={`post-${frontmatter.id}`}>
     <a class="back-home" href="/">Back to home</a>
-    <h2>{frontmatter.title}</h2>
+    <h2 transition:name={`title-${frontmatter.id}`}>{frontmatter.title}</h2>
 
     {frontmatter.date ? <p class="date">{frontmatter.date}</p> : null}
 
@@ -218,7 +218,14 @@ const allPosts = await getCollection("projects");
     max-width: 100%;
   }
 
-  :global(.markdown-post h1, .markdown-post h2, .markdown-post h3, .markdown-post h4, .markdown-post h5, .markdown-post h6) {
+  :global(
+      .markdown-post h1,
+      .markdown-post h2,
+      .markdown-post h3,
+      .markdown-post h4,
+      .markdown-post h5,
+      .markdown-post h6
+    ) {
     font-family: var(--body-font);
   }
 
