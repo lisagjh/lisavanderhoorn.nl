@@ -87,7 +87,14 @@ const relatedPostsData = allPosts
             {relatedPostsData.map((post) => (
               <li>
                 <a href={`/cssday/${post.slug}`}>
-                  <img src={post.image.url} alt={post.image.alt} width="150" />
+                  {post.image.url && (
+                    <Image
+                      src={post.image.url}
+                      width="100"
+                      height="70"
+                      alt={post.image.alt}
+                    />
+                  )}
                   <h5>{post.title}</h5>
                   <p>{post.description}</p>
                 </a>
@@ -202,7 +209,7 @@ const relatedPostsData = allPosts
     display: grid;
     grid-template-columns: 30% 70%;
     grid-template-rows: 30% 70%;
-    gap: .5rem;
+    gap: 0.5rem;
     text-decoration: none;
 
     img {
