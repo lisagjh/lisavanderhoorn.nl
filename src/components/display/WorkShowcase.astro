@@ -5,6 +5,30 @@ const projects = await getCollection("projects");
 const allProjects = projects.sort((a, b) => a.data.id - b.data.id);
 ---
 
+<script>
+  const listItem = document.querySelectorAll(".grid li");
+  listItem.classList.add("hidden");
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const element = entry.target;
+        element.classList.remove("hidden");
+        const index = parseInt(element.dataset.index, 10);
+        setTimeout(() => {
+          element.classList.add("show");
+        }, index * 100);
+        observer.unobserve(element);
+      }
+    });
+  }, {
+    threshold: 0.5,
+  })
+
+  document.querySelectorAll(".grid li").forEach((li) => {
+    observer.observe(li);
+  });
+</script>
+
 <section id="work">
   <div class="wrapper">
     <h2 class="pill">Work</h2>
@@ -21,7 +45,7 @@ const allProjects = projects.sort((a, b) => a.data.id - b.data.id);
     /> -->
     {
       allProjects.map((project, index) => (
-        <li class={index % 2 !== 0 ? "odd" : "even"}>
+        <li class={index % 2 !== 0 ? "odd" : "even"} data-index={index}>
           <a href={`/posts/${project.id}`}>
             <img
               src={project.data.image.url}
@@ -149,7 +173,7 @@ const allProjects = projects.sort((a, b) => a.data.id - b.data.id);
     align-items: end;
   }
 
-  @media (prefers-reduced-motion: no-preference) {
+  /* @media (prefers-reduced-motion: no-preference) {
     @supports (animation-timeline: view()) {
       /* ul {
         animation: linear show-grid;
@@ -202,5 +226,5 @@ const allProjects = projects.sort((a, b) => a.data.id - b.data.id);
         }
       }
     }
-  }
+  } */
 </style>
