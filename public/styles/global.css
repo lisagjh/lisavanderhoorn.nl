@@ -53,10 +53,6 @@
   transition: 0.25s ease-in-out;
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
 body {
   font-family: var(--body-font);
   background-color: var(--bg);
@@ -126,7 +122,6 @@ section {
 p {
   font-weight: 400;
   max-width: 55ch;
-  font-size: 1.15rem;
   font-weight: lighter;
 }
 
