@@ -53,10 +53,6 @@
   transition: 0.25s ease-in-out;
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
 body {
   font-family: var(--body-font);
   background-color: var(--bg);
