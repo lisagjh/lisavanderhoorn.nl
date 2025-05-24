@@ -90,6 +90,7 @@ const allPosts = await getCollection("blog");
 
   @media (width >= 48rem) {
     ul.grid {
+      anchor-name: --grid;
       flex-direction: row;
       justify-content: start;
       padding: 1rem;
@@ -100,26 +101,47 @@ const allPosts = await getCollection("blog");
       justify-self: center;
       align-self: center;
       scroll-marker-group: after;
+      position: relative;
+
+      /* > li::scroll-marker {
+        content: url(/public/assets/svg/dot.svg) / "Scroll to post";
+        transition: 0.25s ease-in-out;
+      } */
 
       > li::scroll-marker {
-        content: "O";
-        transition: 0.25s ease-in-out;
+        content: "x";
+        content: url('/public/assets/svg/circle.svg')
       }
 
       > li::scroll-marker:target-current {
         background: var(--primary);
       }
 
+      &::scroll-marker-group {
+        position: absolute;
+        position-anchor: --grid;
+        top: anchor(--grid bottom);
+        left: anchor(--grid center);
+      }
+
       &::scroll-button(left) {
         content: url(/public/assets/svg/arrow-left.svg) / "Scroll Left";
         width: 3rem;
         height: 3rem;
+        position: absolute;
+        position-anchor: --grid;
+        top: anchor(--grid bottom);
+        left: anchor(--grid left);
       }
 
       &::scroll-button(right) {
         content: url(/public/assets/svg/arrow-right.svg) / "Scroll Right";
         width: 3rem;
         height: 3rem;
+        position: absolute;
+        position-anchor: --grid;
+        top: anchor(--grid bottom);
+        right: anchor(--grid right);
       }
 
       &::scroll-button(*):focus-visible {
