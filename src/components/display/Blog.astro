@@ -6,7 +6,7 @@ const allPosts = await getCollection("blog");
 <section id="blog">
   <div class="wrapper">
     <h2 class="pill">Blog</h2>
-    <p>Maybe I very occassionally share some stuff here?</p>
+    <p>Read some stuff! From talks at FDND to new stuff I'm learning.</p>
   </div>
 
   <ul class="grid">
@@ -22,7 +22,9 @@ const allPosts = await getCollection("blog");
     }
   </ul>
 
-  <a href="/blog">More</a>
+  <div class="bottom">
+    <a href="/blog" class="pill">More</a>
+  </div>
 </section>
 
 <style>
@@ -35,13 +37,19 @@ const allPosts = await getCollection("blog");
     max-width: 65rem;
   }
 
-  .wrapper {
+  .wrapper,
+  .bottom {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
     padding: 2rem;
     background-color: var(--primary-light);
     border-radius: 10px;
+  }
+
+  .bottom {
+    align-items: end;
+    margin-top: 1.5rem;
   }
 
   ul.grid {
@@ -84,7 +92,6 @@ const allPosts = await getCollection("blog");
   }
 
   p {
-    font-size: 0.9rem;
     max-width: 40ch;
   }
 
@@ -102,44 +109,76 @@ const allPosts = await getCollection("blog");
       align-self: center;
       scroll-marker-group: after;
       position: relative;
-
-      /* > li::scroll-marker {
-        content: url(/public/assets/svg/dot.svg) / "Scroll to post";
-        transition: 0.25s ease-in-out;
-      } */
-
-      > li::scroll-marker {
-        content: "x";
-        content: url('/public/assets/svg/circle.svg')
-      }
-
-      > li::scroll-marker:target-current {
-        background: var(--primary);
-      }
+      scrollbar-width: none;
 
       &::scroll-marker-group {
         position: absolute;
         position-anchor: --grid;
         top: anchor(--grid bottom);
-        left: anchor(--grid center);
+        justify-self: anchor-center;
+
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 0.5rem;
       }
 
-      &::scroll-button(left) {
-        content: url(/public/assets/svg/arrow-left.svg) / "Scroll Left";
+      li:hover {
+        box-shadow: 0px 1px 10px 0px rgba(0, 0, 0, 0.1);
+      }
+
+      > li::scroll-marker {
+        content: "" / "Scroll to post";
+        background: url(/public/assets/svg/dot.svg);
+        background-repeat: no-repeat;
+        background-size: 70%;
+        background-position: center;
+        height: 2rem;
+        width: 2rem;
+        transform: rotate(calc(sibling-index() * 70deg));
+        opacity: 0.8;
+        transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      }
+
+      > li::scroll-marker:target-current {
+        opacity: 1;
+        scale: 1.1;
+      }
+
+      &::scroll-button(*) {
+        background-color: transparent;
         width: 3rem;
         height: 3rem;
         position: absolute;
         position-anchor: --grid;
+        border: none;
+        transition: 0.15s ease-in-out;
+      }
+
+      &::scroll-button(*):disabled {
+        opacity: 0.5;
+        pointer-events: none;
+        cursor: not-allowed;
+      }
+
+      &::scroll-button(*):hover {
+        scale: 1.05;
+      }
+
+      &::scroll-button(*):active {
+        scale: 0.95;
+      }
+
+      &::scroll-button(left) {
+        content: url(/public/assets/svg/arrow-left.svg) / "Scroll Left";
+
         top: anchor(--grid bottom);
         left: anchor(--grid left);
       }
 
       &::scroll-button(right) {
         content: url(/public/assets/svg/arrow-right.svg) / "Scroll Right";
-        width: 3rem;
-        height: 3rem;
-        position: absolute;
-        position-anchor: --grid;
         top: anchor(--grid bottom);
         right: anchor(--grid right);
       }
