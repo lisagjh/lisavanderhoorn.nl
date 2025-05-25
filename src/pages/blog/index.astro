@@ -7,9 +7,10 @@ const allPosts = await getCollection("blog");
 ---
 
 <Layout>
-  <section class="wrapper">
+  <section class="wrapper" transition:name="blog">
     <button class="back" onclick="history.back()">Back Home</button>
-    <h2 class="pill">Blog</h2>
+    <h2 class="pill" transition:name="blog-title">Blog</h2>
+    <p transition:name="blog-text">Read some stuff! From talks at FDND to new stuff I'm learning.</p>
 
     <ul class="grid">
       {
@@ -17,7 +18,7 @@ const allPosts = await getCollection("blog");
           <li transition:name={`post-${post.id}`} data-index={index}>
             <a href={`/cssday/${post.id}`}>
               <h3 transition:name={`title-${post.id}`}>{post.data.title}</h3>
-              <p>{post.data.description}</p>
+              <p transition:name={`description-${post.id}`}>{post.data.description}</p>
             </a>
           </li>
         ))
@@ -47,7 +48,6 @@ const allPosts = await getCollection("blog");
   }
 
   h2 {
-    width: 100%;
     text-align: start;
     font-size: 3.5rem;
   }
