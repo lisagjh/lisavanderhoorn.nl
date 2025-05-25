@@ -1,7 +1,9 @@
 ---
+import ClientRouter from "astro/components/ClientRouter.astro";
 import BaseLayout from "./BaseLayout.astro";
 import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
+import { date } from "astro:schema";
 
 const { frontmatter } = Astro.props;
 
@@ -19,10 +21,18 @@ const relatedPostsData = allPosts
     title: post.data.title,
     slug: post.id,
     description: post.data.description,
+    date: new Date(post.data.pubDate).toLocaleDateString("nl-NL", {
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+    }),
     image: post.data.image,
   }));
+
+console.log(relatedPostsData);
 ---
 
+<ClientRouter />
 <BaseLayout pageTitle={`${frontmatter.title}`}>
   <section class="markdown-post" transition:name={`post-${frontmatter.id}`}>
     <button class="back" onclick="history.back()">Ga terug</button>
@@ -30,8 +40,6 @@ const relatedPostsData = allPosts
     <h1 transition:name={`title-${frontmatter.id}`}>{frontmatter.title}</h1>
 
     {frontmatter.date ? <p class="date">{frontmatter.date}</p> : null}
-
-    <p><em>{frontmatter.description}</em></p>
 
     {
       frontmatter.liveiste ? (
@@ -190,13 +198,20 @@ const relatedPostsData = allPosts
   .related-posts ul {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    width: 100%;
   }
 
   .related-posts li {
     display: flex;
     min-width: 14rem;
     width: fit-content;
-    max-width: 30rem;
+    max-width: 25rem;
+    min-height: 14rem;
+    box-shadow:
+      0px 13px 25px 0px rgba(0, 0, 0, 0.01),
+      0px 4px 9px 0px rgba(0, 0, 0, 0.1);
   }
 
   .related-posts li a {
@@ -205,6 +220,9 @@ const relatedPostsData = allPosts
     grid-template-rows: 30% 70%;
     gap: 0.5rem;
     text-decoration: none;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
 
     img {
       grid-column: 1/2;

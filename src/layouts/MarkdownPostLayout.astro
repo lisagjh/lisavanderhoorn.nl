@@ -28,7 +28,7 @@ const allPosts = await getCollection("projects");
 
     {frontmatter.date ? <p class="date">{frontmatter.date}</p> : null}
 
-    <p><em>{frontmatter.description}</em></p>
+    <p><em>{`description-${frontmatter.description}`}</em></p>
 
     {
       frontmatter.liveiste ? (

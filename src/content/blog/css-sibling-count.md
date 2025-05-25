@@ -11,6 +11,7 @@ lang: "en"
 note: "This is a new feature and is only available in Chrome Canary 136+ at this time."
 relatedPosts:
   - scroll-state
+  - css-carousels
 ---
 
 CSS just keeps getting better. `sibling-index()` makes staggering css animations easier than ever.

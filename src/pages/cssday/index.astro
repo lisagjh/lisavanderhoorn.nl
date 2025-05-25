@@ -17,10 +17,10 @@ const allPosts = await getCollection("blog");
         allPosts
           .filter((post) => post.data.tags?.includes("cssday"))
           .map((post, index) => (
-            <li transition:name={`post-${post.id}`} data-index={index}>
+            <li transition:name={`css-${post.id}`} data-index={index}>
               <a href={`/cssday/${post.id}`}>
                 <h3 transition:name={`title-${post.id}`}>{post.data.title}</h3>
-                <p>{post.data.description}</p>
+                <p transition:name={`description-${post.id}`}>{post.data.description}</p>
               </a>
             </li>
           ))
