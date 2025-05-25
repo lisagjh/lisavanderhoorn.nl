@@ -1,13 +1,16 @@
 ---
-import Layout from "../layouts/BaseLayout.astro";
-import Intro from "../components/Intro.astro";
-import About from "../components/About.astro";
-import Work from "../components/WorkShowcase.astro";
+import Layout from "../layouts/Layout.astro";
+import Intro from "../components/display/Intro.astro";
+import About from "../components/display/About.astro";
+import WorkShowcase from "../components/display/WorkShowcase.astro";
+import Blog from "../components/display/Blog.astro";
+import Header from "../components/display/Header.astro";
 ---
 
 <Layout pageTitle="Frontend Developer - Lisa van der Hoorn">
   <Intro />
+  <Header />
   <About />
-  <Work />
+  <WorkShowcase />
+  <Blog />
 </Layout>
-

@@ -12,6 +12,7 @@ tags: ["Sveltekit", "FDND", "P5js", "View transitions"]
 relatedPosts:
   - dda
   - dda-scroll
+lang: "en"
 ---
 
 At FDND we had a special sprint where we got to let our creativity run free, build fun stuff, and let go of the styleguide of our client. Each week we got a new random prompt, focused on a certain new(-ish) feature or technology.

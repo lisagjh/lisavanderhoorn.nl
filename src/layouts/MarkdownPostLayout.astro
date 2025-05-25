@@ -1,4 +1,5 @@
 ---
+import { ClientRouter } from "astro:transitions";
 import BaseLayout from "./BaseLayout.astro";
 import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
@@ -9,32 +10,42 @@ const { frontmatter } = Astro.props;
 const allPosts = await getCollection("projects");
 
 // Get full details of related posts
-const relatedPostsData = allPosts
-  .filter((post) => frontmatter.relatedPosts.includes(post.id)) // Use post.id instead of slug
-  .map((post) => ({
-    title: post.data.title,
-    slug: post.id, // Use id for linking
-    image: post.data.image,
-  }));
+// const relatedPostsData = allPosts
+//   .filter((post) => frontmatter.relatedPosts.includes(post.id)) // Use post.id instead of slug
+//   .map((post) => ({
+//     title: post.data.title,
+//     slug: post.id, // Use id for linking
+//     image: post.data.image,
+//   }));
 ---
 
-<BaseLayout pageTitle={`Project - ${frontmatter.title}`}>
-  <section class="markdown-post">
-    <a class="back-home" href="/">Back to home</a>
-    <h2>{frontmatter.title}</h2>
+<ClientRouter />
+<BaseLayout pageTitle={`${frontmatter.title}`}>
+  <section class="markdown-post" transition:name={`post-${frontmatter.id}`}>
+    <button class="back-home" onclick="history.back()" class="back">Ga terug</button>
+
+    <h2 transition:name={`title-${frontmatter.id}`}>{frontmatter.title}</h2>
 
     {frontmatter.date ? <p class="date">{frontmatter.date}</p> : null}
 
-    <p><em>{frontmatter.description}</em></p>
+    <p><em>{`description-${frontmatter.description}`}</em></p>
 
-    <a href={frontmatter.livesite}>View this project here</a>
+    {
+      frontmatter.liveiste ? (
+        <a href={frontmatter.livesite}>View this project here</a>
+      ) : null
+    }
 
-    <img
-      src={frontmatter.image.url}
-      width="300"
-      height="200"
-      alt={frontmatter.image.alt}
-    />
+    {
+      frontmatter.image && (
+        <Image
+          src={frontmatter.image.url}
+          width="300"
+          height="200"
+          alt={frontmatter.image.alt}
+        />
+      )
+    }
 
     <slot />
 
@@ -84,8 +95,16 @@ const relatedPostsData = allPosts
   </section>
 </BaseLayout>
 
-
 <style>
+  section {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 2rem;
+    width: 100%;
+    max-width: 65rem;
+  }
+
   img {
     height: 100%;
     min-height: 8rem;
@@ -110,7 +129,7 @@ const relatedPostsData = allPosts
     font-size: 1.4rem;
   }
 
-  @media (width <= 425px) {
+  @media (width <= 26rem) {
     h2 {
       font-size: 2.75rem;
     }
@@ -154,7 +173,6 @@ const relatedPostsData = allPosts
   .related-posts {
     width: fit-content;
     padding: 1rem 0.5rem;
-    border: 1px solid var(--accent-one);
     border-radius: 0.1rem;
     overflow: hidden;
   }
@@ -186,7 +204,7 @@ const relatedPostsData = allPosts
     align-items: center;
     gap: 0.5rem;
     text-decoration: none;
-    color: var(--primary-two);
+    color: var(--primary-light);
   }
 
   .related-posts img {
@@ -196,6 +214,41 @@ const relatedPostsData = allPosts
   }
 
   .highlight {
-    color: var(--primary-two);
+    color: var(--primary-light);
+  }
+
+  :global(.markdown-post pre) {
+    max-width: 100%;
+  }
+
+  :global(
+      .markdown-post h1,
+      .markdown-post h2,
+      .markdown-post h3,
+      .markdown-post h4,
+      .markdown-post h5,
+      .markdown-post h6
+    ) {
+    font-family: var(--body-font);
+  }
+
+  :global(.markdown-post h1) {
+    font-size: 2.5rem;
+  }
+
+  :global(.markdown-post h2) {
+    font-size: 2rem;
+  }
+
+  :global(.markdown-post h3) {
+    font-size: 1.75rem;
+  }
+
+  :global(.markdown-post h4) {
+    font-size: 1.5rem;
+  }
+
+  :global(.markdown-post h5) {
+    font-size: 1.25rem;
   }
 </style>

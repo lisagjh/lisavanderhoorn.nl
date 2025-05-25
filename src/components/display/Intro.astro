@@ -1,0 +1,123 @@
+<section class="intro">
+  <h1 class="title">Lisa van der Hoorn</h1>
+
+  <div class="wrapper js-hidden">
+    <p class="split">Frontend <span class="dev">Developer</span></p>
+  </div>
+</section>
+
+<style>
+  .intro {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    gap: 1rem;
+    padding: 8rem 2rem;
+    width: 100%;
+    max-width: 65rem;
+    height: 75vh;
+  }
+
+  h1 {
+    color: var(--primary);
+    line-height: 1;
+    display: block;
+    overflow: visible;
+  }
+
+  .wrapper {
+    position: relative;
+    height: fit-content;
+    width: fit-content;
+    min-width: max-content;
+  }
+
+  .js-hidden {
+    opacity: 0;
+  }
+
+  svg {
+    position: absolute;
+    bottom: -1.75rem;
+    left: -1.5rem;
+    z-index: -1;
+    width: 13rem;
+  }
+</style>
+
+<script type="module">
+  import { gsap } from "../../node_modules/gsap";
+  import { SplitText } from "../../node_modules/gsap/SplitText";
+  import { ScrambleTextPlugin } from "../../node_modules/gsap/ScrambleTextPlugin.js";
+  gsap.registerPlugin(SplitText);
+  gsap.registerPlugin(ScrambleTextPlugin);
+
+  const wrapper = document.querySelector(".wrapper");
+
+  // Show the wrapper after a short delay
+  setTimeout(() => {
+    wrapper.classList.remove("js-hidden");
+  }, 200);
+
+  const split = new SplitText(wrapper, {
+    type: "words",
+    linesClass: "split",
+    mask: "span",
+  });
+
+  gsap.fromTo(
+    split.words,
+    {
+      y: "50%",
+      opacity: 0,
+      rotate: () => Math.random() * 20 - 15,
+    },
+    {
+      y: "0%",
+      opacity: 1,
+      duration: 0.75,
+      delay: 0.75,
+      rotate: 0,
+      stagger: {
+        each: 0.05,
+      },
+    }
+  );
+
+  const dev = document.querySelector(".dev");
+
+  const original = "Developer";
+  const replacement = "Nerd";
+
+  let timer;
+
+  wrapper.addEventListener("mouseenter", () => {
+    if (timer) clearTimeout(timer);
+    timer = setTimeout(() => {
+      gsap.to(dev, {
+        scrambleText: {
+          text: replacement,
+          chars: "abcdefghijklmnopqrstuvwxyz",
+          speed: 0.15,
+        },
+        duration: 0.45,
+        ease: "power2.in",
+      });
+    }, 250);
+  });
+
+  wrapper.addEventListener("mouseleave", () => {
+    if (timer) clearTimeout(timer);
+    timer = setTimeout(() => {
+      gsap.to(dev, {
+        scrambleText: {
+          text: original,
+          chars: "abcdefghijklmnopqrstuvwxyz",
+          speed: 0.15,
+        },
+        duration: 0.45,
+        ease: "power2.inOut",
+      });
+    }, 250);
+  });
+</script>

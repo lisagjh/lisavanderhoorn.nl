@@ -1,0 +1,286 @@
+@font-face {
+  font-family: "ITC Garamond";
+  src: url("/fonts/itc-garamond.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Host Grotesk";
+  src: url("/fonts/HostGrotesk.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Host Grotesk Italic";
+  src: url("/fonts/HostGrotesk-Italic.woff2") format("woff2");
+  font-display: swap;
+}
+
+:root {
+  --heading-font: "ITC Garamond", sans-serif;
+  --body-font: "Host Grotesk", sans-serif;
+  --body-italic: "Host Grotesk Italic", sans-serif;
+
+  --white: hsl(0deg 0% 99%);
+  --black: #101010;
+  --dark: #303030;
+  --off-white: #fffafa;
+
+  --bg: hsl(0deg 0% 99%);
+  --text: #101010;
+
+  --primary: hsl(227deg 97% 57%);
+  --primary-light: hsl(222deg 100% 88%);
+  --primary-lighter: hsl(222deg 95% 95%);
+  --primary-dark: hsl(222deg 37% 44%);
+  --primary-darker: hsl(223, 58%, 21%);
+
+  --secondary: hsl(12deg 96% 48%);
+  --secondary-light: hsl(12deg 95% 87%);
+  --secondary-lighter: hsl(12deg 100% 93%);
+  --secondary-dark: hsl(12deg 38% 50%);
+
+  --tertiary: hsl(43deg 89% 61%);
+  --tertiary-light: hsl(43deg 100% 80%);
+  --tertiary-dark: hsl(43deg 60% 50%);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  line-height: 1.5;
+  transition: 0.25s ease-in-out;
+}
+
+body {
+  font-family: var(--body-font);
+  background-color: var(--bg);
+  color: var(--text);
+}
+
+main {
+  height: 100%;
+  min-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--heading-font);
+  font-weight: 400;
+  letter-spacing: 0px;
+  line-height: 1.25;
+  text-box: trim-both cap alphabetic;
+}
+
+h1 {
+  font-size: 5.61rem;
+}
+
+h2 {
+  font-size: 4.209rem;
+}
+
+h3 {
+  font-size: 3.157rem;
+}
+
+h4 {
+  font-size: 2.369rem;
+}
+
+@media (width <= 26.5rem) {
+  h1 {
+    font-size: 3.5rem;
+  }
+
+  h2 {
+    font-size: 3rem;
+  }
+
+  h3 {
+    font-size: 2.5rem;
+  }
+
+  h4 {
+    font-size: 2rem;
+  }
+}
+
+section {
+  scroll-margin-top: 5rem;
+}
+
+p {
+  font-weight: 400;
+  max-width: 55ch;
+  font-weight: lighter;
+}
+
+a {
+  color: var(--black);
+  text-decoration-color: var(--primary);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 2px;
+}
+
+button {
+  font-size: 1rem;
+  color: var(--black);
+  padding: 1rem 0.5rem;
+
+  background: var(--secondary-lighter);
+  border: none;
+  border-radius: 2px;
+  text-transform: lowercase;
+  box-shadow: 
+    0px 13px 25px 0px rgba(0, 0, 0, 0.01),
+    0px 4px 9px 0px rgba(0, 0, 0, 0.1);
+  transition: 0.3s ease-out;
+}
+
+button:hover {
+  color: var(--dark);
+  background-position: left;
+  box-shadow: 
+    0px 13px 25px 0px rgba(0, 0, 0, 0.01), 
+    0px 16px 16px 0px rgba(0, 0, 0, 0.025),
+    0px 4px 9px 0px rgba(0, 0, 0, 0.1);
+}
+
+button:active {
+  scale: 0.98;
+}
+
+li::marker {
+  font-size: 0.75rem;
+}
+
+code {
+  display: inline-block;
+  font-size: 1rem;
+  color: var(--secondary-dark);
+  background-color: var(--secondary-light);
+  padding: 0.25rem 0.5rem;
+  border-radius: 2px;
+  box-shadow: 0 0 2px var(--secondary);
+}
+
+pre {
+  width: fit-content;
+  min-width: 50vw;
+  padding: 1rem;
+  border-radius: 4px;
+}
+
+pre code {
+  background-color: transparent;
+  box-shadow: none;
+}
+
+blockquote {
+  font-size: 1.4em;
+  font-style: italic;
+  color: var(--dark);
+  width: 60%;
+  padding: 2rem 4rem;
+  border-left: 8px solid var(--secondary);
+  line-height: 1.6;
+  position: relative;
+  background: #ededed;
+}
+
+blockquote::before {
+  content: "\201C";
+  color: var(--secondary);
+  font-size: 4rem;
+  position: absolute;
+  left: 0.5rem;
+  top: -0.75rem;
+}
+
+blockquote::after {
+  content: "";
+}
+
+blockquote span {
+  display: block;
+  color: var(--dark);
+  font-style: normal;
+  font-weight: bold;
+  margin-top: 1em;
+}
+
+/* classes */
+.back {
+  --_border: var(--tertiary);
+  background: var(--white);
+  background-color: var(--white);
+  border-radius: 3.125rem;
+  border: 3px solid var(--_border);
+  box-shadow: 0px 0px 0px 3px var(--white);
+  width: fit-content;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+.back:hover {
+  background: var(--_border);
+  opacity: 1;
+  box-shadow: none;
+}
+
+.divider {
+  height: 1.5px;
+  width: 100%;
+  background-color: var(--secondary);
+  margin: 1rem 0;
+}
+
+.visually-hidden {
+  visibility: hidden;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  position: absolute;
+}
+
+.heading-font {
+  font-family: var(--heading-font);
+}
+
+h2.pill,
+h3.pill,
+h4.pill {
+  font-size: 2rem;
+  text-align: center;
+  background-color: var(--off-white);
+  color: var(--text);
+  padding: 1.5rem;
+  min-width: 8rem;
+  width: fit-content;
+  border-radius: 50px;
+}
+
+a.pill {
+  --_bg: var(--bg);
+  --_color: var(--text);
+  font-size: 0.95rem;
+  text-align: center;
+  background-color: var(--_bg);
+  color: var(--_color);
+  text-decoration: none;
+  padding: 0.75rem;
+  min-width: 8rem;
+  width: fit-content;
+  border-radius: 50px;
+}

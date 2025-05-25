@@ -13,6 +13,7 @@ tags: ["Sveltekit", "FDND"]
 relatedPosts:
   - dda-scroll
   - dda-viewtransitions
+lang: "en"
 ---
 
 During my final year at FDND, I worked on this project with two classmates. It was a collaboration with <a href="https://www.voorhoede.nl/nl/">De Voorhoede</a>, who developed the actual new website for <a href="https://dutchdigitalagencies.com/">Dutch Digital Agencies</a>. We had the chance to work directly with their team lead, Declan—an expert in his field. Each sprint review, he gave us valuable feedback, which really helped me grow as a developer.

@@ -1,0 +1,230 @@
+<script>
+  // TODO create active state based on whats in view + the url ig not on /
+</script>
+
+<header transition:name="header">
+  <nav>
+    <ul>
+      <li>
+        <a href="/#about">About</a>
+      </li>
+      <li>
+        <a href="/#work">Work</a>
+      </li>
+      <li>
+        <a href="/#blog">Blog</a>
+      </li>
+      <li>
+        <a href="/#contact">Contact</a>
+      </li>
+    </ul>
+  </nav>
+</header>
+
+<style>
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    justify-self: center;
+    justify-content: center;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    max-width: 75rem;
+    z-index: 50;
+    view-transition-name: headerNav;
+  }
+
+  nav {
+    display: flex;
+    justify-self: center;
+    width: 100%;
+    max-width: 95vw;
+    background: linear-gradient(0deg, transparent 0%, var(--white) 90%);
+    border-radius: 0 0;
+    backdrop-filter: blur(1px);
+    -webkit-backdrop-filter: blur(5px);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  @supports (container-type: scroll-state) {
+    header {
+      container-type: scroll-state;
+      container-name: header;
+    }
+
+    nav {
+      width: 100%;
+      border-radius: 0;
+      box-shadow: 0 0px 2px rgba(0, 0, 0, 0.1);
+    }
+
+    @container scroll-state(stuck: top) {
+      nav {
+        background: linear-gradient(0deg, transparent 0%, var(--white) 90%);
+        border-radius: 0 0 12px 12px;
+        backdrop-filter: blur(1px);
+        -webkit-backdrop-filter: blur(5px);
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+      }
+    }
+  }
+
+  ul {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    padding: 1.5rem;
+    width: 100%;
+  }
+
+  li {
+    list-style: "";
+  }
+
+  a.active {
+    color: var(--primary);
+    font-weight: bold;
+    border-radius: 6px 6px 0 0;
+    view-transition-name: active-link;
+    z-index: 50;
+  }
+
+  a.active::before {
+    content: "";
+    position: absolute;
+    bottom: -0.1rem;
+    left: 0;
+    height: 2px;
+    width: 100%;
+    background-color: var(--primary);
+    opacity: 1 !important;
+    animation: none;
+  }
+
+  a.active::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: var(--primary-light);
+    height: 100%;
+    width: 100%;
+    border-radius: 2px 2px 0 0;
+    opacity: 50%;
+    z-index: -1;
+    view-transition-name: active-bg;
+    transform-origin: bottom center;
+    animation: active-bg 0.25s ease-in-out forwards;
+  }
+
+  @keyframes active-bg {
+    from {
+      scale: 0.7;
+    }
+    to {
+      scale: 1;
+    }
+  }
+
+  a {
+    position: relative;
+    text-decoration: none;
+    padding: 0.25rem 0.5rem;
+  }
+
+  a::before {
+    content: "";
+    position: absolute;
+    bottom: -0.1rem;
+    left: 0;
+    height: 2px;
+    width: 0%;
+    background-color: var(--primary);
+    opacity: 0;
+    transition: 0.25s ease-in-out;
+  }
+
+  a:hover:not(.active)::before {
+    width: 100%;
+    opacity: 1;
+    animation: show-link 0.25s ease-in-out forwards;
+  }
+
+  a.hovered:not(:hover):not(.active)::before {
+    animation: hide-link 0.15s ease-in-out forwards;
+  }
+
+  a.active::before {
+    content: "";
+    position: absolute;
+    bottom: -0.1rem;
+    left: 0;
+    height: 2px;
+    width: 100% !important;
+    background-color: var(--primary);
+    opacity: 1 !important;
+    animation: none !important;
+  }
+
+  @keyframes show-link {
+    from {
+      opacity: 0;
+      width: 0%;
+    }
+    to {
+      opacity: 1;
+      width: 100%;
+    }
+  }
+
+  @keyframes hide-link {
+    from {
+      opacity: 1;
+      width: 100%;
+    }
+    to {
+      opacity: 0;
+      width: 0%;
+    }
+  }
+
+  ul li {
+    --delay: calc((sibling-index() - 1) * 0.1s);
+    animation: fade-slide-in 0.75s var(--delay)
+      cubic-bezier(0.175, 0.885, 0.32, 1.575) both;
+  }
+
+  @keyframes fade-slide-in {
+    from {
+      opacity: 0;
+      transform: translateY(-1rem);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @supports (animation-timeline: view()) {
+    header {
+      animation-timeline: view();
+      animation-name: fade-in;
+      animation-duration: 1s;
+      animation-fill-mode: forwards;
+      animation-range: 0% 30%;
+    }
+
+    @keyframes fade-in {
+      from {
+        transform: translateY(4rem);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+  }
+</style>

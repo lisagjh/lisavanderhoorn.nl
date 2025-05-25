@@ -1,0 +1,234 @@
+---
+import { getCollection } from "astro:content";
+const allPosts = (await getCollection("blog")).sort(
+  (a, b) => b.data.id - a.data.id
+);
+---
+
+<section id="blog" transition:name="blog">
+  <div class="wrapper">
+    <h2 class="pill" transition:name="blog-title">Blog</h2>
+    <p transition:name="blog-text">
+      Read some stuff! From talks at FDND to new stuff I'm learning.
+    </p>
+  </div>
+
+  <ul class="grid">
+    {
+      allPosts.slice(0, 4).map((post) => (
+        <li transition:name={`post-${post.id}`}>
+          <a href={`/blog/${post.id}`}>
+            <h3 transition:name={`title-${post.id}`}>{post.data.title}</h3>
+            <p transition:name={`description-${post.id}`}>
+              {post.data.description}
+            </p>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+
+  <div class="bottom">
+    <a href="/blog" class="pill">More</a>
+  </div>
+</section>
+
+<style>
+  section {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 2rem;
+    width: 100%;
+    max-width: 65rem;
+  }
+
+  .wrapper,
+  .bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 2rem;
+    background-color: var(--primary-light);
+    border-radius: 10px;
+  }
+
+  .bottom {
+    align-items: end;
+    margin-top: 1.5rem;
+  }
+
+  ul.grid {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  li {
+    background-color: var(--white);
+    width: 100%;
+    min-height: 15rem;
+    height: 100%;
+    max-height: 20rem;
+    border-radius: 12px;
+    box-shadow:
+      0px 5px 8px 0px rgba(0, 0, 0, 0.03),
+      0px 7px 6px 0px rgba(0, 0, 0, 0.02),
+      0px 8px 8px 0px rgba(0, 0, 0, 0.03),
+      0px -3px 4px 0px rgba(0, 0, 0, 0.03);
+    list-style: "";
+  }
+
+  li a {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 1rem;
+    padding: 2rem;
+    text-decoration: none;
+  }
+
+  h3 {
+    font-family: var(--body-font);
+    font-size: 1.35rem;
+  }
+
+  p {
+    max-width: 40ch;
+  }
+
+  @media (width >= 48rem) {
+    ul.grid {
+      flex-direction: row;
+      justify-content: start;
+      padding: 1rem;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      max-width: 90%;
+      justify-self: center;
+      align-self: center;
+    }
+
+    li {
+      min-width: 23rem;
+      max-width: 80%;
+      scroll-snap-align: center;
+      flex-shrink: 0;
+    }
+  }
+
+  @supports (ul: : scroll-marker-group) {
+    @media (width >= 48rem) {
+      ul.grid {
+        anchor-name: --grid;
+        scroll-marker-group: after;
+        position: relative;
+        scrollbar-width: none;
+
+        &::scroll-marker-group {
+          position: absolute;
+          position-anchor: --grid;
+          top: anchor(--grid bottom);
+          justify-self: anchor-center;
+
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          align-items: center;
+          gap: 0.5rem;
+        }
+
+        li:hover {
+          box-shadow: 0px 1px 10px 0px rgba(0, 0, 0, 0.1);
+        }
+
+        > li::scroll-marker {
+          content: "" / "Scroll to post";
+          background: url(/public/assets/svg/dot.svg);
+          background-repeat: no-repeat;
+          background-size: 70%;
+          background-position: center;
+          height: 2rem;
+          width: 2rem;
+          transform: rotate(calc(sibling-index() * 70deg));
+          opacity: 0.65;
+          transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        > li::scroll-marker:target-current {
+          opacity: 1;
+          scale: 1.1;
+        }
+
+        &::scroll-button(*) {
+          background-color: transparent;
+          width: 3rem;
+          height: 3rem;
+          position: absolute;
+          position-anchor: --grid;
+          border: none;
+          transition: 0.15s ease-in-out;
+        }
+
+        &::scroll-button(*):disabled {
+          opacity: 0.5;
+          pointer-events: none;
+          cursor: not-allowed;
+        }
+
+        &::scroll-button(*):hover {
+          scale: 1.05;
+        }
+
+        &::scroll-button(*):active {
+          scale: 0.95;
+        }
+
+        &::scroll-button(left) {
+          content: url(/public/assets/svg/arrow-left.svg) / "Scroll Left";
+
+          top: anchor(--grid bottom);
+          left: anchor(--grid left);
+        }
+
+        &::scroll-button(right) {
+          content: url(/public/assets/svg/arrow-right.svg) / "Scroll Right";
+          top: anchor(--grid bottom);
+          right: anchor(--grid right);
+        }
+
+        &::scroll-button(*):focus-visible {
+          outline-offset: 5px;
+        }
+      }
+    }
+  }
+
+  @supports (animation-timeline: view()) {
+    @media (width <48rem) {
+      li {
+        animation-timeline: view();
+        animation-name: fade-in;
+        animation-duration: 1s;
+        animation-fill-mode: forwards;
+        animation-range: 0% 60%;
+      }
+
+      @keyframes fade-in {
+        from {
+          transform: translateY(10rem);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+    }
+  }
+</style>

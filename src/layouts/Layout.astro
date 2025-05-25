@@ -2,14 +2,14 @@
 import { ClientRouter } from "astro:transitions";
 import Analytics from "@vercel/analytics/astro";
 import SpeedInsights from "@vercel/speed-insights/astro";
+import Header from "../components/display/Header.astro";
+import Footer from "../components/display/Footer.astro";
 
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
+import { fade } from "astro:transitions";
 
 const { pageTitle } = Astro.props;
 ---
 
-<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -19,15 +19,14 @@ const { pageTitle } = Astro.props;
       content="Lisa van der Hoorn is an aspiring frontend developer, focused on creating accessible websites. Lisa has experience with modern frontend technologies, and fundamental knowledge of UI/UX design."
     />
     <link rel="icon" type="image/svg+xml" href="/favicon.png" />
-    <link rel="stylesheet" href="/src/styles/global.css" />
+    <link rel="stylesheet" href="/styles/global.css" />
     <meta name="generator" content={Astro.generator} />
     <title>{pageTitle}</title>
     <ClientRouter />
     <Analytics />
     <SpeedInsights />
   </head>
-  <body>
-    <Header />
+  <body transition:animate="fade">
     <main>
       <slot />
     </main>
@@ -35,11 +34,9 @@ const { pageTitle } = Astro.props;
   </body>
 </html>
 
-<style>
-  html,
-  body {
-    margin: 0;
-    width: 100%;
-    height: 100%;
-  }
-</style>
+<script type="module">
+  import { gsap } from "../../node_modules/gsap";
+  import { SplitText } from "../../node_modules/gsap/SplitText";
+
+  gsap.registerPlugin(SplitText);
+</script>

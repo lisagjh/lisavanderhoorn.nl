@@ -1,0 +1,729 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width"><meta name="description" content="I'm Lisa van der Hoorn, a frontend developer working with modern frontend tools, specializing in accessibility."><link rel="canonical" href="https://lisavanderhoorn.nl"><link rel="icon" type="image/svg+xml" href="/favicon.png"><meta name="generator" content="Astro v5.4.3"><link rel="stylesheet" href="/styles/global.css"><vercel-speed-insights data-props="{}" data-params="{&#34;slug&#34;:&#34;learn-php&#34;}" data-pathname="/blog/learn-php/"></vercel-speed-insights> <script type="module">var o="@vercel/speed-insights",u="1.2.0",f=()=>{window.si||(window.si=function(...r){(window.siq=window.siq||[]).push(r)})};function l(){return typeof window<"u"}function h(){try{const e="production"}catch{}return"production"}function d(){return h()==="development"}function v(e,r){if(!e||!r)return e;let n=e;try{const t=Object.entries(r);for(const[s,i]of t)if(!Array.isArray(i)){const a=c(i);a.test(n)&&(n=n.replace(a,`/[${s}]`))}for(const[s,i]of t)if(Array.isArray(i)){const a=c(i.join("/"));a.test(n)&&(n=n.replace(a,`/[...${s}]`))}return n}catch{return e}}function c(e){return new RegExp(`/${g(e)}(?=[/?#]|$)`)}function g(e){return e.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")}function m(e){return e.scriptSrc?e.scriptSrc:d()?"https://va.vercel-scripts.com/v1/speed-insights/script.debug.js":e.dsn?"https://va.vercel-scripts.com/v1/speed-insights/script.js":e.basePath?`${e.basePath}/speed-insights/script.js`:"/_vercel/speed-insights/script.js"}function w(e={}){var r;if(!l()||e.route===null)return null;f();const n=m(e);if(document.head.querySelector(`script[src*="${n}"]`))return null;e.beforeSend&&((r=window.si)==null||r.call(window,"beforeSend",e.beforeSend));const t=document.createElement("script");return t.src=n,t.defer=!0,t.dataset.sdkn=o+(e.framework?`/${e.framework}`:""),t.dataset.sdkv=u,e.sampleRate&&(t.dataset.sampleRate=e.sampleRate.toString()),e.route&&(t.dataset.route=e.route),e.endpoint?t.dataset.endpoint=e.endpoint:e.basePath&&(t.dataset.endpoint=`${e.basePath}/speed-insights/vitals`),e.dsn&&(t.dataset.dsn=e.dsn),d()&&e.debug===!1&&(t.dataset.debug="false"),t.onerror=()=>{console.log(`[Vercel Speed Insights] Failed to load script from ${n}. Please check if any content blockers are enabled and try again.`)},document.head.appendChild(t),{setRoute:s=>{t.dataset.route=s??void 0}}}function p(){try{return}catch{}}customElements.define("vercel-speed-insights",class extends HTMLElement{constructor(){super();try{const r=JSON.parse(this.dataset.props??"{}"),n=JSON.parse(this.dataset.params??"{}"),t=v(this.dataset.pathname??"",n);w({route:t,...r,framework:"astro",basePath:p(),beforeSend:window.speedInsightsBeforeSend})}catch(r){throw new Error(`Failed to parse SpeedInsights properties: ${r}`)}}});</script><vercel-analytics data-props="{}" data-params="{&#34;slug&#34;:&#34;learn-php&#34;}" data-pathname="/blog/learn-php/"></vercel-analytics> <script type="module">var f="@vercel/analytics",l="1.5.0",w=()=>{window.va||(window.va=function(...r){(window.vaq=window.vaq||[]).push(r)})};function d(){return typeof window<"u"}function u(){try{const e="production"}catch{}return"production"}function v(e="auto"){if(e==="auto"){window.vam=u();return}window.vam=e}function m(){return(d()?window.vam:u())||"production"}function c(){return m()==="development"}function b(e,r){if(!e||!r)return e;let n=e;try{const t=Object.entries(r);for(const[a,i]of t)if(!Array.isArray(i)){const o=s(i);o.test(n)&&(n=n.replace(o,`/[${a}]`))}for(const[a,i]of t)if(Array.isArray(i)){const o=s(i.join("/"));o.test(n)&&(n=n.replace(o,`/[...${a}]`))}return n}catch{return e}}function s(e){return new RegExp(`/${h(e)}(?=[/?#]|$)`)}function h(e){return e.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")}function y(e){return e.scriptSrc?e.scriptSrc:c()?"https://va.vercel-scripts.com/v1/script.debug.js":e.basePath?`${e.basePath}/insights/script.js`:"/_vercel/insights/script.js"}function g(e={debug:!0}){var r;if(!d())return;v(e.mode),w(),e.beforeSend&&((r=window.va)==null||r.call(window,"beforeSend",e.beforeSend));const n=y(e);if(document.head.querySelector(`script[src*="${n}"]`))return;const t=document.createElement("script");t.src=n,t.defer=!0,t.dataset.sdkn=f+(e.framework?`/${e.framework}`:""),t.dataset.sdkv=l,e.disableAutoTrack&&(t.dataset.disableAutoTrack="1"),e.endpoint?t.dataset.endpoint=e.endpoint:e.basePath&&(t.dataset.endpoint=`${e.basePath}/insights`),e.dsn&&(t.dataset.dsn=e.dsn),t.onerror=()=>{const a=c()?"Please check if any ad blockers are enabled and try again.":"Be sure to enable Web Analytics for your project and deploy again. See https://vercel.com/docs/analytics/quickstart for more information.";console.log(`[Vercel Web Analytics] Failed to load script from ${n}. ${a}`)},c()&&e.debug===!1&&(t.dataset.debug="false"),document.head.appendChild(t)}function p({route:e,path:r}){var n;(n=window.va)==null||n.call(window,"pageview",{route:e,path:r})}function k(){try{return}catch{}}customElements.define("vercel-analytics",class extends HTMLElement{constructor(){super();try{const r=JSON.parse(this.dataset.props??"{}"),n=JSON.parse(this.dataset.params??"{}");g({...r,disableAutoTrack:!0,framework:"astro",basePath:k(),beforeSend:window.webAnalyticsBeforeSend});const t=this.dataset.pathname;p({route:b(t??"",n),path:t})}catch(r){throw new Error(`Failed to parse WebAnalytics properties: ${r}`)}}});</script><meta name="astro-view-transitions-enabled" content="true"><meta name="astro-view-transitions-fallback" content="animate"><script type="module" src="/_astro/ClientRouter.astro_astro_type_script_index_0_lang.6lKCtFIE.js"></script><title>Introduction to PHP</title><style>section[data-astro-cid-5grsw2hi]{display:flex;flex-direction:column;gap:2rem;padding:2rem;width:100%;max-width:65rem}img[data-astro-cid-5grsw2hi]{height:100%;min-height:8rem;max-height:25rem;object-fit:cover}.date[data-astro-cid-5grsw2hi]{font-size:1rem;color:#313131}h2[data-astro-cid-5grsw2hi]{font-size:3.25rem}h3[data-astro-cid-5grsw2hi]{font-size:2.5rem}h4[data-astro-cid-5grsw2hi]{font-size:1.4rem}@media (width <= 26rem){h2[data-astro-cid-5grsw2hi]{font-size:2.75rem}h3[data-astro-cid-5grsw2hi]{font-size:2rem}h4[data-astro-cid-5grsw2hi]{font-size:1.2rem}}.notes[data-astro-cid-5grsw2hi]{display:flex;flex-direction:row;justify-content:center;align-items:center;gap:1.5rem;padding:1rem 1.5rem;width:75vw;max-width:26rem;background-color:var(--primary-light);border-radius:1vmin;border:3px solid var(--white);box-shadow:0 0 0 2px var(--primary)}.notes[data-astro-cid-5grsw2hi] p[data-astro-cid-5grsw2hi]{font-size:1rem}.notes[data-astro-cid-5grsw2hi] svg[data-astro-cid-5grsw2hi]{min-height:100%}.notes[data-astro-cid-5grsw2hi] svg[data-astro-cid-5grsw2hi] path[data-astro-cid-5grsw2hi]{fill:var(--primary)}.related-posts[data-astro-cid-5grsw2hi]{width:fit-content;padding:1rem .5rem;border-radius:.1rem;overflow:hidden}ul[data-astro-cid-5grsw2hi]{display:flex;flex-direction:row;align-items:stretch;overflow-x:auto;scroll-snap-type:x mandatory;gap:1rem;scroll-behavior:smooth}li[data-astro-cid-5grsw2hi]{flex:0 0 auto;scroll-snap-align:start;display:flex;flex-direction:column;justify-content:center;align-items:center;list-style-type:none;width:15rem}.related-posts[data-astro-cid-5grsw2hi] a[data-astro-cid-5grsw2hi]{display:flex;flex-direction:column;align-items:center;gap:.5rem;text-decoration:none;color:var(--primary-light)}.related-posts[data-astro-cid-5grsw2hi] img[data-astro-cid-5grsw2hi]{border-radius:.2rem;width:100%;object-fit:cover}.highlight[data-astro-cid-5grsw2hi]{color:var(--primary-light)}.markdown-post pre{max-width:100%}.markdown-post h1,.markdown-post h2,.markdown-post h3,.markdown-post h4,.markdown-post h5,.markdown-post h6{font-family:var(--body-font)}.markdown-post h1{font-size:2.5rem}.markdown-post h2{font-size:2rem}.markdown-post h3{font-size:1.75rem}.markdown-post h4{font-size:1.5rem}.markdown-post h5{font-size:1.25rem}
+header[data-astro-cid-ptclj5be]{display:flex;justify-content:space-between;align-items:center;justify-self:center;justify-content:center;position:sticky;top:0;width:100%;max-width:75rem;z-index:50}nav[data-astro-cid-ptclj5be]{display:flex;justify-self:center;width:100%;max-width:95vw;background:linear-gradient(0deg,transparent 0%,var(--white) 90%);border-radius:0;backdrop-filter:blur(1px);-webkit-backdrop-filter:blur(5px);box-shadow:0 1px 4px #0000001a}@supports (container-type: scroll-state){header[data-astro-cid-ptclj5be]{container-type:scroll-state;container-name:header}nav[data-astro-cid-ptclj5be]{width:100%;border-radius:0;box-shadow:0 0 2px #0000001a}@container scroll-state(stuck: top){nav[data-astro-cid-ptclj5be]{background:linear-gradient(0deg,transparent 0%,var(--white) 90%);border-radius:0 0 12px 12px;backdrop-filter:blur(1px);-webkit-backdrop-filter:blur(5px);box-shadow:0 1px 4px #0000001a}}}ul[data-astro-cid-ptclj5be]{display:flex;flex-direction:row;gap:1rem;padding:1.5rem;width:100%}li[data-astro-cid-ptclj5be]{list-style:""}a[data-astro-cid-ptclj5be].active{color:var(--primary);font-weight:700;border-radius:6px 6px 0 0;view-transition-name:active-link;z-index:50}a[data-astro-cid-ptclj5be].active:before{content:"";position:absolute;bottom:-.1rem;left:0;height:2px;width:100%;background-color:var(--primary);opacity:1!important;animation:none}a[data-astro-cid-ptclj5be].active:after{content:"";position:absolute;bottom:0;left:0;background-color:var(--primary-light);height:100%;width:100%;border-radius:2px 2px 0 0;opacity:50%;z-index:-1;view-transition-name:active-bg;transform-origin:bottom center;animation:active-bg .25s ease-in-out forwards}@keyframes active-bg{0%{scale:.7}to{scale:1}}a[data-astro-cid-ptclj5be]{position:relative;text-decoration:none;padding:.25rem .5rem}a[data-astro-cid-ptclj5be]:before{content:"";position:absolute;bottom:-.1rem;left:0;height:2px;width:0%;background-color:var(--primary);opacity:0;transition:.25s ease-in-out}a[data-astro-cid-ptclj5be]:hover:not(.active):before{width:100%;opacity:1;animation:show-link .25s ease-in-out forwards}a[data-astro-cid-ptclj5be].hovered:not(:hover):not(.active):before{animation:hide-link .15s ease-in-out forwards}a[data-astro-cid-ptclj5be].active:before{content:"";position:absolute;bottom:-.1rem;left:0;height:2px;width:100%!important;background-color:var(--primary);opacity:1!important;animation:none!important}@keyframes show-link{0%{opacity:0;width:0%}to{opacity:1;width:100%}}@keyframes hide-link{0%{opacity:1;width:100%}to{opacity:0;width:0%}}ul[data-astro-cid-ptclj5be] li[data-astro-cid-ptclj5be]{--delay: calc((sibling-index() - 1)*.1s) ;animation:fade-slide-in .75s var(--delay) cubic-bezier(.175,.885,.32,1.575) both}@keyframes fade-slide-in{0%{opacity:0;transform:translateY(-1rem)}to{opacity:1;transform:translateY(0)}}footer[data-astro-cid-li7yi75z]{min-width:100vw;min-height:85vh;height:100%;background-color:var(--primary-dark);color:var(--off-white);display:flex;flex-direction:column;justify-content:center;align-items:center;padding:2rem;gap:4rem;margin-top:8rem}h4[data-astro-cid-li7yi75z]{font-size:3rem}.wrapper[data-astro-cid-li7yi75z]{display:flex;flex-direction:column;gap:1rem;width:100%;max-width:45rem}ul[data-astro-cid-li7yi75z]{display:flex;flex-direction:column;gap:1rem;padding:2rem;background-color:var(--off-white);width:100%;border-radius:20px}li[data-astro-cid-li7yi75z]{margin-left:1rem}li[data-astro-cid-li7yi75z]::marker{font-size:1.2rem;color:var(--primary)}.wrapper[data-astro-cid-li7yi75z] p[data-astro-cid-li7yi75z]{font-size:1rem;color:#fff;˝}p[data-astro-cid-li7yi75z].last{color:#fff;background-color:var(--primary-darker);font-size:.85rem;font-weight:lighter;padding:.75rem;border-radius:.25rem}
+.astro-route-announcer{position:absolute;left:0;top:0;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;white-space:nowrap;width:1px;height:1px}
+@keyframes astroFadeInOut{0%{opacity:1}to{opacity:0}}@keyframes astroFadeIn{0%{opacity:0;mix-blend-mode:plus-lighter}to{opacity:1;mix-blend-mode:plus-lighter}}@keyframes astroFadeOut{0%{opacity:1;mix-blend-mode:plus-lighter}to{opacity:0;mix-blend-mode:plus-lighter}}@keyframes astroSlideFromRight{0%{transform:translate(100%)}}@keyframes astroSlideFromLeft{0%{transform:translate(-100%)}}@keyframes astroSlideToRight{to{transform:translate(100%)}}@keyframes astroSlideToLeft{to{transform:translate(-100%)}}@media (prefers-reduced-motion){::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}[data-astro-transition-scope]{animation:none!important}}
+</style><style>[data-astro-transition-scope="astro-24ikj4zz-1"] { view-transition-name: post-2; }@layer astro { ::view-transition-old(post-2) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }::view-transition-new(post-2) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back]::view-transition-old(post-2) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back]::view-transition-new(post-2) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; } }[data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-24ikj4zz-1"],
+			[data-astro-transition-fallback="old"][data-astro-transition-scope="astro-24ikj4zz-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-24ikj4zz-1"],
+			[data-astro-transition-fallback="new"][data-astro-transition-scope="astro-24ikj4zz-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back][data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-24ikj4zz-1"],
+			[data-astro-transition=back][data-astro-transition-fallback="old"][data-astro-transition-scope="astro-24ikj4zz-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back][data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-24ikj4zz-1"],
+			[data-astro-transition=back][data-astro-transition-fallback="new"][data-astro-transition-scope="astro-24ikj4zz-1"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }</style><style>[data-astro-transition-scope="astro-t5k7mbsc-2"] { view-transition-name: title-2; }@layer astro { ::view-transition-old(title-2) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }::view-transition-new(title-2) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back]::view-transition-old(title-2) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back]::view-transition-new(title-2) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; } }[data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-t5k7mbsc-2"],
+			[data-astro-transition-fallback="old"][data-astro-transition-scope="astro-t5k7mbsc-2"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-t5k7mbsc-2"],
+			[data-astro-transition-fallback="new"][data-astro-transition-scope="astro-t5k7mbsc-2"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back][data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-t5k7mbsc-2"],
+			[data-astro-transition=back][data-astro-transition-fallback="old"][data-astro-transition-scope="astro-t5k7mbsc-2"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back][data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-t5k7mbsc-2"],
+			[data-astro-transition=back][data-astro-transition-fallback="new"][data-astro-transition-scope="astro-t5k7mbsc-2"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }</style><style>[data-astro-transition-scope="astro-zewd6euf-4"] { view-transition-name: header; }@layer astro { ::view-transition-old(header) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }::view-transition-new(header) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back]::view-transition-old(header) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back]::view-transition-new(header) { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; } }[data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-zewd6euf-4"],
+			[data-astro-transition-fallback="old"][data-astro-transition-scope="astro-zewd6euf-4"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-zewd6euf-4"],
+			[data-astro-transition-fallback="new"][data-astro-transition-scope="astro-zewd6euf-4"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }[data-astro-transition=back][data-astro-transition-fallback="old"] [data-astro-transition-scope="astro-zewd6euf-4"],
+			[data-astro-transition=back][data-astro-transition-fallback="old"][data-astro-transition-scope="astro-zewd6euf-4"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeOut; }[data-astro-transition=back][data-astro-transition-fallback="new"] [data-astro-transition-scope="astro-zewd6euf-4"],
+			[data-astro-transition=back][data-astro-transition-fallback="new"][data-astro-transition-scope="astro-zewd6euf-4"] { 
+	animation-duration: 180ms;
+	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
+	animation-fill-mode: both;
+	animation-name: astroFadeIn; }</style></head> <body data-astro-transition-persist="astro-5g5eesqo-3">  <header data-astro-cid-ptclj5be data-astro-transition-scope="astro-zewd6euf-4"> <nav data-astro-cid-ptclj5be> <ul data-astro-cid-ptclj5be> <li data-astro-cid-ptclj5be> <a href="/#about" data-astro-cid-ptclj5be>About</a> </li> <li data-astro-cid-ptclj5be> <a href="/#work" data-astro-cid-ptclj5be>Work</a> </li> <li data-astro-cid-ptclj5be> <a href="/#blog" data-astro-cid-ptclj5be>Blog</a> </li> <li data-astro-cid-ptclj5be> <a href="/#contact" data-astro-cid-ptclj5be>Contact</a> </li> </ul> </nav> </header>  <main>  <section class="markdown-post" data-astro-cid-5grsw2hi data-astro-transition-scope="astro-24ikj4zz-1"> <button class="back-home" onclick="history.back()" data-astro-cid-5grsw2hi>Ga terug</button> <h2 data-astro-cid-5grsw2hi data-astro-transition-scope="astro-t5k7mbsc-2">Introduction to PHP</h2>  <p data-astro-cid-5grsw2hi><em data-astro-cid-5grsw2hi>Mijn aantekeningen bij het leren van PHP.</em></p>    <h1 id="table-of-contents">Table of Contents</h1>
+<ul>
+<li><a href="#introduction-to-php">Introduction to PHP</a>
+<ul>
+<li><a href="#history-of-php">History of PHP</a></li>
+<li><a href="#how-is-php-used-in-html">How is PHP used in HTML?</a></li>
+<li><a href="#how-is-php-executed">How is PHP executed?</a></li>
+<li><a href="#php-comments">PHP comments</a>
+<ul>
+<li><a href="#voorbeeld---todo-list">Example - Todo list</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#php-strings--variables">PHP strings &#x26; variables</a>
+<ul>
+<li><a href="#escape-sequences">Escape Sequences</a></li>
+<li><a href="#string-concatenation">String Concatenation</a></li>
+<li><a href="#variables">Variables</a>
+<ul>
+<li><a href="#variable-parsing">Variable parsing</a></li>
+<li><a href="#curly-braces">Curly braces</a></li>
+</ul>
+</li>
+<li><a href="#concatenating-assignment-operator">Concatenating Assignment Operator</a></li>
+<li><a href="#assign-by-reference">Assign by Reference</a></li>
+</ul>
+</li>
+<li><a href="#numbers">Numbers</a>
+<ul>
+<li><a href="#mathematical-assignment-operators">Mathematical Assignment Operators</a></li>
+<li><a href="#tabel-overzicht-operators">Table Overview Operators</a></li>
+</ul>
+</li>
+<li><a href="#php-functions">PHP Functions</a>
+<ul>
+<li><a href="#introduction-to-functions">Introduction to Functions</a>
+<ul>
+<li><a href="#multiple-parameters">Multiple Parameters</a></li>
+<li><a href="#default-parameters">Default Parameters</a></li>
+<li><a href="#pass-by-reference">Pass by Reference</a></li>
+<li><a href="#variable-scope">Variable Scope</a></li>
+</ul>
+</li>
+<li><a href="#introduction-to-built-in-functions">Introduction to Built-In Functions</a>
+<ul>
+<li><a href="#werken-met-variables">Working with Variables</a></li>
+<li><a href="#werken-met-substrings">Working with Substrings</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#bronnen">Bronnen</a></li>
+</ul>
+<h1 id="introduction-to-php">Introduction to PHP</h1>
+<h2 id="history-of-php">History of PHP</h2>
+<p>In 1994 is PHP gecreeërd.</p>
+<p>PHP is een van de fundamentele technologieën van web development, en een van de meest gebruikte server side technologieën. Het word vooral veel gebruikt met populaire CMS’en: WordPress, Drupal, Joomla.
+Ook is veel van de underlying code van WooCommerce and Magento gebaseerd op PHP.</p>
+<p>PHP heeft veel built-in functionaliteit voor interactie met data. Vanilla PHP alleen kan ook gebruikt worden om web app backends te bouwen. Maar er zijn ook verschillende krachtige frameworks: Laravel, CakePHP, Symfony.</p>
+<h2 id="how-is-php-used-in-html">How is PHP used in HTML?</h2>
+<p>PHP word gebruikt om dynamische web pages te bouwen.</p>
+<p>PHP is ontworpen om goed samen te werken met HTML, waardoor het in-line gebruikt kan worden in een HTML document. Als de website gerendered word, word de PHP uitgevoerd, en als HTML toegevoegd.</p>
+<p>Het begin van een PHP line start met: <code>&#x3C;?php</code> en eindigt met <code>?></code>. Bijvoorbeeld:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="html"><code><span class="line"><span style="color:#E1E4E8">&#x3C;</span><span style="color:#85E89D">p</span><span style="color:#E1E4E8">>This HTML will get delivered as is&#x3C;/</span><span style="color:#85E89D">p</span><span style="color:#E1E4E8">></span></span>
+<span class="line"><span style="color:#FDAEB7;font-style:italic">&#x3C;</span><span style="color:#E1E4E8">?php echo "&#x3C;</span><span style="color:#85E89D">p</span><span style="color:#E1E4E8">>But this code is interpreted by PHP and turned into HTML&#x3C;/</span><span style="color:#85E89D">p</span><span style="color:#E1E4E8">>";?></span></span>
+<span class="line"></span></code></pre>
+<p>In PHP, wordt het <code>echo</code> keyword gebruikt voor output text. De tekst in dit geval is alles tussen de <code>"aanhalingstekens"</code> . Een instructie die in PHP is geschreven heeft een <code>statement</code>. Een semicolon <code>;</code> is required aan het eind van elk statement.</p>
+<h2 id="how-is-php-executed">How is PHP executed?</h2>
+<p>PHP kan niet alleen gebruikt worden om dynamische HTML te genereren, maar ook als programmeertaal via de terminal. Wanneer je een PHP-script schrijft, begin je ook altijd met <code>&#x3C;?php</code>, maar de afsluitende tag is meestal niet nodig, en word als conventie vaak weg gelaten.</p>
+<p>PHP negeert witruimte, en is deels niet hoofdlettergevoelig – bijvoorbeeld, <code>echo</code> en <code>Echo</code> werken beide. Toch is het aangeraden om de standaard schrijfwijze (<code>echo</code>) te gebruiken.</p>
+<h2 id="php-comments">PHP comments</h2>
+<p>Er zijn twee manieren om comments te gebruiken in PHP. De eerste is <code>single line comments</code>. Hier word <code>#</code> of <code>//</code> gebruikt.</p>
+<p>De tweede soort is een <code>multi line comment</code>. Hier gebruik je <code>/* comment */</code> om meerdere lines of code uit te commenten.</p>
+<h3 id="voorbeeld---todo-list">Voorbeeld - Todo list</h3>
+<p>De Todo list is een goed voorbeeld, omdat hier de CRUD behaviors worden gebruikt - create, read, update, delete.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="php"><code><span class="line"><span style="color:#F97583">&#x3C;?</span><span style="color:#79B8FF">php</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">require</span><span style="color:#9ECBFF"> 'vendor/autoload.php'</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// Verbinding maken met de database</span></span>
+<span class="line"><span style="color:#E1E4E8">$pdo </span><span style="color:#F97583">=</span><span style="color:#F97583"> new</span><span style="color:#79B8FF"> \PDO</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"sqlite:"</span><span style="color:#F97583"> .</span><span style="color:#9ECBFF"> "db/sqlite.db"</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// Nieuwe TODO aanmaken</span></span>
+<span class="line"><span style="color:#F97583">if</span><span style="color:#E1E4E8"> (</span><span style="color:#79B8FF">isset</span><span style="color:#E1E4E8">($_POST[</span><span style="color:#9ECBFF">'submit'</span><span style="color:#E1E4E8">])) {</span></span>
+<span class="line"><span style="color:#E1E4E8">    $description </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> $_POST[</span><span style="color:#9ECBFF">'description'</span><span style="color:#E1E4E8">];</span></span>
+<span class="line"><span style="color:#E1E4E8">    $sth </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> $pdo</span><span style="color:#F97583">-></span><span style="color:#B392F0">prepare</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"</span><span style="color:#F97583">INSERT INTO</span><span style="color:#9ECBFF"> todos (</span><span style="color:#F97583">description</span><span style="color:#9ECBFF">) </span><span style="color:#F97583">VALUES</span><span style="color:#9ECBFF"> (:</span><span style="color:#F97583">description</span><span style="color:#9ECBFF">)"</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">    $sth</span><span style="color:#F97583">-></span><span style="color:#B392F0">bindValue</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">':description'</span><span style="color:#E1E4E8">, $description, </span><span style="color:#79B8FF">PDO</span><span style="color:#F97583">::</span><span style="color:#79B8FF">PARAM_STR</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">    $sth</span><span style="color:#F97583">-></span><span style="color:#B392F0">execute</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// TODO verwijderen</span></span>
+<span class="line"><span style="color:#F97583">elseif</span><span style="color:#E1E4E8"> (</span><span style="color:#79B8FF">isset</span><span style="color:#E1E4E8">($_POST[</span><span style="color:#9ECBFF">'delete'</span><span style="color:#E1E4E8">])) {</span></span>
+<span class="line"><span style="color:#E1E4E8">    $id </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> $_POST[</span><span style="color:#9ECBFF">'id'</span><span style="color:#E1E4E8">];</span></span>
+<span class="line"><span style="color:#E1E4E8">    $sth </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> $pdo</span><span style="color:#F97583">-></span><span style="color:#B392F0">prepare</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"</span><span style="color:#F97583">DELETE</span><span style="color:#F97583"> FROM</span><span style="color:#9ECBFF"> todos </span><span style="color:#F97583">WHERE</span><span style="color:#9ECBFF"> id </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> :id"</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">    $sth</span><span style="color:#F97583">-></span><span style="color:#B392F0">bindValue</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">':id'</span><span style="color:#E1E4E8">, $id, </span><span style="color:#79B8FF">PDO</span><span style="color:#F97583">::</span><span style="color:#79B8FF">PARAM_INT</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">    $sth</span><span style="color:#F97583">-></span><span style="color:#B392F0">execute</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// TODO markeren als compleet</span></span>
+<span class="line"><span style="color:#F97583">elseif</span><span style="color:#E1E4E8"> (</span><span style="color:#79B8FF">isset</span><span style="color:#E1E4E8">($_POST[</span><span style="color:#9ECBFF">'complete'</span><span style="color:#E1E4E8">])) {</span></span>
+<span class="line"><span style="color:#E1E4E8">    $id </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> $_POST[</span><span style="color:#9ECBFF">'id'</span><span style="color:#E1E4E8">];</span></span>
+<span class="line"><span style="color:#E1E4E8">    $sth </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> $pdo</span><span style="color:#F97583">-></span><span style="color:#B392F0">prepare</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"</span><span style="color:#F97583">UPDATE</span><span style="color:#9ECBFF"> todos </span><span style="color:#F97583">SET</span><span style="color:#9ECBFF"> complete </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> 1</span><span style="color:#F97583"> WHERE</span><span style="color:#9ECBFF"> id </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> :id"</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">    $sth</span><span style="color:#F97583">-></span><span style="color:#B392F0">bindValue</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">':id'</span><span style="color:#E1E4E8">, $id, </span><span style="color:#79B8FF">PDO</span><span style="color:#F97583">::</span><span style="color:#79B8FF">PARAM_INT</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">    $sth</span><span style="color:#F97583">-></span><span style="color:#B392F0">execute</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"><span style="color:#F97583">?></span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">&#x3C;!</span><span style="color:#79B8FF">DOCTYPE</span><span style="color:#79B8FF"> html</span><span style="color:#F97583">></span></span>
+<span class="line"><span style="color:#F97583">&#x3C;</span><span style="color:#79B8FF">html</span><span style="color:#79B8FF"> lang</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"en"</span><span style="color:#F97583">></span></span>
+<span class="line"><span style="color:#F97583">&#x3C;</span><span style="color:#79B8FF">head</span><span style="color:#F97583">></span></span>
+<span class="line"><span style="color:#F97583">    &#x3C;</span><span style="color:#79B8FF">meta</span><span style="color:#79B8FF"> charset</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"UTF-8"</span><span style="color:#F97583">></span></span>
+<span class="line"><span style="color:#F97583">    &#x3C;</span><span style="color:#79B8FF">title</span><span style="color:#F97583">></span><span style="color:#79B8FF">Todo</span><span style="color:#79B8FF"> List</span><span style="color:#F97583">&#x3C;/</span><span style="color:#79B8FF">title</span><span style="color:#F97583">></span></span>
+<span class="line"><span style="color:#F97583">&#x3C;/</span><span style="color:#79B8FF">head</span><span style="color:#F97583">></span></span>
+<span class="line"><span style="color:#F97583">&#x3C;</span><span style="color:#79B8FF">body</span><span style="color:#F97583"> class=</span><span style="color:#9ECBFF">"container"</span><span style="color:#F97583">></span></span>
+<span class="line"><span style="color:#F97583">    &#x3C;</span><span style="color:#79B8FF">h1</span><span style="color:#F97583">></span><span style="color:#79B8FF">Todo</span><span style="color:#79B8FF"> List</span><span style="color:#F97583">&#x3C;/</span><span style="color:#79B8FF">h1</span><span style="color:#F97583">></span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">    &#x3C;</span><span style="color:#79B8FF">form</span><span style="color:#79B8FF"> method</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"post"</span><span style="color:#79B8FF"> action</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">""</span><span style="color:#F97583">></span></span>
+<span class="line"><span style="color:#F97583">        &#x3C;</span><span style="color:#79B8FF">input</span><span style="color:#79B8FF"> type</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"text"</span><span style="color:#79B8FF"> name</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"description"</span><span style="color:#79B8FF"> value</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">""</span><span style="color:#F97583">></span></span>
+<span class="line"><span style="color:#F97583">        &#x3C;</span><span style="color:#79B8FF">input</span><span style="color:#79B8FF"> type</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"submit"</span><span style="color:#79B8FF"> name</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"submit"</span><span style="color:#79B8FF"> value</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"Add"</span><span style="color:#F97583">></span></span>
+<span class="line"><span style="color:#F97583">    &#x3C;/</span><span style="color:#79B8FF">form</span><span style="color:#F97583">></span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">    &#x3C;</span><span style="color:#79B8FF">h2</span><span style="color:#F97583">></span><span style="color:#79B8FF">Current</span><span style="color:#79B8FF"> Todos</span><span style="color:#F97583">&#x3C;/</span><span style="color:#79B8FF">h2</span><span style="color:#F97583">></span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">    &#x3C;</span><span style="color:#79B8FF">table</span><span style="color:#F97583"> class=</span><span style="color:#9ECBFF">"table table-striped"</span><span style="color:#F97583">></span></span>
+<span class="line"><span style="color:#F97583">        &#x3C;</span><span style="color:#79B8FF">thead</span><span style="color:#F97583">></span></span>
+<span class="line"><span style="color:#F97583">            &#x3C;</span><span style="color:#79B8FF">tr</span><span style="color:#F97583">></span></span>
+<span class="line"><span style="color:#F97583">                &#x3C;</span><span style="color:#79B8FF">th</span><span style="color:#F97583">></span><span style="color:#79B8FF">Task</span><span style="color:#F97583">&#x3C;/</span><span style="color:#79B8FF">th</span><span style="color:#F97583">></span></span>
+<span class="line"><span style="color:#F97583">                &#x3C;</span><span style="color:#79B8FF">th</span><span style="color:#F97583">>&#x3C;/</span><span style="color:#79B8FF">th</span><span style="color:#F97583">></span></span>
+<span class="line"><span style="color:#F97583">                &#x3C;</span><span style="color:#79B8FF">th</span><span style="color:#F97583">>&#x3C;/</span><span style="color:#79B8FF">th</span><span style="color:#F97583">></span></span>
+<span class="line"><span style="color:#F97583">            &#x3C;/</span><span style="color:#79B8FF">tr</span><span style="color:#F97583">></span></span>
+<span class="line"><span style="color:#F97583">        &#x3C;/</span><span style="color:#79B8FF">thead</span><span style="color:#F97583">></span></span>
+<span class="line"><span style="color:#F97583">        &#x3C;</span><span style="color:#79B8FF">tbody</span><span style="color:#F97583">></span></span>
+<span class="line"><span style="color:#F97583">            &#x3C;?</span><span style="color:#79B8FF">php</span></span>
+<span class="line"><span style="color:#E1E4E8">            $sth </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> $pdo</span><span style="color:#F97583">-></span><span style="color:#B392F0">prepare</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"</span><span style="color:#F97583">SELECT</span><span style="color:#F97583"> *</span><span style="color:#F97583"> FROM</span><span style="color:#9ECBFF"> todos </span><span style="color:#F97583">ORDER BY</span><span style="color:#9ECBFF"> id </span><span style="color:#F97583">DESC</span><span style="color:#9ECBFF">"</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#E1E4E8">            $sth</span><span style="color:#F97583">-></span><span style="color:#B392F0">execute</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">            foreach</span><span style="color:#E1E4E8"> ($sth </span><span style="color:#F97583">as</span><span style="color:#E1E4E8"> $row)</span><span style="color:#F97583">:</span><span style="color:#F97583"> ?></span></span>
+<span class="line"><span style="color:#F97583">                &#x3C;</span><span style="color:#79B8FF">tr</span><span style="color:#F97583">></span></span>
+<span class="line"><span style="color:#F97583">                    &#x3C;</span><span style="color:#79B8FF">td</span><span style="color:#F97583">>&#x3C;?=</span><span style="color:#79B8FF"> htmlspecialchars</span><span style="color:#E1E4E8">($row[</span><span style="color:#9ECBFF">'description'</span><span style="color:#E1E4E8">]) </span><span style="color:#F97583">?>&#x3C;/</span><span style="color:#79B8FF">td</span><span style="color:#F97583">></span></span>
+<span class="line"><span style="color:#F97583">                    &#x3C;</span><span style="color:#79B8FF">td</span><span style="color:#F97583">></span></span>
+<span class="line"><span style="color:#F97583">                        &#x3C;?</span><span style="color:#79B8FF">php</span><span style="color:#F97583"> if</span><span style="color:#E1E4E8"> (</span><span style="color:#F97583">!</span><span style="color:#E1E4E8">$row[</span><span style="color:#9ECBFF">'complete'</span><span style="color:#E1E4E8">])</span><span style="color:#F97583">:</span><span style="color:#F97583"> ?></span></span>
+<span class="line"><span style="color:#F97583">                            &#x3C;</span><span style="color:#79B8FF">form</span><span style="color:#79B8FF"> method</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"POST"</span><span style="color:#F97583">></span></span>
+<span class="line"><span style="color:#F97583">                                &#x3C;</span><span style="color:#79B8FF">button</span><span style="color:#79B8FF"> type</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"submit"</span><span style="color:#79B8FF"> name</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"complete"</span><span style="color:#F97583">></span><span style="color:#79B8FF">Complete</span><span style="color:#F97583">&#x3C;/</span><span style="color:#79B8FF">button</span><span style="color:#F97583">></span></span>
+<span class="line"><span style="color:#F97583">                                &#x3C;</span><span style="color:#79B8FF">input</span><span style="color:#79B8FF"> type</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"hidden"</span><span style="color:#79B8FF"> name</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"id"</span><span style="color:#79B8FF"> value</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"&#x3C;?= </span><span style="color:#E1E4E8">$row</span><span style="color:#9ECBFF">['id'] ?>"</span><span style="color:#F97583">></span></span>
+<span class="line"><span style="color:#F97583">                                &#x3C;</span><span style="color:#79B8FF">input</span><span style="color:#79B8FF"> type</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"hidden"</span><span style="color:#79B8FF"> name</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"complete"</span><span style="color:#79B8FF"> value</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"true"</span><span style="color:#F97583">></span></span>
+<span class="line"><span style="color:#F97583">                            &#x3C;/</span><span style="color:#79B8FF">form</span><span style="color:#F97583">></span></span>
+<span class="line"><span style="color:#F97583">                        &#x3C;?</span><span style="color:#79B8FF">php</span><span style="color:#F97583"> else:</span><span style="color:#F97583"> ?></span></span>
+<span class="line"><span style="color:#79B8FF">                            Task</span><span style="color:#79B8FF"> Complete</span><span style="color:#F97583">!</span></span>
+<span class="line"><span style="color:#F97583">                        &#x3C;?</span><span style="color:#79B8FF">php</span><span style="color:#F97583"> endif</span><span style="color:#E1E4E8">; </span><span style="color:#F97583">?></span></span>
+<span class="line"><span style="color:#F97583">                    &#x3C;/</span><span style="color:#79B8FF">td</span><span style="color:#F97583">></span></span>
+<span class="line"><span style="color:#F97583">                    &#x3C;</span><span style="color:#79B8FF">td</span><span style="color:#F97583">></span></span>
+<span class="line"><span style="color:#F97583">                        &#x3C;</span><span style="color:#79B8FF">form</span><span style="color:#79B8FF"> method</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"POST"</span><span style="color:#F97583">></span></span>
+<span class="line"><span style="color:#F97583">                            &#x3C;</span><span style="color:#79B8FF">button</span><span style="color:#79B8FF"> type</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"submit"</span><span style="color:#79B8FF"> name</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"delete"</span><span style="color:#F97583">></span><span style="color:#79B8FF">Delete</span><span style="color:#F97583">&#x3C;/</span><span style="color:#79B8FF">button</span><span style="color:#F97583">></span></span>
+<span class="line"><span style="color:#F97583">                            &#x3C;</span><span style="color:#79B8FF">input</span><span style="color:#79B8FF"> type</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"hidden"</span><span style="color:#79B8FF"> name</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"id"</span><span style="color:#79B8FF"> value</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"&#x3C;?= </span><span style="color:#E1E4E8">$row</span><span style="color:#9ECBFF">['id'] ?>"</span><span style="color:#F97583">></span></span>
+<span class="line"><span style="color:#F97583">                            &#x3C;</span><span style="color:#79B8FF">input</span><span style="color:#79B8FF"> type</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"hidden"</span><span style="color:#79B8FF"> name</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"delete"</span><span style="color:#79B8FF"> value</span><span style="color:#F97583">=</span><span style="color:#9ECBFF">"true"</span><span style="color:#F97583">></span></span>
+<span class="line"><span style="color:#F97583">                        &#x3C;/</span><span style="color:#79B8FF">form</span><span style="color:#F97583">></span></span>
+<span class="line"><span style="color:#F97583">                    &#x3C;/</span><span style="color:#79B8FF">td</span><span style="color:#F97583">></span></span>
+<span class="line"><span style="color:#F97583">                &#x3C;/</span><span style="color:#79B8FF">tr</span><span style="color:#F97583">></span></span>
+<span class="line"><span style="color:#F97583">            &#x3C;?</span><span style="color:#79B8FF">php</span><span style="color:#F97583"> endforeach</span><span style="color:#E1E4E8">; </span><span style="color:#F97583">?></span></span>
+<span class="line"><span style="color:#F97583">        &#x3C;/</span><span style="color:#79B8FF">tbody</span><span style="color:#F97583">></span></span>
+<span class="line"><span style="color:#F97583">    &#x3C;/</span><span style="color:#79B8FF">table</span><span style="color:#F97583">></span></span>
+<span class="line"><span style="color:#F97583">&#x3C;/</span><span style="color:#79B8FF">body</span><span style="color:#F97583">></span></span>
+<span class="line"><span style="color:#F97583">&#x3C;/</span><span style="color:#79B8FF">html</span><span style="color:#F97583">></span></span>
+<span class="line"></span></code></pre>
+<h1 id="php-strings--variables">PHP strings &#x26; variables</h1>
+<ul>
+<li>String: woorden of stukken tekst die door de computer worden gezien als een item. Een string is een reeks karakters, tussen <code>"quotation marks"</code>.</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="php"><code><span class="line"><span style="color:#F97583">&#x3C;?</span><span style="color:#79B8FF">php</span></span>
+<span class="line"><span style="color:#79B8FF">echo</span><span style="color:#9ECBFF"> "Hello World!"</span><span style="color:#E1E4E8"> ;</span></span></code></pre>
+<p>Het is belangrijk om duidelijk te maken wat een string is en wat niet in een PHP program. Elk deel van de code is tekst, maar de strings zijn data - deze moeten niet uitgevoerd worden door de computer.</p>
+<h2 id="escape-sequences">Escape Sequences</h2>
+<p>Aan het begin en eind van een string gebruiken we aanhalingstekens. Deze laten de computer weten dat alles daar tussen een stukje data is.</p>
+<p>Als je binnen die string iets tussen aanhalingstekens zet, herkent PHP dit niet en krijg je een syntax error.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="php"><code><span class="line"><span style="color:#79B8FF">echo</span><span style="color:#9ECBFF"> "She said "</span><span style="color:#79B8FF">hi</span><span style="color:#9ECBFF">" to the dog."</span><span style="color:#E1E4E8">; </span><span style="color:#6A737D">//syntax error, unexpected 'hi' (T_STRING)</span></span></code></pre>
+<p>Dit kan je oplossen door <code>\</code> backslashes om het deel van de string te zetten met de aanhalingstekens. Dit noem je een <em>escape sequence</em>.</p>
+<p>Bij het printen van meerdere strings heb je ook een escape sequence nodig:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="php"><code><span class="line"><span style="color:#79B8FF">echo</span><span style="color:#9ECBFF"> "1. Go to gym"</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#79B8FF">echo</span><span style="color:#9ECBFF"> "2. Cook dinner"</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">/* output:</span></span>
+<span class="line"><span style="color:#6A737D">1. Go to gym2. Cook dinner</span></span>
+<span class="line"><span style="color:#6A737D">*/</span></span></code></pre>
+<p>Hier kun je <code>\n</code> er voor zetten, om aan te geven dat het op een nieuwe regel moet staan:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="php"><code><span class="line"><span style="color:#79B8FF">echo</span><span style="color:#9ECBFF"> "1. Go to gym"</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#79B8FF">echo</span><span style="color:#9ECBFF"> "</span><span style="color:#79B8FF">\n</span><span style="color:#9ECBFF">2. Cook dinner"</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF">1.</span><span style="color:#79B8FF"> Go</span><span style="color:#79B8FF"> to</span><span style="color:#79B8FF"> gym</span></span>
+<span class="line"><span style="color:#79B8FF">2.</span><span style="color:#79B8FF"> Cook</span><span style="color:#79B8FF"> dinner</span></span>
+<span class="line"><span style="color:#F97583">*/</span></span></code></pre>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="php"><code><span class="line"><span style="color:#79B8FF">echo</span><span style="color:#9ECBFF"> "1. Teach PHP"</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#79B8FF">echo</span><span style="color:#9ECBFF"> "</span><span style="color:#79B8FF">\n</span><span style="color:#9ECBFF">2. Something else"</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#79B8FF">echo</span><span style="color:#9ECBFF"> "</span><span style="color:#79B8FF">\n</span><span style="color:#9ECBFF">3. Learn to have </span><span style="color:#79B8FF">\"</span><span style="color:#9ECBFF">fun</span><span style="color:#79B8FF">\"</span><span style="color:#9ECBFF">"</span><span style="color:#E1E4E8">;</span></span></code></pre>
+<h2 id="string-concatenation">String Concatenation</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="php"><code><span class="line"><span style="color:#79B8FF">echo</span><span style="color:#9ECBFF"> "Code"</span><span style="color:#F97583"> .</span><span style="color:#9ECBFF"> "cademy"</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#79B8FF">echo</span><span style="color:#9ECBFF"> "</span><span style="color:#79B8FF">\n</span><span style="color:#9ECBFF">My name is:"</span><span style="color:#F97583"> .</span><span style="color:#9ECBFF"> " "</span><span style="color:#F97583"> .</span><span style="color:#9ECBFF"> "Lisa"</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#79B8FF">echo</span><span style="color:#9ECBFF"> "</span><span style="color:#79B8FF">\n</span><span style="color:#9ECBFF">"</span><span style="color:#F97583"> .</span><span style="color:#9ECBFF"> "tur"</span><span style="color:#F97583"> .</span><span style="color:#9ECBFF"> "duck"</span><span style="color:#F97583"> .</span><span style="color:#9ECBFF"> "en"</span><span style="color:#E1E4E8">;</span></span></code></pre>
+<h2 id="variables">Variables</h2>
+<p>In PHP gebruik je het <code>$</code> teken om een variabele te definiëren. Variable names kunnen nummers, letters en underscores (<code>_</code>) bevatten, maar moeten altijd beginnen met een letter of underscore. De variable names zijn case sensitive, dus <code>$my_example</code> en <code>$My_example</code> worden als twee verschillende variables gezien.</p>
+<p>Een veel gebruikte conventie bij benaming is het gebruik van een underscore tussen twee woorden, oftewel <code>snake_case</code>.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="php"><code><span class="line"><span style="color:#E1E4E8">$name </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> "Lisa"</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">$language </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> "php"</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF">echo</span><span style="color:#9ECBFF"> "I am"</span><span style="color:#F97583"> .</span><span style="color:#E1E4E8"> $name;</span></span>
+<span class="line"><span style="color:#79B8FF">echo</span><span style="color:#9ECBFF"> "</span><span style="color:#79B8FF">\n</span><span style="color:#9ECBFF">"</span><span style="color:#F97583"> .</span><span style="color:#E1E4E8"> $language</span></span></code></pre>
+<h3 id="variable-parsing">Variable parsing</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="php"><code><span class="line"><span style="color:#E1E4E8">$dog_name </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> "Tadpole"</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">$favorite_food </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> "salmon"</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">$color </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> "brown"</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF">echo</span><span style="color:#9ECBFF"> "I have a </span><span style="color:#E1E4E8">$color</span><span style="color:#9ECBFF"> dog named </span><span style="color:#E1E4E8">$dog_name</span><span style="color:#9ECBFF"> and her favorite food is </span><span style="color:#E1E4E8">$favorite_food</span><span style="color:#9ECBFF">."</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#6A737D">// Prints: I have a brown dog named Tadpole and her favorite food is salmon.</span></span></code></pre>
+<h4 id="curly-braces">curly braces</h4>
+<p>Dit voorbeeld geeft een error, omdat <code>toys</code> niet bestaat.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="php"><code><span class="line"><span style="color:#E1E4E8">$toy </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> "frisbee"</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#79B8FF">echo</span><span style="color:#9ECBFF"> "Alex likes playing with </span><span style="color:#E1E4E8">$toys</span><span style="color:#9ECBFF">"</span><span style="color:#E1E4E8">;</span></span></code></pre>
+<p>Als je achter de variable iets wilt zetten, kan je de variabele in curly braces wrappen – <code>${variable}</code>. Alles wat er dan direct achter staat word er aan geplakt.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="php"><code><span class="line"><span style="color:#E1E4E8">$dog_name </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> "Tadpole"</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">$favorite_food </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> "treat"</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">$color </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> "brown"</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF">echo</span><span style="color:#9ECBFF"> "I have a </span><span style="color:#E1E4E8">${color}</span><span style="color:#9ECBFF">ish dog named </span><span style="color:#E1E4E8">$dog_name</span><span style="color:#9ECBFF"> and her favorite food is </span><span style="color:#E1E4E8">${favorite_food}</span><span style="color:#9ECBFF">s."</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#6A737D">// Prints: I have a brownish dog named Tadpole and her favorite food is treats.</span></span></code></pre>
+<h2 id="concatenating-assignment-operator">Concatenating Assignment Operator</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="php"><code><span class="line"><span style="color:#E1E4E8">$sentence </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> "</span><span style="color:#79B8FF">\n</span><span style="color:#9ECBFF">I'm going on a picnic, and I'm taking apples"</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">$sentence </span><span style="color:#F97583">.=</span><span style="color:#9ECBFF"> ", but also milk"</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">$sentence </span><span style="color:#F97583">.=</span><span style="color:#9ECBFF"> ", cant do nuts though"</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF">echo</span><span style="color:#E1E4E8"> $sentence;</span></span>
+<span class="line"><span style="color:#6A737D">// Prints: I'm going on a picnic, and I'm taking apples, but also milk, cant do nuts though</span></span></code></pre>
+<h2 id="assign-by-reference">Assign by Reference</h2>
+<p>Wanneer we een variabele toewijzen aan een andere variabele, reserveert de computer een nieuw stukje geheugen dat wordt gekoppeld aan de linkeroperand, en slaat daar een kopie op van de waarde van de rechteroperand.</p>
+<p>De nieuwe variabele is een kopie van de waarde van de originele variabele, maar het is een onafhankelijke variabele; verandering bij de een heeft geen invloed op de ander.</p>
+<p><strong>Voorbeeld:</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="php"><code><span class="line"><span style="color:#E1E4E8">$first_player_rank </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> "Beginner"</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">$second_player_rank </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> $first_player_rank;</span></span>
+<span class="line"><span style="color:#79B8FF">echo</span><span style="color:#E1E4E8"> $second_player_rank; </span><span style="color:#6A737D">// Prints: Beginner</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">$first_player_rank </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> "Intermediate"</span><span style="color:#E1E4E8">; </span><span style="color:#6A737D">// Reassign the value of $first_player_rank</span></span>
+<span class="line"><span style="color:#79B8FF">echo</span><span style="color:#E1E4E8"> $second_player_rank; </span><span style="color:#6A737D">// Still Prints: Beginner</span></span></code></pre>
+<p>Je kan ook een alias maken, een bijnaam. In plaats van een kopie van de originele variabele waarde, maken we een nieuwe naam die naar de zelfde plek in het geheugen verwijst. Hier word een andere operator voor gebruikt, de reference assignment oeprator – <code>=&#x26;</code>.</p>
+<p>Als we “assign by reference” gebruiken, zeggen we dat de variabele aan de linker kant van de operator verwijzen naar exact dezelfde data als de variabele rechts. Met assignment by reference, veranderingen aan de ene variabele hebben wel invloed op de ander.</p>
+<p><strong>Voorbeeld:</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="php"><code><span class="line"><span style="color:#E1E4E8">$first_player_rank </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> "Beginner"</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">$second_player_rank </span><span style="color:#F97583">=&#x26;</span><span style="color:#E1E4E8"> $first_player_rank;</span></span>
+<span class="line"><span style="color:#79B8FF">echo</span><span style="color:#E1E4E8"> $second_player_rank; </span><span style="color:#6A737D">// Prints: Beginner</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">$first_player_rank </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> "Intermediate"</span><span style="color:#E1E4E8">; </span><span style="color:#6A737D">// Reassign the value of $first_player_rank</span></span>
+<span class="line"><span style="color:#79B8FF">echo</span><span style="color:#E1E4E8"> $second_player_rank; </span><span style="color:#6A737D">// Prints: Intermediate</span></span>
+<span class="line"></span></code></pre>
+<p><strong>Voorbeeld assign by reference:</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="php"><code><span class="line"><span style="color:#6A737D">/* Imagine a lot of code here */</span></span>
+<span class="line"><span style="color:#E1E4E8">$very_bad_unclear_name </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> "15 chicken wings"</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">$order </span><span style="color:#F97583">=&#x26;</span><span style="color:#E1E4E8"> $very_bad_unclear_name;</span></span>
+<span class="line"><span style="color:#E1E4E8">$order </span><span style="color:#F97583">.=</span><span style="color:#9ECBFF"> ", 3 nuggets"</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#79B8FF">echo</span><span style="color:#9ECBFF"> "</span><span style="color:#79B8FF">\n</span><span style="color:#9ECBFF">Your order is: </span><span style="color:#E1E4E8">$very_bad_unclear_name</span><span style="color:#9ECBFF">."</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// Your order is: 15 chicken wings, 3 nuggets.</span></span></code></pre>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="php"><code><span class="line"><span style="color:#E1E4E8">$name </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> "Tadpole"</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">$title </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> ", Princess of Dogulon"</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">$name </span><span style="color:#F97583">.=</span><span style="color:#E1E4E8"> $title;</span></span>
+<span class="line"><span style="color:#79B8FF">echo</span><span style="color:#E1E4E8"> $name;</span></span></code></pre>
+<hr>
+<h1 id="numbers">Numbers</h1>
+<p>PHP heeft twee nummer data types. De <code>integer</code> data type is een heel positief of negatief nummers (3, 4500, -98, 0). De <code>floating point</code> data type is decimale nummers (4.1, 2.999, -9.2, -1827.98)</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="php"><code><span class="line"><span style="color:#E1E4E8">$my_int </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> 78</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">$my_float </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> 89.9</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF">echo</span><span style="color:#E1E4E8"> $my_int; </span><span style="color:#6A737D">// Prints: 78</span></span>
+<span class="line"><span style="color:#79B8FF">echo</span><span style="color:#9ECBFF"> "</span><span style="color:#79B8FF">\n</span><span style="color:#9ECBFF">"</span><span style="color:#E1E4E8">; </span><span style="color:#6A737D">// new line</span></span>
+<span class="line"><span style="color:#79B8FF">echo</span><span style="color:#E1E4E8"> $my_float; </span><span style="color:#6A737D">// Prints 89.9</span></span></code></pre>
+<p>Er zijn ook verschillende operators die we kunnen gebruiken.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="php"><code><span class="line"><span style="color:#79B8FF">echo</span><span style="color:#79B8FF"> 5</span><span style="color:#F97583"> +</span><span style="color:#79B8FF"> 1</span><span style="color:#E1E4E8">; </span><span style="color:#6A737D">// Prints: 6</span></span>
+<span class="line"><span style="color:#79B8FF">echo</span><span style="color:#79B8FF"> 6.6</span><span style="color:#F97583"> +</span><span style="color:#79B8FF"> 1.2</span><span style="color:#E1E4E8">; </span><span style="color:#6A737D">// Prints: 7.8</span></span>
+<span class="line"><span style="color:#79B8FF">echo</span><span style="color:#79B8FF"> 198263</span><span style="color:#F97583"> -</span><span style="color:#79B8FF"> 263</span><span style="color:#E1E4E8">;  </span><span style="color:#6A737D">// Prints: 198000</span></span>
+<span class="line"><span style="color:#79B8FF">echo</span><span style="color:#F97583"> -</span><span style="color:#79B8FF">22.8</span><span style="color:#F97583"> -</span><span style="color:#79B8FF"> 19.1</span><span style="color:#E1E4E8">; </span><span style="color:#6A737D">// Prints: -41.9</span></span></code></pre>
+<p>Op deze manier kunnen we ook rekenen met variabelen:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="php"><code><span class="line"><span style="color:#E1E4E8">$tadpole_age </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> 7</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">$lily_age </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> 6</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">$age_difference </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> $tadpole_age </span><span style="color:#F97583">-</span><span style="color:#E1E4E8"> $lily_age;</span></span>
+<span class="line"><span style="color:#79B8FF">echo</span><span style="color:#E1E4E8"> $age_difference; </span><span style="color:#6A737D">// Prints 1</span></span></code></pre>
+<p>En ook delen en keer</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="php"><code><span class="line"><span style="color:#E1E4E8">$num_languages </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> 4</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">$months </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> 11</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">$days </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> $months </span><span style="color:#F97583">*</span><span style="color:#79B8FF"> 16</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">$days_per_language </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> $days </span><span style="color:#F97583">/</span><span style="color:#E1E4E8"> $num_languages;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF">echo</span><span style="color:#E1E4E8"> $days_per_language;</span></span></code></pre>
+<p>Maar ook een exponentiation operatotr – <code>**</code>.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="php"><code><span class="line"><span style="color:#79B8FF">echo</span><span style="color:#79B8FF"> 4</span><span style="color:#F97583"> **</span><span style="color:#79B8FF"> 2</span><span style="color:#E1E4E8">; </span><span style="color:#6A737D">// Prints: 16`</span></span></code></pre>
+<p>Dit kan op floats en negatieve nummers ook gebruikt worden</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="php"><code><span class="line"><span style="color:#79B8FF">echo</span><span style="color:#79B8FF"> 2.89</span><span style="color:#F97583"> **</span><span style="color:#79B8FF"> 3.2</span><span style="color:#E1E4E8">;  </span><span style="color:#6A737D">// Prints: 29.845104015297</span></span>
+<span class="line"><span style="color:#79B8FF">echo</span><span style="color:#79B8FF"> 10</span><span style="color:#F97583"> **</span><span style="color:#F97583"> -</span><span style="color:#79B8FF">1</span><span style="color:#E1E4E8">; </span><span style="color:#6A737D">// Prints: 0.1</span></span></code></pre>
+<p>En de modula operator – <code>%</code>. Deze operator returns de remainder, het overblijfsel van de linker operand gedeeld door de rechter operand.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="php"><code><span class="line"><span style="color:#79B8FF">echo</span><span style="color:#79B8FF"> 7</span><span style="color:#F97583"> %</span><span style="color:#79B8FF"> 3</span><span style="color:#E1E4E8">; </span><span style="color:#6A737D">// Prints: 1</span></span></code></pre>
+<p>Je kan ook bepaalde sommen tussen haakjes zetten.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="php"><code><span class="line"><span style="color:#79B8FF">echo</span><span style="color:#79B8FF"> 94</span><span style="color:#F97583"> -</span><span style="color:#79B8FF"> 4.25</span><span style="color:#F97583"> +</span><span style="color:#79B8FF"> 7</span><span style="color:#F97583"> -</span><span style="color:#E1E4E8"> (</span><span style="color:#79B8FF">23.50</span><span style="color:#F97583"> *</span><span style="color:#79B8FF"> 1.2</span><span style="color:#E1E4E8">) </span><span style="color:#F97583">+</span><span style="color:#E1E4E8"> (</span><span style="color:#79B8FF">20</span><span style="color:#F97583"> /</span><span style="color:#79B8FF"> 4</span><span style="color:#E1E4E8">);</span></span></code></pre>
+<p>De volgorde van de operations word zo bepaald:</p>
+<ol>
+<li>Any operation wrapped in parentheses (<code>()</code>)</li>
+<li>Exponents (<code>**</code>)</li>
+<li>Multiplication (<code>*</code>) and division (<code>/</code>)</li>
+<li>Addition (<code>+</code>) and subtraction (<code>-</code>).</li>
+</ol>
+<p>The acronym PEMDAS can be helpful for remembering the order of precedence for these arithmetic operations.</p>
+<h3 id="tabel">Tabel</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th><strong>Operation</strong></th><th><strong>Symbol</strong></th><th><strong>Example</strong></th><th><strong>Output</strong></th></tr></thead><tbody><tr><td>Addition</td><td><code>+</code></td><td><code>echo 1 + 4.5;</code></td><td>5.5</td></tr><tr><td>Subtraction</td><td><code>-</code></td><td><code>echo 9 - 1;</code></td><td>8</td></tr><tr><td>Multiplication</td><td><code>*</code></td><td><code>echo -1.9 * 2.9;</code></td><td>-5.51</td></tr><tr><td>Division</td><td><code>/</code></td><td><code>echo 9 / 1;</code></td><td>9</td></tr><tr><td>Modulo</td><td><code>%</code></td><td><code>echo 11 % 3;</code></td><td>2</td></tr><tr><td>Exponentiation</td><td><code>**</code></td><td><code>echo 8 ** 2;</code></td><td>64</td></tr></tbody></table>
+<h2 id="mathematical-assignment-operators">Mathematical Assignment Operators</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="php"><code><span class="line"><span style="color:#E1E4E8">$savings </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> 800</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">$bike_cost </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> 75</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">$savings </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> $savings </span><span style="color:#F97583">-</span><span style="color:#E1E4E8"> $bike_cost;</span></span>
+<span class="line"><span style="color:#79B8FF">echo</span><span style="color:#E1E4E8"> $savings; </span><span style="color:#6A737D">// Prints: 725</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// kan korter! MAND ---></span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">$savings </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> 800</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">$bike_cost </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> 75</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">$savings </span><span style="color:#F97583">-=</span><span style="color:#E1E4E8"> $bike_cost;</span></span>
+<span class="line"><span style="color:#79B8FF">echo</span><span style="color:#E1E4E8"> $savings; </span><span style="color:#6A737D">// Prints: 725</span></span></code></pre>
+<p>PHP heeft ook <code>increment operators</code>:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="php"><code><span class="line"><span style="color:#E1E4E8">$age </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> 89</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">$age</span><span style="color:#F97583">++</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#79B8FF">echo</span><span style="color:#E1E4E8"> $age; </span><span style="color:#6A737D">// Prints: 90</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">$days_til_vacation </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> 7</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">$days_til_vacation</span><span style="color:#F97583">--</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#79B8FF">echo</span><span style="color:#E1E4E8"> $days_til_vacation; </span><span style="color:#6A737D">// Prints: 6</span></span></code></pre>
+<h3 id="tabel-overzicht-operators">Tabel Overzicht Operators</h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th><strong>Operation:</strong></th><th><strong>Long Syntax:</strong></th><th><strong>Short Syntax:</strong></th></tr></thead><tbody><tr><td>Add</td><td>$x = $x + $y</td><td>$x += $y</td></tr><tr><td>Subtract</td><td>$x = $x - $y</td><td>$x -= $y</td></tr><tr><td>Multiply</td><td>$x = $x * $y</td><td>$x *= $y</td></tr><tr><td>Divide</td><td>$x = $x / $y</td><td>$x /= $y</td></tr><tr><td>Modulo</td><td>$x = $x % $y</td><td>$x %= $y</td></tr></tbody></table>
+<hr>
+<h1 id="php-functions">PHP Functions</h1>
+<p>Bronnen bij dit deel:</p>
+<ul>
+<li><a href="https://www.codecademy.com/resources/docs/php/functions">PHP functions</a></li>
+<li><a href="https://www.codecademy.com/learn/learn-php-functions/modules/introduction-to-functions-in-php/cheatsheet">Introduction to functions - cheatsheet</a></li>
+</ul>
+<h2 id="introduction-to-functions">Introduction to Functions</h2>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="php"><code><span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> greetLearner</span><span style="color:#E1E4E8">()</span></span>
+<span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#79B8FF">  echo</span><span style="color:#9ECBFF"> "Hello, Learner!</span><span style="color:#79B8FF">\n</span><span style="color:#9ECBFF">"</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#79B8FF">  echo</span><span style="color:#9ECBFF"> "I hope you're enjoying PHP!</span><span style="color:#79B8FF">\n</span><span style="color:#9ECBFF">"</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#79B8FF">  echo</span><span style="color:#9ECBFF"> "Love, Codecademy"</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// invoke function:</span></span>
+<span class="line"><span style="color:#B392F0">greetLearner</span><span style="color:#E1E4E8">();</span></span></code></pre>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="php"><code><span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> printStringReturnNumber</span><span style="color:#E1E4E8">()</span></span>
+<span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#79B8FF">  echo</span><span style="color:#9ECBFF"> "ERROR: Page not found!</span><span style="color:#79B8FF">\n</span><span style="color:#9ECBFF">"</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#79B8FF"> 404</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8">$my_num </span><span style="color:#F97583">=</span><span style="color:#B392F0"> printStringReturnNumber</span><span style="color:#E1E4E8">();</span></span>
+<span class="line"><span style="color:#79B8FF">echo</span><span style="color:#E1E4E8"> $my_num;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// prints:</span></span>
+<span class="line"><span style="color:#6A737D">// ERROR: Page not found!</span></span>
+<span class="line"><span style="color:#6A737D">// 404</span></span></code></pre>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="php"><code><span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> first</span><span style="color:#E1E4E8">()</span></span>
+<span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#9ECBFF"> "You did it!</span><span style="color:#79B8FF">\n</span><span style="color:#9ECBFF">"</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> second</span><span style="color:#E1E4E8">()</span></span>
+<span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#9ECBFF"> "You're amazing!</span><span style="color:#79B8FF">\n</span><span style="color:#9ECBFF">"</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> third</span><span style="color:#E1E4E8">()</span></span>
+<span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#9ECBFF"> "You're a coding hero!</span><span style="color:#79B8FF">\n</span><span style="color:#9ECBFF">"</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF">echo</span><span style="color:#B392F0"> first</span><span style="color:#E1E4E8">() </span><span style="color:#F97583">.</span><span style="color:#9ECBFF"> " "</span><span style="color:#F97583"> .</span><span style="color:#B392F0"> second</span><span style="color:#E1E4E8">() </span><span style="color:#F97583">.</span><span style="color:#9ECBFF"> " "</span><span style="color:#F97583"> .</span><span style="color:#B392F0"> third</span><span style="color:#E1E4E8">() ;</span></span></code></pre>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="php"><code><span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> sayCustomHello</span><span style="color:#E1E4E8">($name)</span></span>
+<span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#79B8FF">echo</span><span style="color:#9ECBFF"> "Hello, </span><span style="color:#E1E4E8">$name</span><span style="color:#9ECBFF">!"</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">sayCustomHello</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"Aisle Nevertell"</span><span style="color:#E1E4E8">); </span><span style="color:#6A737D">// Prints: Hello, Aisle Nevertell!</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">sayCustomHello</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"Codecademy learner"</span><span style="color:#E1E4E8">); </span><span style="color:#6A737D">// Prints: Hello, Codecademy Learner!</span></span>
+<span class="line"></span></code></pre>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="php"><code><span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> increaseEnthusiasm</span><span style="color:#E1E4E8">($val)</span></span>
+<span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#F97583">return</span><span style="color:#E1E4E8"> $val </span><span style="color:#F97583">.</span><span style="color:#9ECBFF"> "!"</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> repeatThreeTimes</span><span style="color:#E1E4E8">($string)</span></span>
+<span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#F97583">return</span><span style="color:#E1E4E8"> $string </span><span style="color:#F97583">.</span><span style="color:#E1E4E8"> $string </span><span style="color:#F97583">.</span><span style="color:#E1E4E8"> $string;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF">echo</span><span style="color:#B392F0"> increaseEnthusiasm</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"henlo"</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#79B8FF">echo</span><span style="color:#B392F0"> repeatThreeTimes</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"hi"</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#79B8FF">echo</span><span style="color:#B392F0"> increaseEnthusiasm</span><span style="color:#E1E4E8">(</span><span style="color:#B392F0">repeatThreeTimes</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"HI"</span><span style="color:#E1E4E8">));</span></span></code></pre>
+<h3 id="multiple-parameters">Multiple Parameters</h3>
+<p>We kunnen ook functies met meerdere parameters definiëren.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="php"><code><span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> divide</span><span style="color:#E1E4E8">($num_one, $num_two)</span></span>
+<span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> $num_one </span><span style="color:#F97583">/</span><span style="color:#E1E4E8"> $num_two;</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF">echo</span><span style="color:#B392F0"> divide</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">12</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">3</span><span style="color:#E1E4E8">); </span><span style="color:#6A737D">// Prints: 4</span></span>
+<span class="line"><span style="color:#79B8FF">echo</span><span style="color:#B392F0"> divide</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">3</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">12</span><span style="color:#E1E4E8">); </span><span style="color:#6A737D">// Prints: 0.25</span></span></code></pre>
+<p>❗️ Een functie met minder argumenten aanroepen dan er verwacht worden geven errors, zoals deze:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="php"><code><span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> expectTwo</span><span style="color:#E1E4E8">($first, $second)</span></span>
+<span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#9ECBFF"> "whatever"</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF">echo</span><span style="color:#B392F0"> expectTwo</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"test"</span><span style="color:#E1E4E8">); </span><span style="color:#6A737D">// ❌ Will result in an error</span></span></code></pre>
+<p><strong>Voorbeeeld:</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="php"><code><span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> calculateArea</span><span style="color:#E1E4E8">($one, $two)</span></span>
+<span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#F97583">return</span><span style="color:#E1E4E8"> $one </span><span style="color:#F97583">*</span><span style="color:#E1E4E8"> $two;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> calculateVolume</span><span style="color:#E1E4E8">($one, $two, $three)</span></span>
+<span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#F97583">return</span><span style="color:#E1E4E8"> $one </span><span style="color:#F97583">*</span><span style="color:#E1E4E8"> $two </span><span style="color:#F97583">*</span><span style="color:#E1E4E8"> $three;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF">echo</span><span style="color:#B392F0"> calculateArea</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">3</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">5</span><span style="color:#E1E4E8">); </span><span style="color:#6A737D">// 15</span></span>
+<span class="line"><span style="color:#79B8FF">echo</span><span style="color:#B392F0"> calculateVolume</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">3</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">5</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">2</span><span style="color:#E1E4E8">); </span><span style="color:#6A737D">// 30</span></span></code></pre>
+<h3 id="default-parameters">Default Parameters</h3>
+<p>Je kan errors voorkomen door een default parameters mee te geven aan de functie. Als er dan geen argument word meegegeven als de functie invoked word, word deze gebruikt. Als er wel een argument word meegegeven, word deze overschreven.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="php"><code><span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> greetFriend</span><span style="color:#E1E4E8">($name </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> "old chum"</span><span style="color:#E1E4E8">)</span></span>
+<span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#79B8FF">  echo</span><span style="color:#9ECBFF"> "Hello, </span><span style="color:#E1E4E8">$name</span><span style="color:#9ECBFF">!"</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">greetFriend</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"Marvin"</span><span style="color:#E1E4E8">); </span><span style="color:#6A737D">// Prints: Hello, Marvin!</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#B392F0">greetFriend</span><span style="color:#E1E4E8">(); </span><span style="color:#6A737D">// Prints: Hello, old chum!</span></span></code></pre>
+<h3 id="pass-by-reference">Pass by Reference</h3>
+<p>We kunnen functions met variables aanroepen of met directe waardes. Als we een function invoken met een variable als argument, is het alsof we die waarde toewijzen aan de function’s parameter. We wijzen een kopie van de waarde van de argument variable toe. Het variable argument en de parameter zijn aparte entities; verandering aan de parameter in de functie heeft geen effect op de waarde die gepassed is.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="php"><code><span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> addX</span><span style="color:#E1E4E8"> ($param)</span></span>
+<span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#E1E4E8">  $param </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> $param </span><span style="color:#F97583">.</span><span style="color:#9ECBFF"> "X"</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#79B8FF">  echo</span><span style="color:#E1E4E8"> $param;</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span>
+<span class="line"><span style="color:#E1E4E8">$word </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> "Hello"</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#B392F0">addX</span><span style="color:#E1E4E8">($word); </span><span style="color:#6A737D">// Prints: HelloX</span></span>
+<span class="line"><span style="color:#79B8FF">echo</span><span style="color:#E1E4E8"> $word; </span><span style="color:#6A737D">// Prints: Hello</span></span></code></pre>
+<p>Als we wel permanent een variabele willen veranderen, daan zetten we een <code>&#x26;</code> voor de parameter argument van de functie.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="php"><code><span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> addXPermanently</span><span style="color:#E1E4E8"> (</span><span style="color:#F97583">&#x26;</span><span style="color:#E1E4E8">$param)</span></span>
+<span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#E1E4E8">  $param </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> $param </span><span style="color:#F97583">.</span><span style="color:#9ECBFF"> "X"</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#79B8FF">  echo</span><span style="color:#E1E4E8"> $param;</span></span>
+<span class="line"><span style="color:#E1E4E8">};</span></span>
+<span class="line"><span style="color:#E1E4E8">$word </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> "Hello"</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#B392F0">addXPermanently</span><span style="color:#E1E4E8">($word); </span><span style="color:#6A737D">// Prints: HelloX</span></span>
+<span class="line"><span style="color:#79B8FF">echo</span><span style="color:#E1E4E8"> $word; </span><span style="color:#6A737D">// Prints: HelloX</span></span></code></pre>
+<p><strong>Voorbeeld</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="php"><code><span class="line"><span style="color:#E1E4E8">$string_one </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> "you have teeth"</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">$string_two </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> "toads are nice"</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">$string_three </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> "brown is my favorite color"</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> convertToQuestion</span><span style="color:#E1E4E8">(</span><span style="color:#F97583">&#x26;</span><span style="color:#E1E4E8">$str) </span><span style="color:#6A737D">// gebruik van &#x26;</span></span>
+<span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#E1E4E8">$str </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> "Do you think "</span><span style="color:#F97583"> .</span><span style="color:#E1E4E8"> $str </span><span style="color:#F97583">.</span><span style="color:#9ECBFF"> "?</span><span style="color:#79B8FF">\n</span><span style="color:#9ECBFF">"</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#6A737D">// redefinieren van string argument</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D">// in de console de nieuwe string variabele</span></span>
+<span class="line"><span style="color:#79B8FF">echo</span><span style="color:#B392F0"> convertToQuestion</span><span style="color:#E1E4E8">($string_one);</span></span>
+<span class="line"><span style="color:#79B8FF">echo</span><span style="color:#B392F0"> convertToQuestion</span><span style="color:#E1E4E8">($string_two);</span></span>
+<span class="line"><span style="color:#79B8FF">echo</span><span style="color:#B392F0"> convertToQuestion</span><span style="color:#E1E4E8">($string_three)</span></span></code></pre>
+<h3 id="variable-scope">Variable Scope</h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="php"><code><span class="line"><span style="color:#F97583">function</span><span style="color:#B392F0"> calculateDaysLeft</span><span style="color:#E1E4E8">($feed_quantity, $number, $rate)</span></span>
+<span class="line"><span style="color:#E1E4E8">{</span></span>
+<span class="line"><span style="color:#E1E4E8">  $result </span><span style="color:#F97583">=</span><span style="color:#E1E4E8"> $feed_quantity </span><span style="color:#F97583">/</span><span style="color:#E1E4E8"> ($number </span><span style="color:#F97583">*</span><span style="color:#E1E4E8"> $rate);</span></span>
+<span class="line"><span style="color:#F97583">  return</span><span style="color:#E1E4E8"> $result;</span></span>
+<span class="line"><span style="color:#E1E4E8">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF">echo</span><span style="color:#B392F0"> calculateDaysLeft</span><span style="color:#E1E4E8">(</span><span style="color:#79B8FF">300</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">2</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">30</span><span style="color:#E1E4E8">);</span></span></code></pre>
+<h2 id="introduction-to-built-in-functions">Introduction to Built-In Functions</h2>
+<p>PHP heeft een aantal built-in functions. Deze functies – ook bekend als internal functions – kunnen aangeroepen worden zonder dat wij ze zelf te hoeven schrijven.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="php"><code><span class="line"><span style="color:#79B8FF">echo</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"This works!</span><span style="color:#79B8FF">\n</span><span style="color:#9ECBFF">"</span><span style="color:#E1E4E8">);</span></span>
+<span class="line"><span style="color:#79B8FF">echo</span><span style="color:#9ECBFF"> "This also works!</span><span style="color:#79B8FF">\n</span><span style="color:#9ECBFF">"</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#79B8FF">echo</span><span style="color:#9ECBFF"> "Buuuut!"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">" "</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"This"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">" "</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"does!"</span><span style="color:#E1E4E8">, </span><span style="color:#9ECBFF">"</span><span style="color:#79B8FF">\n</span><span style="color:#9ECBFF">"</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#6A737D">//echo("This would NOT work", "\n");</span></span></code></pre>
+<h3 id="werken-met-variables">Werken met Variables</h3>
+<p>PHP heeft een handige built-in function voor het verkrijgen van informatie over de variables, zoals <code>gettype()</code>. Deze functie neemt een argument en returned een string waarde die aangeeft wat voor data type het argument is.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="php"><code><span class="line"><span style="color:#E1E4E8">$name </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> "Aisle Nevertell"</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"><span style="color:#E1E4E8">$age </span><span style="color:#F97583">=</span><span style="color:#79B8FF"> 1000000</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF">echo</span><span style="color:#79B8FF"> gettype</span><span style="color:#E1E4E8">($name); </span><span style="color:#6A737D">// Prints: string</span></span>
+<span class="line"><span style="color:#79B8FF">echo</span><span style="color:#79B8FF"> gettype</span><span style="color:#E1E4E8">($age); </span><span style="color:#6A737D">// Prints: integer</span></span></code></pre>
+<p>Een andere functie die ook een variabele argument gebruikt is de <code>var_dump()</code> functie. Het print details over het argument dat het krijgt. Het laat zien wat voor soort data type het is, en welke waarde het heeft. Voor een string laat het de lengte hiervan zien.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="php"><code><span class="line"><span style="color:#79B8FF">var_dump</span><span style="color:#E1E4E8">($name); </span><span style="color:#6A737D">// Prints: string(15) "Aisle Nevertell"</span></span>
+<span class="line"><span style="color:#79B8FF">var_dump</span><span style="color:#E1E4E8">($age); </span><span style="color:#6A737D">// Prints: int(1000000)</span></span></code></pre>
+<p><code>strrev()</code> krijgt een argument, een string, en draait deze om.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="php"><code><span class="line"><span style="color:#79B8FF">echo</span><span style="color:#79B8FF"> strrev</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"Hello, World!"</span><span style="color:#E1E4E8">); </span><span style="color:#6A737D">// Prints: !dlroW ,olleH</span></span></code></pre>
+<p><code>strtolower()</code> transformeert de argument string naar alleen kleine letters.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="php"><code><span class="line"><span style="color:#79B8FF">echo</span><span style="color:#79B8FF"> strtolower</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"HeLLo"</span><span style="color:#E1E4E8">); </span><span style="color:#6A737D">// Prints: hello</span></span></code></pre>
+<p><code>strrepeat()</code> neemt een string als eerste argument, en een nummer als het tweede. Het returned een string die de argument string zo vaak herhaald als het argument nummer.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="php"><code><span class="line"><span style="color:#79B8FF">echo</span><span style="color:#79B8FF"> str_repeat</span><span style="color:#E1E4E8">(</span><span style="color:#9ECBFF">"hi"</span><span style="color:#E1E4E8">, </span><span style="color:#79B8FF">10</span><span style="color:#E1E4E8">); </span><span style="color:#6A737D">// Prints: hihihihihihihihihihi</span></span></code></pre>
+<h3 id="werken-met-substrings">Werken met Substrings</h3>
+<p>Een substring is een deel van een string. <code>substr_count()</code> is een functie die de hoeveelheid substrings in een string returned. Het neemt twee argumenten; de string die doorzocht word, en de substring die gezocht word — soms ook de <code>neelde</code> genoemd.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="php"><code><span class="line"><span style="color:#E1E4E8">$story </span><span style="color:#F97583">=</span><span style="color:#9ECBFF"> "I was like, </span><span style="color:#79B8FF">\"</span><span style="color:#9ECBFF">Dude, like just tell me what you like think because like everyone else is like being totally honest, and like I just want to know what you like think.</span><span style="color:#79B8FF">\"</span><span style="color:#9ECBFF"> So like I don't know..."</span><span style="color:#E1E4E8">;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF">echo</span><span style="color:#79B8FF"> substr_count</span><span style="color:#E1E4E8">($story, </span><span style="color:#9ECBFF">"like"</span><span style="color:#E1E4E8">); </span><span style="color:#6A737D">// Prints: 8</span></span></code></pre>
+<h4 id="bronnen">Bronnen</h4>
+<ul>
+<li><a href="https://www.php.net/manual/en/language.types.string.php">Officiële PHP docs</a></li>
+<li><a href="https://www.codecademy.com/resources/docs/php/variables">Variables - codecademy</a></li>
+<li><a href="https://www.codecademy.com/resources/docs/php/functions">PHP functions</a></li>
+<li><a href="https://www.codecademy.com/learn/learn-php-functions/modules/introduction-to-functions-in-php/cheatsheet">Introduction to functions - cheatsheet</a></li>
+</ul>   <!-- {
+      relatedPostsData.length > 0 && (
+        <section class="related-posts">
+          <h3>Related Posts</h3>
+          <ul>
+            {relatedPostsData.map((post) => (
+              <li class="related">
+                <a href={`/posts/${post.slug}`}>
+                  <Image
+                    src={post.image.url}
+                    width="100"
+                    height="70"
+                    alt={post.image.alt}
+                  />
+                  <h4>{post.title}</h4>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )
+    } --> </section>  </main> <footer id="contact" data-astro-cid-li7yi75z> <div class="wrapper" data-astro-cid-li7yi75z> <h4 class="pill" data-astro-cid-li7yi75z>Say Hello!</h4> <ul data-astro-cid-li7yi75z> <li data-astro-cid-li7yi75z><a href="mailto:lisagjhoorn@outlook.com" data-astro-cid-li7yi75z>mail</a></li> <li data-astro-cid-li7yi75z><a href="https://bsky.app/profile/lisah.dev" data-astro-cid-li7yi75z>bluesky</a></li> <li data-astro-cid-li7yi75z><a href="https://github.com/lisagjh" data-astro-cid-li7yi75z>github</a></li> <li data-astro-cid-li7yi75z><a href="https://linkedin.com/in/lisavanderhoorn" data-astro-cid-li7yi75z>linkedin</a></li> </ul> </div> <p class="last" data-astro-cid-li7yi75z>built with 💖</p> </footer>  </body></html> 
