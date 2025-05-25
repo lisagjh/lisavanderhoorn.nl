@@ -5,35 +5,10 @@ import SpeedInsights from "@vercel/speed-insights/astro";
 import Header from "../components/display/Header.astro";
 import Footer from "../components/display/Footer.astro";
 
-import { fade, slide } from "astro:transitions";
+import { fade } from "astro:transitions";
 
 const { pageTitle } = Astro.props;
 ---
-<!-- 
-<script>
-  let savedY = 0;
-
-  if ("scrollRestoration" in history) {
-    history.scrollRestoration = "manual";
-  }
-
-  // Opslaan bij navigatie
-  document.addEventListener("astro:before-swap", () => {
-    savedY = window.scrollY;
-    sessionStorage.setItem("scrollPos", savedY);
-  });
-
-  // Herstel scrollpositie zónder flits, alleen bij terug
-  document.addEventListener("astro:after-swap", () => {
-    const navType = performance.getEntriesByType("navigation")[0]?.type;
-    if (navType === "back_forward") {
-      const y = sessionStorage.getItem("scrollPos");
-      if (y) {
-        window.scrollTo({ top: Number(y), left: 0});
-      }
-    }
-  });
-</script> -->
 
 <html lang="en">
   <head>
@@ -51,7 +26,7 @@ const { pageTitle } = Astro.props;
     <Analytics />
     <SpeedInsights />
   </head>
-  <body>
+  <body transition:animate="fade">
     <main>
       <slot />
     </main>
