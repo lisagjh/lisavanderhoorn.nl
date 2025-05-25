@@ -8,7 +8,7 @@ const allPosts = await getCollection("blog");
 
 <Layout>
   <section class="wrapper">
-    <button class="back" onclick="history.back()">Back Home</button>
+    <a class="back" href="/">home</a>
     <h2 class="pill">CSS Day</h2>
     <p>I tried out some new CSS features. Read about them here:</p>
 
@@ -43,8 +43,11 @@ const allPosts = await getCollection("blog");
     border-radius: 10px;
   }
 
+  a.back {
+    text-decoration: none;
+  }
+
   h2 {
-    width: 100%;
     text-align: start;
     font-size: 3.5rem;
   }

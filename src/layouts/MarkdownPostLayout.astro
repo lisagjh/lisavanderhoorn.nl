@@ -22,7 +22,7 @@ const allPosts = await getCollection("projects");
 <ClientRouter />
 <BaseLayout pageTitle={`${frontmatter.title}`}>
   <section class="markdown-post" transition:name={`post-${frontmatter.id}`}>
-    <button class="back-home" onclick="history.back()">Ga terug</button>
+    <button class="back-home" onclick="history.back()" class="back">Ga terug</button>
 
     <h2 transition:name={`title-${frontmatter.id}`}>{frontmatter.title}</h2>
 
