@@ -35,7 +35,7 @@ console.log(relatedPostsData);
 <ClientRouter />
 <BaseLayout pageTitle={`${frontmatter.title}`}>
   <section class="markdown-post" transition:name={`post-${frontmatter.id}`}>
-    <button class="back" onclick="history.back()">Ga terug</button>
+    <button class="back" onclick="history.back()">Go Back</button>
 
     <h1 transition:name={`title-${frontmatter.id}`}>{frontmatter.title}</h1>
 

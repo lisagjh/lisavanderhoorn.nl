@@ -10,17 +10,19 @@ const allPosts = await getCollection("blog");
   <section class="wrapper">
     <button class="back" onclick="history.back()">Back Home</button>
     <h2 class="pill">CSS Day</h2>
-    <p>I tried out some new CSS features. Read about them here!</p>
+    <p>I tried out some new CSS features. Read about them here:</p>
 
     <ul class="grid">
       {
         allPosts
           .filter((post) => post.data.tags?.includes("cssday"))
           .map((post, index) => (
-            <li transition:name={`css-${post.id}`} data-index={index}>
+            <li class={index % 2 !== 0 ? "odd" : "even"} data-index={index}>
               <a href={`/cssday/${post.id}`}>
                 <h3 transition:name={`title-${post.id}`}>{post.data.title}</h3>
-                <p transition:name={`description-${post.id}`}>{post.data.description}</p>
+                <p transition:name={`description-${post.id}`}>
+                  {post.data.description}
+                </p>
               </a>
             </li>
           ))
@@ -86,6 +88,7 @@ const allPosts = await getCollection("blog");
       0px 8px 8px 0px rgba(0, 0, 0, 0.03),
       0px -3px 4px 0px rgba(0, 0, 0, 0.03);
     list-style: "";
+    transition: 0.25s ease-in-out;
   }
 
   li a {
@@ -93,7 +96,6 @@ const allPosts = await getCollection("blog");
     width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center;
     text-align: start;
     gap: 1rem;
     padding: 2rem;
@@ -112,9 +114,16 @@ const allPosts = await getCollection("blog");
   }
 
   @media (prefers-reduce-motion: no-preference) {
-    li {
+    ul li.even {
       --delay: calc((sibling-index() + 1) * 0.25s);
       animation: fade-slide-in 0.75s var(--delay)
+        cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+        animation-delay: calc((sibling-index() + 1) * 0.25s);
+    }
+
+    ul li.odd {
+      --delay: calc((sibling-index() + 1) * 0.25s);
+      animation: fade-slide-in-odd 0.75s var(--delay)
         cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
     }
 
@@ -122,6 +131,17 @@ const allPosts = await getCollection("blog");
       from {
         opacity: 0;
         transform: translateX(-5rem);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes fade-slide-in-odd {
+      from {
+        opacity: 0;
+        transform: translateX(5rem);
       }
       to {
         opacity: 1;
