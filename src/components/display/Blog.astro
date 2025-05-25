@@ -1,6 +1,8 @@
 ---
 import { getCollection } from "astro:content";
-const allPosts = (await getCollection("blog")).sort((a, b) => b.data.id - a.data.id);
+const allPosts = (await getCollection("blog")).sort(
+  (a, b) => b.data.id - a.data.id
+);
 ---
 
 <section id="blog" transition:name="blog">
@@ -13,7 +15,7 @@ const allPosts = (await getCollection("blog")).sort((a, b) => b.data.id - a.data
 
   <ul class="grid">
     {
-      allPosts.slice(0,4).map((post) => (
+      allPosts.slice(0, 4).map((post) => (
         <li transition:name={`post-${post.id}`}>
           <a href={`/blog/${post.id}`}>
             <h3 transition:name={`title-${post.id}`}>{post.data.title}</h3>
@@ -202,6 +204,29 @@ const allPosts = (await getCollection("blog")).sort((a, b) => b.data.id - a.data
 
         &::scroll-button(*):focus-visible {
           outline-offset: 5px;
+        }
+      }
+    }
+  }
+
+  @supports (animation-timeline: view()) {
+    @media (width <48rem) {
+      li {
+        animation-timeline: view();
+        animation-name: fade-in;
+        animation-duration: 1s;
+        animation-fill-mode: forwards;
+        animation-range: 0% 60%;
+      }
+
+      @keyframes fade-in {
+        from {
+          transform: translateY(10rem);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
         }
       }
     }

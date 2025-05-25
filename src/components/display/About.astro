@@ -2,25 +2,22 @@
   <div>
     <h2 class="pill">About Me</h2>
     <p>
-      Hi, I'm Lisa! I'm a frontend developer with a passion for creating
-      accessible and visually appealing web experiences.
+      Hi, I'm Lisa — a frontend developer who loves crafting accessible,
+      visually engaging web experiences.
     </p>
-    <p>
-      I work with HTML, CSS, and JavaScript, and have built dynamic websites
-      using Node.js, Express, and EJS. I also enjoy working with modern
-      frameworks like SvelteKit and Astro.
-    </p>
-    <p>Currently I'm learning some React and diving into PHP.</p>
   </div>
 
   <div>
     <h2 class="pill">More About Me</h2>
     <p>
-      I enjoy combining code and creativity, whether it's in experimenting with
-      UX/UI design in Figma, playing with animations in CSS, or messing with
+      I love combining technology and creativity — whether it’s refining UX/UI
+      designs in Figma, crafting smooth animations in CSS, or experimenting with
       P5.js.
     </p>
-    <p>When I'm not coding, I'm reading a good book or playing some games!</p>
+    <p>
+      Outside of coding, you’ll usually find me curled up with a book or
+      unwinding with a game.
+    </p>
 
     <!-- <a href="/#" class="pill">Learn More</a> -->
   </div>
@@ -76,6 +73,27 @@
     }
     div:last-of-type {
       grid-column: 2/4;
+    }
+  }
+
+  @supports (animation-timeline: view()) {
+    div {
+      animation-timeline: view();
+      animation-name: fade-in;
+      animation-duration: 1s;
+      animation-fill-mode: forwards;
+      animation-range: 0% 60%;
+    }
+
+    @keyframes fade-in {
+      from {
+        transform: translateY(10rem);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
     }
   }
 </style>

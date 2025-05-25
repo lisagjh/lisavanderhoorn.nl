@@ -206,4 +206,25 @@
       transform: translateY(0);
     }
   }
+
+  @supports (animation-timeline: view()) {
+    header {
+      animation-timeline: view();
+      animation-name: fade-in;
+      animation-duration: 1s;
+      animation-fill-mode: forwards;
+      animation-range: 0% 30%;
+    }
+
+    @keyframes fade-in {
+      from {
+        transform: translateY(4rem);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+  }
 </style>
