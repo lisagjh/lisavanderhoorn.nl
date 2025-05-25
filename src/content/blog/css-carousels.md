@@ -16,6 +16,8 @@ relatedPosts:
 
 CSS Carousels are the new way to create carousels without any JS. In this post I'm exploring how they work, and combining the new scroll markers with anchor positioning and `sibling-index()`.
 
+Check the demo out on the home page.
+
 ## Setup
 
 I started out with a simple `ul`, containing `li` element with the blog post preview content.

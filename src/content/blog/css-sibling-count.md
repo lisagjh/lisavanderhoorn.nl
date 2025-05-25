@@ -16,6 +16,8 @@ relatedPosts:
 
 CSS just keeps getting better. `sibling-index()` makes staggering css animations easier than ever.
 
+Check out the demo on the home page, or in the navigation.
+
 ## What is `sibling-index()`?
 
 `sibling-index()` is a new CSS function that returns the zero based index of an element, so the position it holds in it's list of siblings. This allows for a dynamic way to target and style elements based on their position, without any JS, hacky CSS `.first` classes or manual `--index` custom properties needed! 🎉 `sibling-index()` does this in a way more elegant way.
