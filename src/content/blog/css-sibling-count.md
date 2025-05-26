@@ -73,4 +73,4 @@ Of course there are plenty other uses for this, other than staggering animations
 
 ## Support
 
-This is a new feature and is only available in Chrome Canary 136+ at this time. 
+This is a new feature and is only available in Chrome Canary 136+ at this time — May 2025. 

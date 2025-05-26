@@ -118,4 +118,4 @@ You can find the full code for the CSS carousel [here](https://github.com/lisagj
 
 ## Support
 
-This is a new feature and is only available in Chrome Canary 136+ at this time.
+This is a new feature and is only available in Chrome and Edge 135+ at this time — May 2025.

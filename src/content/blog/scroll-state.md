@@ -116,6 +116,10 @@ nav {
 }
 ```
 
+## Support
+
+This is a new feature and is only available in Chrome and Edge 133+ at this time — May 2025. 
+
 ### Sources
 
 [CSS scroll-state() - chrome for developers](https://developer.chrome.com/blog/css-scroll-state-queries#progressive_enhancement)
