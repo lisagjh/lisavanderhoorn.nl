@@ -16,7 +16,7 @@ const allPosts = await getCollection("blog");
       {
         allPosts.map((post, index) => (
           <li transition:name={`post-${post.id}`} data-index={index}>
-            <a href={`/cssday/${post.id}`}>
+            <a href={`/blog/${post.id}`}>
               <h3 transition:name={`title-${post.id}`}>{post.data.title}</h3>
               <p transition:name={`description-${post.id}`}>{post.data.description}</p>
             </a>

@@ -122,89 +122,87 @@ const allPosts = (await getCollection("blog")).sort(
     }
   }
 
-  @supports (ul: : scroll-marker-group) {
-    @media (width >= 48rem) {
-      ul.grid {
-        anchor-name: --grid;
-        scroll-marker-group: after;
-        position: relative;
-        scrollbar-width: none;
+  @media (width >= 48rem) {
+    ul.grid {
+      anchor-name: --grid;
+      scroll-marker-group: after;
+      position: relative;
+      scrollbar-width: none;
 
-        &::scroll-marker-group {
-          position: absolute;
-          position-anchor: --grid;
-          top: anchor(--grid bottom);
-          justify-self: anchor-center;
+      &::scroll-marker-group {
+        position: absolute;
+        position-anchor: --grid;
+        top: anchor(--grid bottom);
+        justify-self: anchor-center;
 
-          display: flex;
-          flex-direction: row;
-          justify-content: center;
-          align-items: center;
-          gap: 0.5rem;
-        }
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 0.5rem;
+      }
 
-        li:hover {
-          box-shadow: 0px 1px 10px 0px rgba(0, 0, 0, 0.1);
-        }
+      li:hover {
+        box-shadow: 0px 1px 10px 0px rgba(0, 0, 0, 0.1);
+      }
 
-        > li::scroll-marker {
-          content: "" / "Scroll to post";
-          background: url(/public/assets/svg/dot.svg);
-          background-repeat: no-repeat;
-          background-size: 70%;
-          background-position: center;
-          height: 2rem;
-          width: 2rem;
-          transform: rotate(calc(sibling-index() * 70deg));
-          opacity: 0.65;
-          transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
+      > li::scroll-marker {
+        content: "" / "Scroll to post";
+        background: url(/public/assets/svg/dot.svg);
+        background-repeat: no-repeat;
+        background-size: 70%;
+        background-position: center;
+        height: 2rem;
+        width: 2rem;
+        transform: rotate(calc(sibling-index() * 70deg));
+        opacity: 0.65;
+        transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      }
 
-        > li::scroll-marker:target-current {
-          opacity: 1;
-          scale: 1.1;
-        }
+      > li::scroll-marker:target-current {
+        opacity: 1;
+        scale: 1.1;
+      }
 
-        &::scroll-button(*) {
-          background-color: transparent;
-          width: 3rem;
-          height: 3rem;
-          position: absolute;
-          position-anchor: --grid;
-          border: none;
-          transition: 0.15s ease-in-out;
-        }
+      &::scroll-button(*) {
+        background-color: transparent;
+        width: 3rem;
+        height: 3rem;
+        position: absolute;
+        position-anchor: --grid;
+        border: none;
+        transition: 0.15s ease-in-out;
+      }
 
-        &::scroll-button(*):disabled {
-          opacity: 0.5;
-          pointer-events: none;
-          cursor: not-allowed;
-        }
+      &::scroll-button(*):disabled {
+        opacity: 0.5;
+        pointer-events: none;
+        cursor: not-allowed;
+      }
 
-        &::scroll-button(*):hover {
-          scale: 1.05;
-        }
+      &::scroll-button(*):hover {
+        scale: 1.05;
+      }
 
-        &::scroll-button(*):active {
-          scale: 0.95;
-        }
+      &::scroll-button(*):active {
+        scale: 0.95;
+      }
 
-        &::scroll-button(left) {
-          content: url(/public/assets/svg/arrow-left.svg) / "Scroll Left";
+      &::scroll-button(left) {
+        content: url(/public/assets/svg/arrow-left.svg) / "Scroll Left";
 
-          top: anchor(--grid bottom);
-          left: anchor(--grid left);
-        }
+        top: anchor(--grid bottom);
+        left: anchor(--grid left);
+      }
 
-        &::scroll-button(right) {
-          content: url(/public/assets/svg/arrow-right.svg) / "Scroll Right";
-          top: anchor(--grid bottom);
-          right: anchor(--grid right);
-        }
+      &::scroll-button(right) {
+        content: url(/public/assets/svg/arrow-right.svg) / "Scroll Right";
+        top: anchor(--grid bottom);
+        right: anchor(--grid right);
+      }
 
-        &::scroll-button(*):focus-visible {
-          outline-offset: 5px;
-        }
+      &::scroll-button(*):focus-visible {
+        outline-offset: 5px;
       }
     }
   }

@@ -3,7 +3,6 @@ import ClientRouter from "astro/components/ClientRouter.astro";
 import BaseLayout from "./BaseLayout.astro";
 import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
-import { date } from "astro:schema";
 
 const { frontmatter } = Astro.props;
 
@@ -28,8 +27,6 @@ const relatedPostsData = allPosts
     }),
     image: post.data.image,
   }));
-
-console.log(relatedPostsData);
 ---
 
 <ClientRouter />

@@ -13,7 +13,7 @@ relatedPosts:
   - css-carousels
 ---
 
-A while ago I read about CSS scroll-state. While building the new version of my website, I got to implement this new feature. This is an extension upon the container queries, to track the state of an element and figure out if it's scrolling or sticky somewhere. This allows us to add an animation or styling when an element is sticky at the top, like a `nav` for example.
+A while ago I read about CSS scroll-state. While building the new version of my website, I got to implement this new feature. This is an extension upon the container queries, to track the state of an element and figure out if it's scrolling or sticky somewhere. This allows us to add an animation or styling when an element is sticky at the top, like this `nav` for example.
 
 ## Header and Nav
 
@@ -115,6 +115,10 @@ nav {
   }
 }
 ```
+
+## Support
+
+This is a new feature and is only available in Chrome and Edge 133+ at this time — May 2025. 
 
 ### Sources
 
