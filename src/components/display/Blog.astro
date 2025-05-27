@@ -1,7 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 const allPosts = (await getCollection("blog")).sort(
-  (a, b) => b.data.id - a.data.id
+  (a, b) => b.data.pubDate - a.data.pubDate
 );
 ---
 
