@@ -3,14 +3,18 @@ import Layout from "../../layouts/BaseLayout.astro";
 
 import { getCollection } from "astro:content";
 
-const allPosts = await getCollection("blog");
+const allPosts = (await getCollection("blog")).sort(
+  (a, b) => new Date(b.data.pubDate) - new Date(a.data.pubDate)
+);
 ---
 
 <Layout>
   <section class="wrapper" transition:name="blog">
     <button class="back" onclick="history.back()">Back Home</button>
     <h2 class="pill" transition:name="blog-title">Blog</h2>
-    <p transition:name="blog-text">Read some stuff! From talks at FDND to new stuff I'm learning.</p>
+    <p transition:name="blog-text">
+      Read some stuff! From talks at FDND to new stuff I'm learning.
+    </p>
 
     <ul class="grid">
       {
@@ -18,7 +22,9 @@ const allPosts = await getCollection("blog");
           <li transition:name={`post-${post.id}`} data-index={index}>
             <a href={`/blog/${post.id}`}>
               <h3 transition:name={`title-${post.id}`}>{post.data.title}</h3>
-              <p transition:name={`description-${post.id}`}>{post.data.description}</p>
+              <p transition:name={`description-${post.id}`}>
+                {post.data.description}
+              </p>
             </a>
           </li>
         ))
