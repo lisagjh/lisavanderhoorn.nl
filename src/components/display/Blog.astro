@@ -1,13 +1,14 @@
 ---
 import { getCollection } from "astro:content";
 const allPosts = (await getCollection("blog")).sort(
-  (a, b) => b.data.pubDate - a.data.pubDate
+  (a, b) => new Date(b.data.pubDate) - new Date(a.data.pubDate)
 );
 ---
 
 <section id="blog" transition:name="blog">
   <div class="wrapper">
     <h2 class="pill" transition:name="blog-title">Blog</h2>
+    <p>{allPosts.length} posts</p>
     <p transition:name="blog-text">
       Read some stuff! From talks at FDND to new stuff I'm learning.
     </p>
@@ -29,7 +30,7 @@ const allPosts = (await getCollection("blog")).sort(
   </ul>
 
   <div class="bottom">
-    <a href="/blog" class="pill">More</a>
+    <a href="/blog" class="pill">View All Posts</a>
   </div>
 </section>
 
@@ -51,6 +52,24 @@ const allPosts = (await getCollection("blog")).sort(
     padding: 2rem;
     background-color: var(--primary-light);
     border-radius: 10px;
+  }
+
+  .wrapper {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .wrapper p:first-of-type {
+    background-color: var(--primary-dark);
+    color: var(--white);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    height: 2.5rem;
+    padding: 1rem;
+    justify-self: end;
+    align-self: center;
   }
 
   .bottom {
@@ -122,6 +141,7 @@ const allPosts = (await getCollection("blog")).sort(
     }
   }
 
+  /* css carousel version */
   @media (width >= 48rem) {
     ul.grid {
       anchor-name: --grid;
@@ -204,6 +224,53 @@ const allPosts = (await getCollection("blog")).sort(
       &::scroll-button(*):focus-visible {
         outline-offset: 5px;
       }
+    }
+
+    /* scroll animation w shadow */
+    ul.grid {
+      scroll-timeline: --scroll-timeline x;
+    }
+
+    ul.grid::before,
+    ul.grid::after {
+      content: "";
+      display: block;
+      position: sticky;
+      height: 100%;
+    }
+
+    ul.grid::before {
+      top: 0;
+      background: radial-gradient(
+        farthest-side at 50% 0,
+        rgb(0 0 0 / 0.25),
+        rgb(0 0 0 / 0)
+      );
+    }
+
+    ul.grid::after {
+      bottom: 0;
+      background: radial-gradient(
+        farthest-side at 50% 100%,
+        rgb(0 0 0 / 0.25),
+        rgb(0 0 0 / 0)
+      );
+    }
+
+    @keyframes reveal {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+
+    ul.grid::before,
+    ul.grid::after {
+      animation-name: reveal;
+      animation-timeline: --scroll-timeline;
+      animation-fill-mode: both;
     }
   }
 
