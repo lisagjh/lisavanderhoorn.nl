@@ -221,6 +221,13 @@ const relatedPostsData = allPosts
     color: var(--primary-light);
   }
 
+  @media (width <= 400px) {
+    :global(.markdown-post pre),
+    :global(.markdown-post code) {
+      font-size: 0.9rem;
+    }
+  }
+
   :global(.markdown-post pre) {
     max-width: 100%;
   }
@@ -254,5 +261,17 @@ const relatedPostsData = allPosts
 
   :global(.markdown-post h5) {
     font-size: 1.25rem;
+  }
+
+  :global(.markdown-post iframe) {
+    height: 100%;
+    min-height: 25rem;
+    border: 2px solid #ed225d;
+    border-radius: 4px;
+    box-shadow: none;
+  }
+
+  :global(.markdown-post blockquote) {
+    width: 100%;
   }
 </style>
