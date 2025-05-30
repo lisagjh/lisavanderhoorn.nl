@@ -21,3 +21,4 @@ output/
 package-lock.json
 
 data-store.json
+.astro/data-store.json
