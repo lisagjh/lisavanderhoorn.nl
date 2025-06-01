@@ -1,5 +1,14 @@
 <script>
   // TODO create active state based on whats in view + the url ig not on /
+
+  // add class to header if on /
+  const header = document.querySelector("header");
+
+  const url = window.location.pathname;
+  if (url === "/") {
+    header.classList.add("home");
+  }
+
 </script>
 
 <header transition:name="header">
@@ -208,7 +217,7 @@
   }
 
   @supports (animation-timeline: view()) {
-    header {
+    .home {
       animation-timeline: view();
       animation-name: fade-in;
       animation-duration: 1s;

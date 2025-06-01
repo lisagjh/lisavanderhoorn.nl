@@ -1,0 +1,80 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+---
+
+<script>
+  import gsap from "gsap";
+  import SplitText from "gsap/SplitText";
+  import ScrambleTextPlugin from "gsap/ScrambleTextPlugin";
+  gsap.registerPlugin(SplitText);
+  gsap.registerPlugin(ScrambleTextPlugin);
+
+  const tl = gsap.timeline();
+
+  const wrapper = document.querySelector(".one");
+  const originalText = document.querySelector("h2:first-of-type");
+  const cloneText = originalText?.cloneNode(true);
+  wrapper?.appendChild(cloneText);
+
+  const original = new SplitText(originalText, {
+    type: "chars",
+  });
+
+  const clone = new SplitText(cloneText, {
+    type: "chars",
+  });
+
+  //global tween settings
+  let duration = 0.55;
+  let stagger = { each: 0.02, ease: "power2", from: "start" };
+
+  gsap.set(clone.chars, {
+    rotationX: -90,
+    opacity: 0,
+    transformOrigin: "50% 50% -50",
+  });
+
+  tl.to(original.chars, {
+    duration: duration,
+    rotationX: 90,
+    transformOrigin: "50% 50% -50",
+    stagger: stagger,
+  });
+
+  tl.to(clone.chars, {
+    duration: 0.55,
+    opacity: 1,
+    stagger: stagger,
+  });
+
+  tl.to(clone.chars, {
+    duration: duration,
+    rotationX: 0,
+    stagger: stagger,
+  });
+</script>
+
+<BaseLayout pageTitle="Playground">
+  <h1>Playground</h1>
+
+  <section class="overview">
+    <div class="one">
+      <h2>hello</h2>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  section {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 2rem;
+    width: 100%;
+    max-width: 65rem;
+  }
+
+  h2 div {
+    border: 1px solid red;
+  }
+</style>

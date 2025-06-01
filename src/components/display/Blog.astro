@@ -145,6 +145,27 @@ const allPosts = (await getCollection("blog")).sort(
     }
   }
 
+  @supports (animation-timeline: view()) {
+    section {
+      animation-timeline: view();
+      animation-name: fade-in;
+      animation-duration: 1s;
+      animation-fill-mode: forwards;
+      animation-range: 0% 30%;
+    }
+
+    @keyframes fade-in {
+      from {
+        transform: translateY(10rem);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+  }
+
   /* css carousel version */
   @media (width >= 48rem) {
     ul.grid {
