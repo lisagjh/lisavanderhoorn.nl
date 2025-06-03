@@ -35,8 +35,9 @@ const { pageTitle } = Astro.props;
 </html>
 
 <script type="module">
-  import { gsap } from "../../node_modules/gsap";
-  import { SplitText } from "../../node_modules/gsap/SplitText";
-
+  import gsap from "gsap";
+  import SplitText from "gsap/SplitText";
+  import ScrambleTextPlugin from "gsap/ScrambleTextPlugin";
   gsap.registerPlugin(SplitText);
+  gsap.registerPlugin(ScrambleTextPlugin);
 </script>

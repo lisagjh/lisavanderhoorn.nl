@@ -615,9 +615,12 @@
 	animation-timing-function: cubic-bezier(0.76, 0, 0.24, 1);
 	animation-fill-mode: both;
 	animation-name: astroFadeIn; }</style></head> <body data-astro-transition-scope="astro-f5sodjme-17"> <main>  <script type="module">
-  import { gsap } from "../../node_modules/gsap";
-  import { SplitText } from "../../node_modules/gsap/SplitText";
-  import { ScrambleTextPlugin } from "../../node_modules/gsap/ScrambleTextPlugin.js";
+  import gsap from "gsap";
+  import SplitText from "gsap/SplitText";
+  import ScrambleTextPlugin from "gsap/ScrambleTextPlugin";
+  gsap.registerPlugin(SplitText);
+  gsap.registerPlugin(ScrambleTextPlugin);
+
   gsap.registerPlugin(SplitText);
   gsap.registerPlugin(ScrambleTextPlugin);
 
