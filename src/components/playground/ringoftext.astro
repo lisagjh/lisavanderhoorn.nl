@@ -1,0 +1,50 @@
+<script>
+  import { gsap } from "gsap";
+  import SplitText from "gsap/SplitText";
+
+  const ringWrapper = document.querySelector(".cylinder-container");
+  const topRing = document.querySelector(".top");
+  const text = document.querySelector("p");
+
+  const tl = gsap.timeline();
+
+  const split = new SplitText(text, {
+    type: "chars",
+    mask: "chars",
+  });
+</script>
+
+<div class="cylinder-container" id="cylinder">
+  <div class="ring top" id="topRing">
+    <p>frontend developer</p>
+  </div>
+</div>
+
+<style>
+  .cylinder-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    perspective: 1200px;
+  }
+
+  .ring {
+    position: absolute;
+    width: 100%;
+    height: 60px;
+    transform-style: preserve-3d;
+  }
+
+  p {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+  }
+</style>
