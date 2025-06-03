@@ -13,9 +13,9 @@ const allPosts = await getCollection("projects");
 <ClientRouter />
 <BaseLayout pageTitle={`${frontmatter.title}`}>
   <section class="markdown-post" transition:name={`post-${frontmatter.id}`}>
-    <button class="back-home" onclick="history.back()" class="back"
-      >Go back</button
-    >
+    <button class="back" onclick="history.back()" class="back">
+      Go back
+    </button>
 
     <h2 transition:name={`title-${frontmatter.id}`}>{frontmatter.title}</h2>
 
@@ -241,5 +241,10 @@ const allPosts = await getCollection("projects");
 
   :global(.markdown-post blockquote) {
     width: 100%;
+  }
+
+  :global(.markdown-post p code) {
+    font-size: 0.8rem;
+    padding: 0.15rem 0.2rem;
   }
 </style>

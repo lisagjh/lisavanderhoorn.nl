@@ -2,7 +2,7 @@
 id: 8
 title: "Nature of Code - intro to creative coding"
 pubDate: 2025-05-30
-description: "Learning more about P5js from the wonderful Daniel Shiffmna"
+description: "Learning more about P5js from the wonderful Daniel Shiffman"
 tags: ["P5", "creative coding", "js", "learning in public"]
 lang: "en"
 relatedPosts:

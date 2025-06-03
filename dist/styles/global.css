@@ -42,6 +42,7 @@
 
   --tertiary: hsl(43deg 89% 61%);
   --tertiary-light: hsl(43deg 100% 80%);
+  --tertiary-lighter: hsl(43deg 100% 95%);
   --tertiary-dark: hsl(43deg 60% 50%);
 }
 
@@ -122,7 +123,6 @@ section {
 p {
   font-weight: 400;
   max-width: 55ch;
-  font-size: 1.05rem;
   font-weight: lighter;
 }
 
@@ -137,26 +137,24 @@ button {
   font-size: 1rem;
   color: var(--black);
   padding: 1rem 0.5rem;
+
+  background: var(--secondary-lighter);
   border: none;
   border-radius: 2px;
   text-transform: lowercase;
-  box-shadow: 0 0 1px 0px var(--dark);
-
-  background: linear-gradient(
-    99deg,
-    var(--primary) 0%,
-    var(--primary) 50%,
-    var(--secondary) 50%
-  );
-  background-size: 220%;
-  background-position: right;
+  box-shadow: 
+    0px 13px 25px 0px rgba(0, 0, 0, 0.01),
+    0px 4px 9px 0px rgba(0, 0, 0, 0.1);
   transition: 0.3s ease-out;
 }
 
 button:hover {
   color: var(--dark);
   background-position: left;
-  box-shadow: 0 0 1px 0px var(--bg);
+  box-shadow: 
+    0px 13px 25px 0px rgba(0, 0, 0, 0.01), 
+    0px 16px 16px 0px rgba(0, 0, 0, 0.025),
+    0px 4px 9px 0px rgba(0, 0, 0, 0.1);
 }
 
 button:active {
@@ -193,18 +191,18 @@ blockquote {
   font-size: 1.4em;
   font-style: italic;
   color: var(--dark);
-  width: 60%;
-  padding: 2rem 4rem;
-  border-left: 8px solid var(--secondary);
+  padding: 7% 10%;
+  border-left: 8px solid var(--tertiary);
   line-height: 1.6;
   position: relative;
-  background: #ededed;
+  background: var(--tertiary-lighter);
 }
 
 blockquote::before {
   content: "\201C";
-  color: var(--secondary);
-  font-size: 4rem;
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--tertiary);
+  font-size: 3.5rem;
   position: absolute;
   left: 0.5rem;
   top: -0.75rem;
@@ -239,6 +237,7 @@ blockquote span {
 .back:hover {
   background: var(--_border);
   opacity: 1;
+  box-shadow: none;
 }
 
 .divider {
