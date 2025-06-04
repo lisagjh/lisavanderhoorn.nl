@@ -1,14 +1,20 @@
 <script type="module">
-  import gsap from "gsap";
-  import SplitText from "gsap/SplitText";
-  import ScrambleTextPlugin from "gsap/ScrambleTextPlugin";
+  import { gsap } from "/gsap";
+  import { ScrollTrigger } from "/gsap/ScrollTrigger";
+  gsap.registerPlugin(ScrollTrigger);
+  import { SplitText } from "/gsap/all";
   gsap.registerPlugin(SplitText);
+  import { ScrambleTextPlugin } from "/gsap/all";
   gsap.registerPlugin(ScrambleTextPlugin);
 
-  gsap.registerPlugin(SplitText);
-  gsap.registerPlugin(ScrambleTextPlugin);
+  if (gsap) {
+    console.log("gsap loaded", gsap.version);
+  } else if (!gsap) {
+    console.log("could not load gsap");
+  }
 
   const wrapper = document.querySelector(".wrapper");
+
 
   // Show the wrapper after a short delay
   setTimeout(() => {
