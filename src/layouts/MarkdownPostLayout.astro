@@ -1,6 +1,6 @@
 ---
 import { ClientRouter } from "astro:transitions";
-import BaseLayout from "./BaseLayout.astro";
+import Layout from "./Layout.astro";
 import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
 
@@ -11,7 +11,7 @@ const allPosts = await getCollection("projects");
 ---
 
 <ClientRouter />
-<BaseLayout pageTitle={`${frontmatter.title}`}>
+<Layout pageTitle={`${frontmatter.title}`}>
   <section class="markdown-post" transition:name={`post-${frontmatter.id}`}>
     <button class="back" onclick="history.back()" class="back">
       Go back
@@ -65,7 +65,7 @@ const allPosts = await getCollection("projects");
       ) : null
     }
   </section>
-</BaseLayout>
+</Layout>
 
 <style>
   section {

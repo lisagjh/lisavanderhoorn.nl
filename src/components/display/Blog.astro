@@ -300,40 +300,39 @@ const allPosts = (await getCollection("blog")).sort(
     }
   }
 
-  @supports (animation-timeline: view()) {
-    @media (width <48rem) {
-      ul {
-        perspective: 2000px;
-      }
+  @media (prefers-reduce-motion: no-preference) {
+    ul {
+      overflow: hidden;
+    }
 
-      li {
-        animation-timeline: view();
-        animation-name: rotate-slide-in;
-        animation-duration: 1s;
-        animation-fill-mode: forwards;
+    @keyframes animate-in {
+      0% {
+        opacity: 0;
+        transform: translateY(100%);
       }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
 
-      @keyframes rotate-slide-in {
-        0% {
-          transform: translateY(100%) rotateX(-50deg);
-          box-shadow: 0px 1px 10px 0px rgba(0, 0, 0, 0.1);
-          opacity: 0.5;
-        }
-        50% {
-          transform: translateY(0) rotateX(0);
-          box-shadow:
-            0px 5px 8px 0px rgba(0, 0, 0, 0.03),
-            0px 7px 6px 0px rgba(0, 0, 0, 0.02),
-            0px 8px 8px 0px rgba(0, 0, 0, 0.03),
-            0px -3px 4px 0px rgba(0, 0, 0, 0.03);
-          opacity: 1;
-        }
-        100% {
-          transform: translateY(-100%) rotateX(50deg);
-          box-shadow: 0px 1px 10px 0px rgba(0, 0, 0, 0.1);
-          opacity: 0.5;
-        }
+    @keyframes animate-out {
+      0% {
+        opacity: 1;
+        transform: translateY(0);
       }
+      100% {
+        opacity: 0;
+        transform: translateY(-100%);
+      }
+    }
+
+    .grid li {
+      animation:
+        animate-in linear forwards,
+        animate-out linear forwards;
+      animation-timeline: view();
+      animation-range: entry, exit;
     }
   }
 </style>

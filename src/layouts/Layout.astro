@@ -2,6 +2,7 @@
 import { ClientRouter } from "astro:transitions";
 import Analytics from "@vercel/analytics/astro";
 import SpeedInsights from "@vercel/speed-insights/astro";
+import Header from "../components/display/Header.astro";
 import Footer from "../components/display/Footer.astro";
 
 const { pageTitle } = Astro.props;
@@ -24,6 +25,7 @@ const { pageTitle } = Astro.props;
     <SpeedInsights />
   </head>
   <body transition:animate="fade">
+    <Header />
     <main>
       <slot />
     </main>

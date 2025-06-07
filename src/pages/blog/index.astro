@@ -121,9 +121,9 @@ const allPosts = (await getCollection("blog")).sort(
   }
 
   @media (prefers-reduce-motion: no-preference) {
-    li {
+    ul.grid li{
       --delay: calc((sibling-index() + 1) * 0.25s);
-      animation: fade-slide-in 0.75s var(--delay)
+      animation: fade-slide-in-odd 0.75s var(--delay)
         cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
     }
 
