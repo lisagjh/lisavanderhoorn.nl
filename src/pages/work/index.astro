@@ -1,0 +1,40 @@
+---
+import { getCollection, render } from "astro:content";
+import MarkdownPostLayout from "../../layouts/MarkdownPostLayout.astro";
+
+const allProjects = await getCollection("projects");
+---
+
+<ul>
+  {
+    allProjects.map((project) => (
+      <li>
+        <a href={`/work/${project.id}`}>
+          <h3>{project.data.title}</h3>
+          <p>{project.data.description}</p>
+        </a>
+      </li>
+    ))
+  }
+</ul>
+
+<style>
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  li {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 1rem;
+  }
+
+  a {
+    height: 100%;
+    width: 100%;
+    border: 1px solid red;
+  }
+</style>
