@@ -30,4 +30,9 @@ I started out analysing the current codebase, how it gets and uses the data. The
 
 I used `file_get_contents` to fetch the json.
 
-Also I learned about associative arrays! Then I learned that in JS they're just objects.
+I learned about associative arrays! Then I learned that in JS they're just objects.
+
+### Update Frontend to Display Two Tabs
+
+At first there were a bunch of buttons at the top, for each category. These same categories were also in the sidebar as checkboxes. For the new version we want two buttons at the top, as the two main tabs. One is for events and the other for sportlocations, with has everything but events. Doing this took some work. I had to really dive into the existing code, and figure out how it's built and what works together.
+
