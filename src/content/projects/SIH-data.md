@@ -1,6 +1,6 @@
 ---
 id: 5
-title: "Integrating External Data into an Existing Web App"
+title: "Enriching the Sportkaart Data with New Events"
 date: "2025-06-17"
 livesite: ""
 description: "A case study on extending the Sportkaart platform with data from a new API."
