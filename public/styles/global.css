@@ -142,8 +142,7 @@ button {
   border: none;
   border-radius: 2px;
   text-transform: lowercase;
-  box-shadow: 
-    0px 13px 25px 0px rgba(0, 0, 0, 0.01),
+  box-shadow: 0px 13px 25px 0px rgba(0, 0, 0, 0.01),
     0px 4px 9px 0px rgba(0, 0, 0, 0.1);
   transition: 0.3s ease-out;
 }
@@ -151,10 +150,8 @@ button {
 button:hover {
   color: var(--dark);
   background-position: left;
-  box-shadow: 
-    0px 13px 25px 0px rgba(0, 0, 0, 0.01), 
-    0px 16px 16px 0px rgba(0, 0, 0, 0.025),
-    0px 4px 9px 0px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 13px 25px 0px rgba(0, 0, 0, 0.01),
+    0px 16px 16px 0px rgba(0, 0, 0, 0.025), 0px 4px 9px 0px rgba(0, 0, 0, 0.1);
 }
 
 button:active {
