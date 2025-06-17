@@ -18,7 +18,7 @@ WIP! still writing this out :)
 "
 ---
 
-# Enriching the Sportkaart Data with New Events"
+# Enriching the Sportkaart Data with New Events
 
 During my internship at Atlantis Digital in Haarlem I worked on the [Sportkaart](https://sportinhaarlem.nl/sportkaart/) for Sport in Haarlem — a map that shows all sports activities and locations in the city. One of my tasks was to enrich the data behind this tool with a new external dataset.
 
