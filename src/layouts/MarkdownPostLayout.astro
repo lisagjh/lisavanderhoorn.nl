@@ -38,6 +38,7 @@ const allPosts = await getCollection("projects");
           width="300"
           height="200"
           alt={frontmatter.image.alt}
+          class="cover-image"
         />
       )
     }
@@ -118,7 +119,6 @@ const allPosts = await getCollection("projects");
   .notes {
     display: flex;
     flex-direction: row;
-    justify-content: center;
     align-items: center;
     gap: 1.5rem;
     padding: 1rem 1.5rem;
@@ -198,6 +198,11 @@ const allPosts = await getCollection("projects");
 
   :global(.markdown-post pre) {
     max-width: 100%;
+  }
+
+  :global(.markdown-post img:not(.cover-image)) {
+    width: 100%;
+    max-width: 30rem;
   }
 
   :global(
