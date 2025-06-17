@@ -2,14 +2,15 @@
 import Layout from "../../layouts/Layout.astro";
 import { getCollection, render } from "astro:content";
 
-const allProjects = await getCollection("projects");
+const projects = await getCollection("projects");
+const allProjects = projects.sort((a, b) => b.data.id - a.data.id);
 ---
 
 <Layout>
   <section class="wrapper">
     <a class="back" href="/">home</a>
     <h2 class="pill">Work</h2>
-    <p>Some projects I have worked on</p>
+    <p>Some projects I have worked on! </p>
 
     <ul class="grid">
       {
