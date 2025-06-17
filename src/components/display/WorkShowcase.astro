@@ -13,7 +13,7 @@ const allProjects = projects.sort((a, b) => b.data.id - a.data.id);
   </div>
   <ul class="grid">
     {
-      allProjects.map((project, index) => (
+      allProjects.slice(0, 4).map((project, index) => (
         <li class={index % 2 !== 0 ? "odd" : "even"} data-index={index}>
           <a href={`/posts/${project.id}`}>
             <img
@@ -30,7 +30,7 @@ const allProjects = projects.sort((a, b) => b.data.id - a.data.id);
     }
   </ul>
   <div class="wrapper">
-    <!-- <a href="/" class="pill">More </a> -->
+    <a href="/work" class="pill">View All Projects</a>
   </div>
 </section>
 
@@ -132,8 +132,6 @@ const allProjects = projects.sort((a, b) => b.data.id - a.data.id);
         }
       }
     }
-
-
   }
 
   li {
