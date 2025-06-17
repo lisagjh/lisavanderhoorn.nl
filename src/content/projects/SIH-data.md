@@ -32,7 +32,13 @@ I used `file_get_contents` to fetch the json.
 
 I learned about associative arrays! Then I learned that in JS they're just objects.
 
+In [this issue](https://github.com/users/lisagjh/projects/13/views/14?pane=issue&itemId=110839355&issue=lisagjh%7Ci-love-web%7C260) I worked on the data enrichment
+
 ### Update Frontend to Display Two Tabs
 
 At first there were a bunch of buttons at the top, for each category. These same categories were also in the sidebar as checkboxes. For the new version we want two buttons at the top, as the two main tabs. One is for events and the other for sportlocations, with has everything but events. Doing this took some work. I had to really dive into the existing code, and figure out how it's built and what works together.
+
+I started out updating the big buttons at the top to just be the two I needed. While doing this I also updated the visual design of these buttons to make sure the color contrast is strong enough! 
+
+![Before and after of the buttons](/public/blog-content/sih-data-buttons.png)
 
