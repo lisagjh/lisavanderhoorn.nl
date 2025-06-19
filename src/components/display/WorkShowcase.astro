@@ -5,9 +5,6 @@ const projects = await getCollection("projects");
 const allProjects = projects.sort((a, b) => b.data.id - a.data.id);
 ---
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 <section id="work">
   <div class="wrapper">
 =======
@@ -29,33 +26,19 @@ const allProjects = projects.sort((a, b) => b.data.id - a.data.id);
   <ul class="grid">
     {
       allProjects.slice(0, 4).map((project, index) => (
-<<<<<<< Updated upstream
-        <li class={index % 2 !== 0 ? "odd" : "even"} data-index={index}>
-=======
         <li
           class={index % 2 !== 0 ? "odd" : "even"}
           data-index={index}
           transition:name={`project-${project.id}`}
           style="view-transition-class: post"
         >
->>>>>>> Stashed changes
           <a href={`/posts/${project.id}`}>
             <img
               src={project.data.image.url}
               alt={project.data.image.alt}
               loading="lazy"
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-              width="180"
-=======
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
               width="100"
               transition:name={`project-image-${project.id}`}
->>>>>>> Stashed changes
             />
             <h3>{project.data.title}</h3>
             <p>{project.data.description}</p>
