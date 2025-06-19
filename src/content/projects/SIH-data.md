@@ -13,9 +13,6 @@ relatedPosts:
   - dda-scroll
   - dda-viewtransitions
 lang: "en"
-notes: "
-WIP! still writing this out :)
-"
 ---
 
 # Enriching the Sportkaart Data with New Events
@@ -28,7 +25,7 @@ The Sportkaart already worked with a dataset of sport locations. Now we also wan
 
 ## Figuring Out the Code
 
-I started with reading through the existing codebase — how it fetches data, how the frontend uses it, what the structure looks like. Then I checked out the new API and compared both datasets. Spoiler: they weren’t the same at all.
+I started with reading through the existing codebase; how it fetches data, how the frontend uses it, what the structure looks like. Then I checked out the new API and compared both datasets. I took some notes on this, the similarities and differences in the data.
 
 ![Notes I made while working on the data enrichment task](/public/blog-content/notes-sih-data.jpg)
 
@@ -38,7 +35,7 @@ At this point I had only learned PHP on Codecademy and never used it in a real p
 
 The new data worked — but the event descriptions were a mess. Lots of inline styles, WordPress formatting junk, weird characters. I started trying to clean it up manually, using string functions, `str_replace`, regex... but the function I was writing became way too complex and unreadable.
 
-After digging around I found `do_blocks()`, a WordPress function that basically does exactly what I was trying to do: it parses the blocks and gives you clean HTML. Perfect.
+After researching some more I found `do_blocks()`, a WordPress function that basically does exactly what I was trying to do: it parses the blocks and gives you clean HTML. Perfect.
 
 [More on that in this issue →](https://github.com/users/lisagjh/projects/13/views/14?pane=issue&itemId=110839355&issue=lisagjh%7Ci-love-web%7C260)
 
@@ -64,4 +61,4 @@ After the buttons were added, the new layout felt off. The search bar and its bu
 
 ## Next Steps
 
-I hope to have the opportunity to build the new layout, which will make the page look much better.
+I hope to have the opportunity to build the new layout soon, which will make the page look much better.

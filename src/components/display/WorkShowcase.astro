@@ -5,7 +5,7 @@ const projects = await getCollection("projects");
 const allProjects = projects.sort((a, b) => b.data.id - a.data.id);
 ---
 
-<section id="work">
+<section id="work" transition:name="work-wrapper">
   <div class="wrapper">
     <h2 class="pill">Work</h2>
     <p>{allProjects.length} projects</p>
@@ -14,16 +14,25 @@ const allProjects = projects.sort((a, b) => b.data.id - a.data.id);
   <ul class="grid">
     {
       allProjects.slice(0, 4).map((project, index) => (
-        <li class={index % 2 !== 0 ? "odd" : "even"} data-index={index}>
+        <li
+          class={index % 2 !== 0 ? "odd" : "even"}
+          data-index={index}
+          transition:name={`project-${project.id}`}
+        >
           <a href={`/posts/${project.id}`}>
             <img
               src={project.data.image.url}
               alt={project.data.image.alt}
               loading="lazy"
               width="180"
+              transition:name={`project-image-${project.id}`}
             />
-            <h3>{project.data.title}</h3>
-            <p>{project.data.description}</p>
+            <h3 transition:name={`project-title-${project.id}`}>
+              {project.data.title}
+            </h3>
+            <p transition:name={`project-description-${project.id}`}>
+              {project.data.description}
+            </p>{" "}
           </a>
         </li>
       ))

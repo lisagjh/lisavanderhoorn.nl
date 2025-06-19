@@ -7,26 +7,36 @@ const allProjects = projects.sort((a, b) => b.data.id - a.data.id);
 ---
 
 <Layout>
-  <section class="wrapper">
+  <section class="wrapper" transition:name="work-wrapper">
     <a class="back" href="/">home</a>
     <h2 class="pill">Work</h2>
-    <p>Some projects I have worked on! </p>
+    <p>Some projects I have worked on!</p>
 
     <ul class="grid">
       {
-        allProjects
-          .map((project, index) => (
-            <li class={index % 2 !== 0 ? "odd" : "even"} data-index={index}>
-              <a href={`/work/${project.id}`}>
-                <h3 transition:name={`title-${project.id}`}>
-                  {project.data.title}
-                </h3>
-                <p transition:name={`description-${project.id}`}>
-                  {project.data.description}
-                </p>
-              </a>
-            </li>
-          ))
+        allProjects.map((project, index) => (
+          <li
+            class={index % 2 !== 0 ? "odd" : "even"}
+            data-index={index}
+            transition:name={`project-${project.id}`}
+          >
+            <a href={`/work/${project.id}`}>
+              <img
+                src={project.data.image.url}
+                alt={project.data.image.alt}
+                width="200"
+                transition:name={`project-image-${project.id}`}
+              />
+
+              <h3 transition:name={`project-title-${project.id}`}>
+                {project.data.title}
+              </h3>
+              <p transition:name={`project-description-${project.id}`}>
+                {project.data.description}
+              </p>
+            </a>
+          </li>
+        ))
       }
     </ul>
   </section>
