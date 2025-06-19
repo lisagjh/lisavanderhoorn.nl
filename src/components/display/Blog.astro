@@ -17,7 +17,10 @@ const allPosts = (await getCollection("blog")).sort(
   <ul class="grid">
     {
       allPosts.slice(0, 4).map((post) => (
-        <li transition:name={`post-${post.id}`}>
+        <li
+          transition:name={`post-${post.id}`}
+          style="view-transition-class: post"
+        >
           <a href={`/blog/${post.id}`}>
             <h3 transition:name={`title-${post.id}`}>{post.data.title}</h3>
             <p transition:name={`description-${post.id}`}>

@@ -5,8 +5,13 @@ const projects = await getCollection("projects");
 const allProjects = projects.sort((a, b) => b.data.id - a.data.id);
 ---
 
+<<<<<<< Updated upstream
 <section id="work">
   <div class="wrapper">
+=======
+<section id="work" transition:name="work-wrapper">
+  <div class="top-wrapper">
+>>>>>>> Stashed changes
     <h2 class="pill">Work</h2>
     <p>{allProjects.length} projects</p>
     <p>Check out some projects I've worked on.</p>
@@ -14,13 +19,27 @@ const allProjects = projects.sort((a, b) => b.data.id - a.data.id);
   <ul class="grid">
     {
       allProjects.slice(0, 4).map((project, index) => (
+<<<<<<< Updated upstream
         <li class={index % 2 !== 0 ? "odd" : "even"} data-index={index}>
+=======
+        <li
+          class={index % 2 !== 0 ? "odd" : "even"}
+          data-index={index}
+          transition:name={`project-${project.id}`}
+          style="view-transition-class: post"
+        >
+>>>>>>> Stashed changes
           <a href={`/posts/${project.id}`}>
             <img
               src={project.data.image.url}
               alt={project.data.image.alt}
               loading="lazy"
+<<<<<<< Updated upstream
               width="180"
+=======
+              width="100"
+              transition:name={`project-image-${project.id}`}
+>>>>>>> Stashed changes
             />
             <h3>{project.data.title}</h3>
             <p>{project.data.description}</p>
@@ -29,7 +48,7 @@ const allProjects = projects.sort((a, b) => b.data.id - a.data.id);
       ))
     }
   </ul>
-  <div class="wrapper">
+  <div class="top-wrapper">
     <a href="/work" class="pill">View All Projects</a>
   </div>
 </section>
@@ -52,7 +71,7 @@ const allProjects = projects.sort((a, b) => b.data.id - a.data.id);
     max-width: 65rem;
   }
 
-  .wrapper {
+  .top-wrapper {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
@@ -62,12 +81,12 @@ const allProjects = projects.sort((a, b) => b.data.id - a.data.id);
     border-radius: 10px;
   }
 
-  .wrapper:first-of-type {
+  .top-wrapper:first-of-type {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .wrapper:first-of-type p:first-of-type {
+  .top-wrapper:first-of-type p:first-of-type {
     background-color: var(--tertiary);
     display: flex;
     justify-content: center;
@@ -79,7 +98,7 @@ const allProjects = projects.sort((a, b) => b.data.id - a.data.id);
     align-self: center;
   }
 
-  .wrapper:first-of-type p:last-of-type {
+  .top-wrapper:first-of-type p:last-of-type {
     grid-column: 1/3;
   }
 
@@ -129,24 +148,26 @@ const allProjects = projects.sort((a, b) => b.data.id - a.data.id);
     width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    text-align: start;
     gap: 1rem;
-    padding: 2rem;
+    padding: 1.5rem;
     text-decoration: none;
   }
 
-  li h3 {
+  h3 {
     font-family: var(--body-font);
     font-size: 1.35rem;
   }
 
-  li p {
+  p {
     max-width: 30ch;
     letter-spacing: -0.25px;
   }
 
-  .wrapper:has(a) {
+  img {
+    align-self: center;
+  }
+
+  .top-wrapper:has(a) {
     align-items: end;
   }
 

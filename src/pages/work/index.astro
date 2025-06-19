@@ -1,5 +1,5 @@
 ---
-import Layout from "../../layouts/Layout.astro";
+import Layout from "../../layouts/BaseLayout.astro";
 import { getCollection, render } from "astro:content";
 
 const projects = await getCollection("projects");
@@ -7,13 +7,18 @@ const allProjects = projects.sort((a, b) => b.data.id - a.data.id);
 ---
 
 <Layout>
+<<<<<<< Updated upstream
   <section class="wrapper">
+=======
+  <section id="work" transition:name="work-wrapper">
+>>>>>>> Stashed changes
     <a class="back" href="/">home</a>
     <h2 class="pill">Work</h2>
     <p>Some projects I have worked on! </p>
 
     <ul class="grid">
       {
+<<<<<<< Updated upstream
         allProjects
           .map((project, index) => (
             <li class={index % 2 !== 0 ? "odd" : "even"} data-index={index}>
@@ -27,6 +32,32 @@ const allProjects = projects.sort((a, b) => b.data.id - a.data.id);
               </a>
             </li>
           ))
+=======
+        allProjects.map((project, index) => (
+          <li
+            class={index % 2 !== 0 ? "odd" : "even"}
+            data-index={index}
+            transition:name={`project-${project.id}`}
+            style="view-transition-class: post"
+          >
+            <a href={`/work/${project.id}`}>
+              <img
+                src={project.data.image.url}
+                alt={project.data.image.alt}
+                width="120"
+                transition:name={`project-image-${project.id}`}
+              />
+
+              <h3 transition:name={`project-title-${project.id}`}>
+                {project.data.title}
+              </h3>
+              <p transition:name={`project-description-${project.id}`}>
+                {project.data.description}
+              </p>
+            </a>
+          </li>
+        ))
+>>>>>>> Stashed changes
       }
     </ul>
   </section>
@@ -93,6 +124,8 @@ const allProjects = projects.sort((a, b) => b.data.id - a.data.id);
       0px 8px 8px 0px rgba(0, 0, 0, 0.03),
       0px -3px 4px 0px rgba(0, 0, 0, 0.03);
     list-style: "";
+    container-type: inline-size;
+    container-name: post;
   }
 
   li a {
@@ -151,6 +184,31 @@ const allProjects = projects.sort((a, b) => b.data.id - a.data.id);
         opacity: 1;
         transform: translateX(0);
       }
+    }
+  }
+
+  @container post (width > 30rem) {
+    li a {
+      display: grid;
+      grid-template-areas:
+        "img title"
+        "img text";
+      justify-content: center;
+    }
+
+    img {
+      grid-area: img;
+      align-self: center;
+    }
+
+    h3 {
+      grid-area: title;
+      align-self: flex-end;
+    }
+
+    p {
+      grid-area: text;
+      align-self: flex-start;
     }
   }
 </style>

@@ -58,6 +58,9 @@ body {
   font-family: var(--body-font);
   background-color: var(--bg);
   color: var(--text);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 main {
@@ -281,4 +284,8 @@ a.pill {
   min-width: 8rem;
   width: fit-content;
   border-radius: 50px;
+}
+
+section.wrapper {
+  margin-top: 2rem;
 }

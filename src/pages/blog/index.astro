@@ -19,7 +19,11 @@ const allPosts = (await getCollection("blog")).sort(
     <ul class="grid">
       {
         allPosts.map((post, index) => (
-          <li transition:name={`post-${post.id}`} data-index={index}>
+          <li
+            transition:name={`post-${post.id}`}
+            data-index={index}
+            style="view-transition-class: post"
+          >
             <a href={`/blog/${post.id}`}>
               <h3 transition:name={`title-${post.id}`}>{post.data.title}</h3>
               <p transition:name={`description-${post.id}`}>
@@ -137,5 +141,22 @@ const allPosts = (await getCollection("blog")).sort(
         transform: translateX(0);
       }
     }
+  }
+
+  @keyframes fade-slide-in {
+    from {
+      scale: 0.5;
+      opacity: 0;
+      transform: translateX(5rem) rotate(360deg);
+    }
+    to {
+      scale: 1;
+      opacity: 1;
+      transform: translateX(0) rotate(0deg);
+    }
+  }
+
+  ::view-transition-new(post-*) {
+    animation: fade-slide-in 2s ease-in-out;
   }
 </style>

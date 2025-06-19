@@ -13,75 +13,11 @@
     console.log("could not load gsap");
   }
 
-  const wrapper = document.querySelector(".wrapper");
-
-
-  // Show the wrapper after a short delay
-  setTimeout(() => {
-    wrapper.classList.remove("js-hidden");
-  }, 200);
-
-  const split = new SplitText(wrapper, {
-    type: "words",
-    linesClass: "split",
-    mask: "span",
-  });
-
   gsap.fromTo(
-    split.words,
-    {
-      y: "50%",
-      opacity: 0,
-      rotate: () => Math.random() * 20 - 15,
-    },
-    {
-      y: "0%",
-      opacity: 1,
-      duration: 0.75,
-      delay: 0.75,
-      rotate: 0,
-      stagger: {
-        each: 0.05,
-      },
-    }
+    "h1",
+    { opacity: 0, y: 30 },
+    { opacity: 1, y: 0, duration: 0.8, delay: 0.2 }
   );
-
-  const dev = document.querySelector(".dev");
-
-  const original = "Developer";
-  const replacement = "Nerd";
-
-  let timer;
-
-  wrapper.addEventListener("mouseenter", () => {
-    if (timer) clearTimeout(timer);
-    timer = setTimeout(() => {
-      gsap.to(dev, {
-        scrambleText: {
-          text: replacement,
-          chars: "abcdefghijklmnopqrstuvwxyz",
-          speed: 0.15,
-        },
-        duration: 0.45,
-        ease: "power2.in",
-      });
-    }, 250);
-  });
-
-  wrapper.addEventListener("mouseleave", () => {
-    if (timer) clearTimeout(timer);
-    timer = setTimeout(() => {
-      gsap.to(dev, {
-        scrambleText: {
-          text: original,
-          chars: "abcdefghijklmnopqrstuvwxyz",
-          speed: 0.15,
-        },
-        duration: 0.45,
-        ease: "power2.inOut",
-      });
-    }, 250);
-  });
 </script>
 
 <section class="intro">
