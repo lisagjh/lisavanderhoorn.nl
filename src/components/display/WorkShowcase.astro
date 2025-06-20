@@ -5,20 +5,8 @@ const projects = await getCollection("projects");
 const allProjects = projects.sort((a, b) => b.data.id - a.data.id);
 ---
 
-<section id="work">
-  <div class="wrapper">
-=======
 <section id="work" transition:name="work-wrapper">
   <div class="top-wrapper">
->>>>>>> Stashed changes
-=======
-<section id="work" transition:name="work-wrapper">
-  <div class="top-wrapper">
->>>>>>> Stashed changes
-=======
-<section id="work" transition:name="work-wrapper">
-  <div class="top-wrapper">
->>>>>>> Stashed changes
     <h2 class="pill">Work</h2>
     <p>{allProjects.length} projects</p>
     <p>Check out some projects I've worked on.</p>

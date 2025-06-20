@@ -29,6 +29,14 @@ const allPosts = (await getCollection("blog")).sort(
               <p transition:name={`description-${post.id}`}>
                 {post.data.description}
               </p>
+
+              <ul class="tags">
+                {post.data.tags
+                  .filter((tag) => tag !== "learning in public")
+                  .map((tag) => (
+                    <li class="tag">{tag}</li>
+                  ))}
+              </ul>
             </a>
           </li>
         ))
@@ -37,7 +45,27 @@ const allPosts = (await getCollection("blog")).sort(
   </section>
 </Layout>
 
+<script></script>
+
 <style>
+  ul.tags {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    height: 100%;
+    align-items: end;
+    margin-top: auto;
+  }
+
+  li.tag {
+    background-color: var(--primary-lighter);
+    font-size: 0.9rem;
+    width: fit-content;
+    padding: 0.5rem 0.75rem;
+    box-shadow: none;
+  }
+
   section {
     display: flex;
     flex-direction: column;
@@ -125,7 +153,7 @@ const allPosts = (await getCollection("blog")).sort(
   }
 
   @media (prefers-reduce-motion: no-preference) {
-    ul.grid li{
+    ul.grid li {
       --delay: calc((sibling-index() + 1) * 0.25s);
       animation: fade-slide-in-odd 0.75s var(--delay)
         cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
