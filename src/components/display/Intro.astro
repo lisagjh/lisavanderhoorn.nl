@@ -6,6 +6,7 @@
 
   gsap.registerPlugin(ScrollTrigger, SplitText, ScrambleTextPlugin);
 
+  // hide the frontend text
   gsap.set(".name-container", {
     position: "relative",
     display: "inline-block",
@@ -63,7 +64,25 @@
         },
       },
       "+=2"
-    );
+    )
+
+    .to(
+      ".intro h1 span.frontend",
+      {
+        opacity: 0,
+        y: -20,
+        duration: 0.5,
+        ease: "power2.inOut",
+      },
+      "+=3"
+    )
+
+    .to(".intro h1 span.name", {
+      opacity: 1,
+      y: 0,
+      duration: 0.5,
+      ease: "power2.inOut",
+    });
 </script>
 
 <section class="intro">
@@ -71,9 +90,9 @@
     <span class="greeting">Hi! I'm</span>
     <div class="name-container">
       <span class="name">Lisa van der Hoorn</span>
-      <span class="frontend"
-        >a frontend <span class="word">developer</span></span
-      >
+      <span class="frontend">
+        a frontend <span class="word">developer</span>
+      </span>
     </div>
   </h1>
 </section>
@@ -111,5 +130,16 @@
   h1 span.name,
   h1 span.frontend {
     font-size: 2.2rem;
+  }
+
+  @media (width >= 38rem) {
+    h1 {
+      font-size: 2.5rem;
+    }
+
+    h1 span.name,
+    h1 span.frontend {
+      font-size: 3.5rem;
+    }
   }
 </style>
