@@ -1,34 +1,81 @@
-<script type="module">
-  import { gsap } from "/gsap";
-  import { ScrollTrigger } from "/gsap/ScrollTrigger";
-  gsap.registerPlugin(ScrollTrigger);
-  import { SplitText } from "/gsap/all";
-  gsap.registerPlugin(SplitText);
-  import { ScrambleTextPlugin } from "/gsap/all";
-  gsap.registerPlugin(ScrambleTextPlugin);
+<script>
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  import { SplitText } from "gsap/SplitText";
+  import { ScrambleTextPlugin } from "gsap/ScrambleTextPlugin";
 
-  if (gsap) {
-    console.log("gsap loaded", gsap.version);
-  } else if (!gsap) {
-    console.log("could not load gsap");
-  }
+  gsap.registerPlugin(ScrollTrigger, SplitText, ScrambleTextPlugin);
 
-  gsap.fromTo(
-    "h1",
-    { opacity: 0, y: 30 },
-    { opacity: 1, y: 0, duration: 0.8, delay: 0.2 }
+  gsap.set(".name-container", {
+    position: "relative",
+    display: "inline-block",
+  });
+  gsap.set(".frontend", {
+    opacity: 0,
+    y: -20,
+    position: "absolute",
+    top: 0,
+    left: 0,
+    whiteSpace: "nowrap",
+  });
+
+  const tl = gsap.timeline({ delay: 0.25 });
+
+  tl.fromTo(
+    ".intro h1 span.greeting",
+    { opacity: 0, y: -20 },
+    { opacity: 1, y: 0, duration: 1, ease: "power2.inOut" }
   );
+
+  tl.fromTo(
+    ".intro h1 span.name",
+    { opacity: 0, y: -20 },
+    { opacity: 1, y: 0, duration: 1, ease: "power2.inOut" }
+  );
+
+  tl.to(
+    ".intro h1 span.name",
+    {
+      opacity: 0,
+      y: -20,
+      duration: 0.5,
+      ease: "power2.inOut",
+    },
+    "+=3"
+  )
+
+    .to(".intro h1 span.frontend", {
+      opacity: 1,
+      y: 0,
+      duration: 0.5,
+      ease: "power2.inOut",
+    })
+
+    .to(
+      ".word",
+      {
+        duration: 1.5,
+        scrambleText: {
+          text: "nerd",
+          chars: "lowerCase",
+          revealDelay: 0.3,
+          speed: 0.4,
+        },
+      },
+      "+=2"
+    );
 </script>
 
 <section class="intro">
   <h1>
-    <span> Hi! I'm</span>
-    <span class="name">Lisa van der Hoorn</span>
+    <span class="greeting">Hi! I'm</span>
+    <div class="name-container">
+      <span class="name">Lisa van der Hoorn</span>
+      <span class="frontend"
+        >a frontend <span class="word">developer</span></span
+      >
+    </div>
   </h1>
-
-  <div class="wrapper js-hidden">
-    <p class="split">Frontend <span class="dev">Developer</span></p>
-  </div>
 </section>
 
 <style>
@@ -51,35 +98,18 @@
   }
 
   h1 {
-    font-size: 2rem;
+    font-size: 1.5rem;
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
 
     & span {
       line-height: 1;
     }
   }
 
-  h1 span.name {
-    font-size: 4rem;
-  }
-
-  .wrapper {
-    position: relative;
-    height: fit-content;
-    width: fit-content;
-    min-width: max-content;
-  }
-
-  .js-hidden {
-    opacity: 0;
-  }
-
-  svg {
-    position: absolute;
-    bottom: -1.75rem;
-    left: -1.5rem;
-    z-index: -1;
-    width: 13rem;
+  h1 span.name,
+  h1 span.frontend {
+    font-size: 2.2rem;
   }
 </style>
