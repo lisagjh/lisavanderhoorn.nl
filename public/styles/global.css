@@ -263,7 +263,7 @@ blockquote span {
 h2.pill,
 h3.pill,
 h4.pill {
-  font-size: 2rem;
+  font-size: 1.75rem;
   text-align: center;
   background-color: var(--off-white);
   color: var(--text);

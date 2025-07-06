@@ -103,13 +103,22 @@ const quote = quotes[randomIndex];
   div:has(blockquote) {
     background-color: transparent;
     align-items: center;
+    container-type: inline-size;
+    container-name: quote;
 
     & blockquote {
       border-radius: 0 12px 12px 0;
+      min-width: 60vw;
       width: fit-content;
 
+      & p {
+        font-family: var(--heading-font);
+        font-size: 1.25rem;
+        font-style: normal;
+      }
+
       & cite {
-        font-size: 1rem;
+        font-size: 0.9rem;
       }
     }
 
@@ -118,12 +127,32 @@ const quote = quotes[randomIndex];
     }
   }
 
+  @container quote (width >= 350px) {
+    .quote blockquote {
+      & p {
+        font-size: 1.8rem;
+      }
+
+      & cite {
+        font-size: 1.1rem;
+      }
+    }
+  }
+
   @supports (animation-timeline: view()) {
     div {
       animation-timeline: view();
       animation-name: fade-in;
       animation-fill-mode: forwards;
-      animation-range: 0% 60%;
+      animation-range: 0% 30%;
+    }
+
+    div.more {
+      animation-range: 0% 40%;
+    }
+
+    div.quote {
+      animation-range: 0% 10%;
     }
 
     @keyframes fade-in {

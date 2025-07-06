@@ -98,7 +98,7 @@
 </section>
 
 <style>
-  .intro {
+  section.intro {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -107,6 +107,16 @@
     width: 90%;
     max-width: 65rem;
     height: 75vh;
+    animation: show 0.15s ease-in-out forwards;
+  }
+
+  @keyframes show {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
   }
 
   h1 {
@@ -140,6 +150,28 @@
     h1 span.name,
     h1 span.frontend {
       font-size: 3.5rem;
+    }
+  }
+
+  @supports (animation-timeline: view()) {
+    section.intro {
+      animation-timeline: view();
+      animation-name: scale-out;
+      animation-fill-mode: forwards;
+      animation-range: 60% 100%;
+    }
+
+    @keyframes scale-out {
+      from {
+        scale: 1;
+        opacity: 1;
+        transform: translateY(0);
+      }
+      to {
+        scale: 0.5;
+        opacity: 0;
+        transform: translateY(75%);
+      }
     }
   }
 </style>
