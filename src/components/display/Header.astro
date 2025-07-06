@@ -32,28 +32,30 @@ const currentPath = Astro.url.pathname;
 
 <style>
   header {
-    background-color: var(--off-white);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    justify-self: center;
-    justify-content: center;
     position: sticky;
-    top: 1rem;
+    top: 0;
     width: 100%;
-    max-width: 90vw;
-    border-radius: 2rem;
+    max-width: 67rem;
+    padding: 1rem 2rem;
     z-index: 50;
     view-transition-name: header;
-    box-shadow:
-      0 4px 4px var(--secondary-shadow),
-      0 2px 8px var(--secondary-shadow);
   }
 
   nav {
     display: flex;
     justify-self: center;
     width: 100%;
+    border-radius: 2rem;
+
+    background-color: var(--off-white);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    justify-self: center;
+    justify-content: center;
+    box-shadow:
+      0 4px 4px var(--secondary-shadow),
+      0 2px 8px var(--secondary-shadow);
   }
 
   ul {
