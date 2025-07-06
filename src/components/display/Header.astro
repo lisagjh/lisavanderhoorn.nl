@@ -1,14 +1,30 @@
+---
+const currentPath = Astro.url.pathname;
+---
+
+<script>
+  document.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("mouseover", () => {
+      link.classList.add("hovered");
+    });
+  });
+</script>
+
 <header transition:name="header">
   <nav>
     <ul>
       <li>
-        <a href="/">Home</a>
+        <a href="/" class={currentPath === "/" ? "active" : ""}>Home</a>
       </li>
       <li>
-        <a href="/work">Work</a>
+        <a href="/work" class={currentPath.startsWith("/work") ? "active" : ""}
+          >Work</a
+        >
       </li>
       <li>
-        <a href="/blog">Blog</a>
+        <a href="/blog" class={currentPath.startsWith("/blog") ? "active" : ""}
+          >Blog</a
+        >
       </li>
     </ul>
   </nav>
@@ -16,7 +32,7 @@
 
 <style>
   header {
-    background-color: var(--primary-light);
+    background-color: var(--off-white);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -29,6 +45,9 @@
     border-radius: 2rem;
     z-index: 50;
     view-transition-name: header;
+    box-shadow:
+      0 4px 4px var(--secondary-shadow),
+      0 2px 8px var(--secondary-shadow);
   }
 
   nav {
@@ -65,7 +84,6 @@
     color: var(--primary);
     font-weight: bold;
     border-radius: 6px 6px 0 0;
-    view-transition-name: active-link;
     z-index: 50;
   }
 
@@ -79,6 +97,7 @@
     background-color: var(--primary);
     opacity: 1 !important;
     animation: none;
+    view-transition-name: active-link;
   }
 
   a.active::after {

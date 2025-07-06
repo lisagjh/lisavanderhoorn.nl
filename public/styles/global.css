@@ -24,7 +24,7 @@
   --white: hsl(0deg 0% 99%);
   --black: #101010;
   --dark: #303030;
-  --off-white: #fffafa;
+  --off-white: #fbfcff;
 
   --bg: hsl(0deg 0% 99%);
   --text: #101010;
@@ -39,6 +39,7 @@
   --secondary-light: hsl(12deg 95% 87%);
   --secondary-lighter: hsl(12deg 100% 93%);
   --secondary-dark: hsl(12deg 38% 50%);
+  --secondary-shadow: rgb(128, 75, 66, 0.1);
 
   --tertiary: hsl(43deg 89% 61%);
   --tertiary-light: hsl(43deg 100% 80%);
