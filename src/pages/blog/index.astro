@@ -10,7 +10,7 @@ const allPosts = (await getCollection("blog")).sort(
 
 <Layout>
   <section class="wrapper" transition:name="blog">
-    <button class="back" onclick="history.back()">Back Home</button>
+    <a class="back" href="/">home</a>
     <h2 class="pill" transition:name="blog-title">Blog</h2>
     <p transition:name="blog-text">
       Read some stuff! From talks at FDND to new stuff I'm learning.
@@ -86,11 +86,11 @@ const allPosts = (await getCollection("blog")).sort(
     border-radius: 10px;
   }
 
-  button.back {
+  a.back {
     border-color: var(--primary-light);
   }
 
-  button.back:hover {
+  a.back:hover {
     background: var(--primary-lighter);
   }
 

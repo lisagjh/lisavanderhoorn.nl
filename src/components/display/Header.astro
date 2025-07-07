@@ -14,7 +14,17 @@ const currentPath = Astro.url.pathname;
   <nav>
     <ul>
       <li>
-        <a href="/" class={currentPath === "/" ? "active" : ""}>Home</a>
+        <a
+          href="/"
+          class={currentPath === "/" ? "active home" : "home"}
+          aria-label="home"
+        >
+          <img
+            src="/public/assets/svg/flower.svg"
+            alt="flower icon"
+            width="25"
+          />
+        </a>
       </li>
       <li>
         <a href="/work" class={currentPath.startsWith("/work") ? "active" : ""}
@@ -30,11 +40,11 @@ const currentPath = Astro.url.pathname;
   </nav>
 </header>
 
-<style>
+<style scoped>
   header {
     position: sticky;
     top: 0;
-    width: 100%;
+    width: 104%;
     max-width: 67rem;
     padding: 1rem 2rem;
     z-index: 50;
@@ -62,7 +72,7 @@ const currentPath = Astro.url.pathname;
     display: flex;
     flex-direction: row;
     gap: 1rem;
-    padding: 1.5rem;
+    padding: 1rem 2rem;
     width: 100%;
   }
 
@@ -72,7 +82,11 @@ const currentPath = Astro.url.pathname;
 
   a {
     position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-decoration: none;
+    height: 100%;
     padding: 0.5rem;
     transition: 0.25s ease-in-out;
     border-radius: 6px 6px 0 0;

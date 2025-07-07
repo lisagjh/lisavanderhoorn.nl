@@ -239,6 +239,10 @@ blockquote span {
   opacity: 0.8;
 }
 
+a.back {
+  text-decoration: none;
+}
+
 .back:hover {
   background: var(--_border);
   opacity: 1;
