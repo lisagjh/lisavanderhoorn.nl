@@ -204,4 +204,12 @@ const currentPath = Astro.url.pathname;
       width: 0%;
     }
   }
+
+  a.home svg {
+    transition: rotate .75s ease-in-out;
+  }
+
+  a.home:hover svg {
+    rotate: -360deg;
+  }
 </style>

@@ -17,48 +17,62 @@ lang: "en"
 
 # Enriching the Sportkaart Data with New Events
 
-During my internship at Atlantis Digital in Haarlem I worked on the [Sportkaart](https://sportinhaarlem.nl/sportkaart/) for Sport in Haarlem — a map that shows all sports activities and locations in the city. One of my tasks was to enrich the data behind this tool with a new external dataset.
+During my internship at Atlantis Digital in Haarlem, I worked on the [Sportkaart](https://sportinhaarlem.nl/sportkaart/) for Sport in Haarlem, an interactive map that shows all sports activities and locations in the city. One of my main tasks was to enrich the platform by adding event data from an external API.
 
-## Goal
+## The Challenge
 
-The Sportkaart already worked with a dataset of sport locations. Now we also wanted to add events from a new API, without breaking anything else. This meant both backend (PHP) and frontend (JS) changes — and figuring out how to combine two different data sources into one UI.
+The Sportkaart already worked with a dataset of sport locations. Now we wanted to integrate a second data source, events, without breaking or overcomplicating the UI.
 
-## Figuring Out the Code
+This required changes to both the backend (PHP) and frontend (JavaScript), and a way to merge two differently structured APIs into one seamless interface.
 
-I started with reading through the existing codebase; how it fetches data, how the frontend uses it, what the structure looks like. Then I checked out the new API and compared both datasets. I took some notes on this, the similarities and differences in the data.
+## My Approach
 
-![Notes I made while working on the data enrichment task](/public/blog-content/notes-sih-data.jpg)
+### Reading and Mapping the Codebase
 
-At this point I had only learned PHP on Codecademy and never used it in a real project, so I had to do some research on how data fetching works in PHP. Nothing fancy yet: I used `file_get_contents()` to fetch the JSON and wrapped it in a try block. Then `json_decode()` to turn it into an associative array, and a `foreach` to check what kind of data I actually had.
+I started by reading through the existing codebase to understand how data was fetched and passed to the frontend. Then I compared the structure of the current data with the new event API.
 
-## Cleaning Up the Raw Data
+![Notes I made while working on the data enrichment task](/blog-content/notes-sih-data.jpg)
 
-The new data worked — but the event descriptions were a mess. Lots of inline styles, WordPress formatting junk, weird characters. I started trying to clean it up manually, using string functions, `str_replace`, regex... but the function I was writing became way too complex and unreadable.
+At this point, I had only learned PHP through Codecademy. So I researched how to fetch data in PHP and experimented using `file_get_contents()` combined with `json_decode()` inside a try block to safely parse and inspect the data.
 
-After researching some more I found `do_blocks()`, a WordPress function that basically does exactly what I was trying to do: it parses the blocks and gives you clean HTML. Perfect.
+### Cleaning Up the Incoming Data
 
-[More on that in this issue →](https://github.com/users/lisagjh/projects/13/views/14?pane=issue&itemId=110839355&issue=lisagjh%7Ci-love-web%7C260)
+The data worked. But the content was messy: inline styles, WordPress block artifacts, random characters, broken formatting.
 
-## Merging the Datasets
+At first I tried to clean this manually with `str_replace`, regexes, and string functions… but that quickly became chaotic and unreadable. Eventually I found `do_blocks()`, a native WordPress function that parses block content and returns clean HTML. That solved 90% of my problems instantly.
 
-Once the data was cleaned up, I passed both the original and new datasets to the frontend. In JavaScript I just combined them — they were both arrays of objects, so I could merge them pretty easily. I did need to align some fields though, like names and descriptions, so that the filtering still worked.
+[More about that in this issue →](https://github.com/users/lisagjh/projects/13/views/14?pane=issue&itemId=110839355&issue=lisagjh%7Ci-love-web%7C260)
 
-## Updating the UI: 2 Tabs Instead of 12 Buttons
+### Combining the Datasets
 
-In the original UI there were a lot of category buttons at the top, and the same ones again in the sidebar as checkboxes. That made sense for locations, but for events we wanted something simpler.
+Once cleaned, I passed both datasets to the frontend. Since they were both arrays of objects, merging them in JavaScript was straightforward. I did have to standardize some fields (like `name` vs `title`, and how descriptions were structured) so the filters and UI still worked correctly.
 
-### Step 1: Add The Main Tabs
+## Improving the Interface
 
-So we decided to change the UI to just two big buttons at the top: events and sportlocations. I updated the button component, replaced the logic, and improved the color contrast while I was at it:
+The original UI had a lot of filter buttons, twelve categories at the top and checkboxes in the sidebar.
 
-![Before and after of the buttons](/public/blog-content/sih-data-buttons.png)
+### From 12 Buttons to 2 Tabs
 
-### Step 2: Rethinking the Layout
+We decided to introduce a tab-based toggle instead of multiple filter buttons. I updated the component, implemented the logic, and made some accessibility improvements along the way, like increasing the contrast.
 
-After the buttons were added, the new layout felt off. The search bar and its buttons, these new buttons and the map/list view toggle are all center-aligned, but all different sizes and not all in the same place. To improve this I made a sketch. In this design the buttons are shaped like tab's, to emphasize the idea of tabs. I moved the toggle to the side, above the checkbox filters. I think this will be much cleaner than the original layout.
+![Before and after of the buttons](/blog-content/sih-data-buttons.png)
 
-![Digital sketch of a new layout](/public/blog-content/sih-data-sketch.png)
+### Rethinking the Layout
 
-## Next Steps
+After implementing the tabs, the rest of the layout felt inconsistent. The search bar, filters, and toggle were all different sizes and misaligned. I made a quick sketch to explore a cleaner layout where tabs feel like tabs, and controls are grouped more logically.
 
-I hope to have the opportunity to build the new layout soon, which will make the page look much better.
+![Digital sketch of a new layout](/blog-content/sih-data-sketch.png)
+
+## The Result
+
+By combining datasets, cleaning up messy content, and reworking the UI, I was able to make the Sportkaart smarter and more usable. This gave users access to both locations and events in one unified interface, without a long list of buttons. The events now also have more fitting filters, like age target, type of activity, and district.
+
+The new layout hasn’t been implemented yet, but I’m excited about the direction it’s going in and hope to finish it soon.
+
+## Reflection
+
+This was my first real project involving PHP, external APIs, and data transformation. I learned a lot about problem solving, backend logic, and keeping frontend performance in mind while working with live data.
+
+I also really enjoyed the mix of backend and frontend tasks, and seeing how even small layout changes can have a big effect on usability.
+
+Even though this was a smaller project, it sharpened my skills in code reading, debugging, and designing for real-world data.

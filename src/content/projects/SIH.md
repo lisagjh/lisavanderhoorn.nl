@@ -7,7 +7,7 @@ description: "Improve the accessibility of the Sportkaart."
 image:
   url: "/work-showcase/sih.png"
   alt: "Mockup of the Sport in Haarlem Sportkaart page, on a laptop and ipad."
-tags: ["PHP", "JS", "Data enrichment", "learning in public"]
+tags: \["PHP", "JS", "Data enrichment", "learning in public"]
 relatedPosts:
   - SIH-data
   - dda-scroll
@@ -17,30 +17,59 @@ lang: "en"
 
 # Accessibility on the Sportkaart
 
-During my internship at Atlantis Digital in Haarlem I got to work on the [Sportkaart](https://sportinhaarlem.nl/sportkaart/) for Sport in Haarlem. I was asked to improve the accessibility of this page. The page had a couple of issues, most were solvable with some semantic HTML, but I also had to add some accessibility features. I learned a lot about ARIA and WAI-ARIA.
+During my internship at Atlantis Digital in Haarlem, I got to work on the [Sportkaart](https://sportinhaarlem.nl/sportkaart/) for Sport in Haarlem. One of my assignments was to improve the accessibility of this page.
 
+The page had a number of issues, some were solvable with semantic HTML, others needed more work. I ended up learning a lot about ARIA and WAI-ARIA in the process.
 
-## Testing
+## The Challenge
 
-I started out with running some automatic tests, like lighthouse and a WCAG analyzer. After that I started testing with keyboard and screenreaders. 
-I analysed all results and wrote them down [here](https://github.com/lisagjh/i-love-web/issues/120#issuecomment-2720645357). While writing the report I also wrote down some potential fixes and things I wanted to look into.
+Accessibility wasn’t considered in the original version of the Sportkaart. That meant the page wasn’t usable with screen readers, wasn’t keyboard-friendly, and didn’t follow semantic HTML best practices.
 
-After the testing I dove into the codebase. I had never worked in a PHP project before, and I was a bit intimidated by the PHP codebase. I asked a few people in the office to help me understand it. I learned a lot about the codebase and how to navigate it.
-It was very overwhelming at first, since it was all PHP and JavaScript and over 2000 lines of code in one file, but I learned to read and understand others code better.
+My task was to analyze and improve this, while working in a large PHP/JS. I had never worked in a big codebase built by others before, so this was definitely a learning experience.
 
+### Testing & Research
 
-## Building
+I started by running automatic tests like Lighthouse and WCAG analyzers. Then I continued testing manually with just a keyboard and screen readers.
 
-Once I knew what was to be done, I got to work. I started out researching ARIA roles and attributes, and applying them where needed. For example on a popup I added `role="dialog"` and `aria-modal="true"`. This same popup had issues with the focus; it remained in the list and not the popup. I started by changing the svg with an `eventListener` to a `<button>` with an svg inside. After I learned that the SVG was being focused, it just didn't have a clear focus state.
+I documented all issues and potential solutions in this [GitHub comment](https://github.com/lisagjh/i-love-web/issues/120#issuecomment-2720645357).
 
-Then I moved on to making the html more semantic. There were many svg's, spans and divs with eventListener'sm which should have been buttons. Changing this made a big impact! I also made sure to add clear labels to buttons without text. 
+Since I hadn’t worked in PHP before, I asked colleagues for help understanding the structure. The main file had over 2000 lines of code, which was overwhelming at first, but a great lesson in reading and understanding unfamiliar codebases.
 
-I also added some small things like closing the popup with esc or clicking outside the popup, which is a behaviour many users expect.
+## Fixing the Issues
 
-## Client Review
+Once I understood the flow, I started applying improvements:
 
-I got to present these improvements to the client a few weeks later. They had never heard of the concept of accessibility on the web, or given it any thought. I explained what issues there were beforehand, and why they were important. Then I showed them the before. I gave a demonstration of trying to navigate the page with a keyboard, and also a screenreader. The clients were very interested, and were wondering who this impacted. I explained that this isn't just for people with a disability of any kind, but for everyone. I gave them a few examples, like someone with a broken arm, or someone with tremors who has issues using a mouse. This made sense to them, and they were very interested in learning more about accessibility.
+### Semantic HTML
 
----
+Many interactive elements were just `div`s or `span`s with event listeners. I replaced these with proper `<button>` elements. This alone made a huge impact: buttons now had focus states, were reachable by keyboard, and announced by screen readers.
 
-My favorite part of this was seeing how some small changes make such a big impact. Using semantic HTML really goes a long way!
+### ARIA Attributes
+
+For modals and popups, I added roles like `role="dialog"` and `aria-modal="true"`. One specific issue was that focus didn’t stay inside the modal. I fixed this by creating a `trapFocus` function.
+
+### Small but Important UX Fixes
+
+I also added small accessibility features that improve usability for everyone:
+
+- Pressing Escape closes the popup
+- Clicking outside the popup closes it
+- Labels were added to all icon-only buttons
+
+These are minor features that have a big impact on usability.
+
+## Client Presentation
+
+A few weeks later I presented these improvements to the client. They had never heard of web accessibility before, so I gave a short introduction and demo-ed the issues:
+
+- Keyboard-only navigation (before vs after)
+- Screen reader behavior (before vs after)
+
+They were surprised and very interested. We talked about how accessibility doesn’t only help people with permanent disabilities, but also temporary or situational impairments, like a broken arm or shaky hands.
+
+It was great to see how engaged they became once they understood the impact.
+
+## Reflection
+
+My favorite part of this project was seeing how small changes could make such a big difference. Semantic HTML, proper ARIA roles, and basic interaction patterns go a long way.
+
+It also boosted my confidence in working with unfamiliar code, asking for help, and making a meaningful impact on real-world projects.
