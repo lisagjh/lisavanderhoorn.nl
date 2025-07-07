@@ -32,12 +32,18 @@ const quote = quotes[randomIndex];
     </p>
   </div>
 
-  <div class="quote">
-    <blockquote>
-      <p>{quote.quote}</p>
-      <cite>{quote.author}</cite>
-    </blockquote>
-  </div>
+  {
+    quote ? (
+      <div class="quote">
+        <blockquote>
+          <p>{quote.quote}</p>
+          <cite>{quote.author}</cite>
+        </blockquote>
+      </div>
+    ) : (
+      ""
+    )
+  }
 </section>
 
 <style>
