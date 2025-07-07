@@ -7,7 +7,7 @@ description: "Improve the accessibility of the Sportkaart."
 image:
   url: "/work-showcase/sih.png"
   alt: "Mockup of the Sport in Haarlem Sportkaart page, on a laptop and ipad."
-tags: \["PHP", "JS", "Data enrichment", "learning in public"]
+tags: ["PHP", "JS", "Data enrichment", "learning in public"]
 relatedPosts:
   - SIH-data
   - dda-scroll
