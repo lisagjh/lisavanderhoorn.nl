@@ -147,6 +147,8 @@ const currentPath = Astro.url.pathname;
   }
 
   a::before {
+    justify-self: center;
+    align-self: center;
     content: "";
     position: absolute;
     bottom: -0.1rem;
@@ -155,6 +157,7 @@ const currentPath = Astro.url.pathname;
     width: 0%;
     background-color: var(--primary);
     opacity: 0;
+    transform-origin: center;
     transition: 0.25s ease-in-out;
   }
 
