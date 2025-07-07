@@ -55,6 +55,10 @@
   transition: 0.25s ease-in-out;
 }
 
+@view-transition {
+  navigation: auto;
+}
+
 body {
   font-family: var(--body-font);
   background-color: var(--bg);
@@ -289,4 +293,30 @@ a.pill {
 
 section.wrapper {
   margin-top: 2rem;
+}
+
+/* view transitions */
+::view-transition-old(.post):only-child {
+  animation-duration: 0.5s;
+  animation-name: scale-out;
+}
+
+::view-transition-new(.post):only-child {
+  scale: 0;
+  transform-origin: left center;
+  animation-duration: 0.5s;
+  animation-name: scale-in;
+  animation-delay: 0.15s;
+}
+
+@keyframes scale-out {
+  to {
+    scale: 0;
+  }
+}
+
+@keyframes scale-in {
+  to {
+    scale: 1;
+  }
 }
