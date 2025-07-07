@@ -24,7 +24,7 @@
   --white: hsl(0deg 0% 99%);
   --black: #101010;
   --dark: #303030;
-  --off-white: #fffafa;
+  --off-white: #fbfcff;
 
   --bg: hsl(0deg 0% 99%);
   --text: #101010;
@@ -39,6 +39,7 @@
   --secondary-light: hsl(12deg 95% 87%);
   --secondary-lighter: hsl(12deg 100% 93%);
   --secondary-dark: hsl(12deg 38% 50%);
+  --secondary-shadow: rgb(128, 75, 66, 0.1);
 
   --tertiary: hsl(43deg 89% 61%);
   --tertiary-light: hsl(43deg 100% 80%);
@@ -54,10 +55,17 @@
   transition: 0.25s ease-in-out;
 }
 
+@view-transition {
+  navigation: auto;
+}
+
 body {
   font-family: var(--body-font);
   background-color: var(--bg);
   color: var(--text);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 main {
@@ -231,6 +239,10 @@ blockquote span {
   opacity: 0.8;
 }
 
+a.back {
+  text-decoration: none;
+}
+
 .back:hover {
   background: var(--_border);
   opacity: 1;
@@ -259,7 +271,7 @@ blockquote span {
 h2.pill,
 h3.pill,
 h4.pill {
-  font-size: 2rem;
+  font-size: 1.75rem;
   text-align: center;
   background-color: var(--off-white);
   color: var(--text);
@@ -281,4 +293,34 @@ a.pill {
   min-width: 8rem;
   width: fit-content;
   border-radius: 50px;
+}
+
+section.wrapper {
+  margin-top: 2rem;
+}
+
+/* view transitions */
+::view-transition-old(.post):only-child {
+  animation-duration: 0.5s;
+  animation-name: scale-out;
+}
+
+::view-transition-new(.post):only-child {
+  scale: 0;
+  transform-origin: left center;
+  animation-duration: 0.5s;
+  animation-name: scale-in;
+  animation-delay: 0.15s;
+}
+
+@keyframes scale-out {
+  to {
+    scale: 0;
+  }
+}
+
+@keyframes scale-in {
+  to {
+    scale: 1;
+  }
 }

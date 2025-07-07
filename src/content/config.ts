@@ -21,7 +21,6 @@ const blog = defineCollection({
     relatedPosts: z.array(z.string()).optional(),
     lang: z.string().optional(),
     note: z.string().optional(),
-    relatedPosts: z.array(z.string()).optional(),
   }),
 });
 

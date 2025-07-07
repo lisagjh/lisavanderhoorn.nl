@@ -1,107 +1,155 @@
-<script type="module">
-  import { gsap } from "/gsap";
-  import { ScrollTrigger } from "/gsap/ScrollTrigger";
-  gsap.registerPlugin(ScrollTrigger);
-  import { SplitText } from "/gsap/all";
-  gsap.registerPlugin(SplitText);
-  import { ScrambleTextPlugin } from "/gsap/all";
+<script>
+  import { gsap } from "gsap";
+  import ScrambleTextPlugin from "gsap/ScrambleTextPlugin";
+
   gsap.registerPlugin(ScrambleTextPlugin);
 
-  if (gsap) {
-    console.log("gsap loaded", gsap.version);
-  } else if (!gsap) {
-    console.log("could not load gsap");
-  }
+  const tl = gsap.timeline();
 
-  const wrapper = document.querySelector(".wrapper");
+  gsap.set("h1 span", { visibility: "visible", opacity: 0 });
 
+  document
+    .querySelectorAll("h1 span")
+    ?.forEach((span) => span.classList.add("hidden"));
 
-  // Show the wrapper after a short delay
-  setTimeout(() => {
-    wrapper.classList.remove("js-hidden");
-  }, 200);
-
-  const split = new SplitText(wrapper, {
-    type: "words",
-    linesClass: "split",
-    mask: "span",
-  });
-
-  gsap.fromTo(
-    split.words,
-    {
-      y: "50%",
-      opacity: 0,
-      rotate: () => Math.random() * 20 - 15,
-    },
-    {
-      y: "0%",
+  tl.fromTo(
+    "h1 span.greeting",
+    { opacity: 0, y: -20 },
+    { opacity: 1, y: 0, duration: 0.25, ease: "sine.inOut" }
+  )
+    .to("h1 span.name", {
       opacity: 1,
-      duration: 0.75,
-      delay: 0.75,
-      rotate: 0,
-      stagger: {
-        each: 0.05,
+      y: 0,
+      duration: 0.25,
+      ease: "sine.inOut",
+    })
+    .to("h1 span.name", {
+      opacity: 0,
+      scale: 0.95,
+      y: 20,
+      duration: 0.25,
+      ease: "sine.inOut",
+      delay: 2.5,
+    })
+    .fromTo(
+      "h1 span.frontend",
+      { opacity: 0, scale: 0.85, y: -20 },
+      { opacity: 1, scale: 1, y: 0, duration: 0.25, ease: "sine.inOut" }
+    )
+    .fromTo(
+      "h1 span.frontend span.word",
+      { opacity: 0, scale: 0.95, y: -20 },
+      {
+        opacity: 1,
+        scale: 1,
+        y: 0,
+        duration: 0.25,
+        ease: "sine.inOut",
+        delay: -2.5,
+      }
+    )
+    .to("h1 span.word", {
+      opacity: 1,
+      scrambleText: "nerd",
+      duration: 0.5,
+      ease: "sine.inOut",
+      delay: 2.5,
+    })
+    .to("h1 span.frontend", {
+      opacity: 0,
+      scale: 0.95,
+      y: 100,
+      duration: 0.25,
+      ease: "sine.inOut",
+    })
+    .fromTo(
+      "h1 span.name",
+      {
+        scale: 0.95,
+        y: 20,
       },
-    }
-  );
-
-  const dev = document.querySelector(".dev");
-
-  const original = "Developer";
-  const replacement = "Nerd";
-
-  let timer;
-
-  wrapper.addEventListener("mouseenter", () => {
-    if (timer) clearTimeout(timer);
-    timer = setTimeout(() => {
-      gsap.to(dev, {
-        scrambleText: {
-          text: replacement,
-          chars: "abcdefghijklmnopqrstuvwxyz",
-          speed: 0.15,
-        },
-        duration: 0.45,
-        ease: "power2.in",
-      });
-    }, 250);
-  });
-
-  wrapper.addEventListener("mouseleave", () => {
-    if (timer) clearTimeout(timer);
-    timer = setTimeout(() => {
-      gsap.to(dev, {
-        scrambleText: {
-          text: original,
-          chars: "abcdefghijklmnopqrstuvwxyz",
-          speed: 0.15,
-        },
-        duration: 0.45,
-        ease: "power2.inOut",
-      });
-    }, 250);
-  });
+      {
+        opacity: 1,
+        scale: 1,
+        duration: 0.25,
+        y: 0,
+        ease: "sine.inOut",
+        delay: 0.35,
+        immediateRender: false,
+      }
+    );
 </script>
 
 <section class="intro">
-  <h1 class="title">Lisa van der Hoorn</h1>
-
-  <div class="wrapper js-hidden">
-    <p class="split">Frontend <span class="dev">Developer</span></p>
-  </div>
+  <h1>
+    <span class="greeting">Hi! I'm</span>
+    <div class="name-container">
+      <span class="name">Lisa van der Hoorn</span>
+      <span class="frontend">
+        a frontend <span class="word">developer</span>
+      </span>
+    </div>
+  </h1>
 </section>
 
 <style>
-  .intro {
+  h1 span.hidden {
+    animation: none;
+    visibility: hidden;
+    opacity: 0;
+  }
+
+  h1 span {
+    visibility: hidden;
+    opacity: 0;
+    animation: show-span 0.15s ease-in-out forwards;
+  }
+
+  div.name-container {
+    position: relative;
+    display: inline-block;
+  }
+
+  div.name-container:has(span.name) span.frontend,
+  div.name-container:has(span.name) span.name {
+    position: absolute;
+    top: 0;
+    left: 0;
+    whitespace: nowrap;
+  }
+
+  div.name-container:has(span.name):not(:has(span.name.hidden)) span.frontend {
+    visibility: hidden;
+    opacity: 0;
+    animation: none;
+  }
+
+  @keyframes show-span {
+    to {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+
+  section.intro {
     display: flex;
     flex-direction: column;
     justify-content: center;
     gap: 1rem;
-    padding: 8rem 2rem;
-    width: 100%;
+    padding: 0 4rem;
+    width: 90%;
     max-width: 65rem;
-    height: 75vh;
+    height: 73vh;
+    animation: show 0.15s ease-in-out forwards;
+  }
+
+  @keyframes show {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
   }
 
   h1 {
@@ -109,24 +157,61 @@
     line-height: 1;
     display: block;
     overflow: visible;
+    margin-top: -5rem;
   }
 
-  .wrapper {
-    position: relative;
-    height: fit-content;
-    width: fit-content;
-    min-width: max-content;
+  h1 {
+    font-size: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+
+    & span {
+      line-height: 1;
+    }
   }
 
-  .js-hidden {
-    opacity: 0;
+  h1 span.name,
+  h1 span.frontend {
+    font-size: 2.2rem;
   }
 
-  svg {
-    position: absolute;
-    bottom: -1.75rem;
-    left: -1.5rem;
-    z-index: -1;
-    width: 13rem;
+  h1 span.greeting {
+    font-family: var(--body-font);
+    font-style: italic;
+    font-size: 1.75rem;
+  }
+
+  @media (width >= 38rem) {
+    h1 {
+      font-size: 2.5rem;
+    }
+
+    h1 span.name,
+    h1 span.frontend {
+      font-size: 3.5rem;
+    }
+  }
+
+  @supports (animation-timeline: view()) {
+    section.intro {
+      animation-timeline: view();
+      animation-name: scale-out;
+      animation-fill-mode: forwards;
+      animation-range: 60% 100%;
+    }
+
+    @keyframes scale-out {
+      from {
+        scale: 1;
+        opacity: 1;
+        transform: translateY(0);
+      }
+      to {
+        scale: 0.85;
+        opacity: 0;
+        transform: translateY(75%);
+      }
+    }
   }
 </style>

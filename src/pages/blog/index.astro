@@ -10,7 +10,7 @@ const allPosts = (await getCollection("blog")).sort(
 
 <Layout>
   <section class="wrapper" transition:name="blog">
-    <button class="back" onclick="history.back()">Back Home</button>
+    <a class="back" href="/">home</a>
     <h2 class="pill" transition:name="blog-title">Blog</h2>
     <p transition:name="blog-text">
       Read some stuff! From talks at FDND to new stuff I'm learning.
@@ -19,12 +19,35 @@ const allPosts = (await getCollection("blog")).sort(
     <ul class="grid">
       {
         allPosts.map((post, index) => (
-          <li transition:name={`post-${post.id}`} data-index={index}>
-            <a href={`/blog/${post.id}`}>
-              <h3 transition:name={`title-${post.id}`}>{post.data.title}</h3>
-              <p transition:name={`description-${post.id}`}>
+          <li
+            transition:name={`post-${post.id}`}
+            data-index={index}
+            style="view-transition-class: post"
+          >
+            <a
+              href={`/blog/${post.id}`}
+              transition:name={`post-content-${post.id}`}
+              style="view-transition-class: post"
+            >
+              <h3
+                transition:name={`title-${post.id}`}
+                style="view-transition-class: post"
+              >
+                {post.data.title}
+              </h3>
+              <p
+                transition:name={`description-${post.id}`}
+                style="view-transition-class: post"
+              >
                 {post.data.description}
               </p>
+              <ul class="tags">
+                {post.data.tags
+                  .filter((tag) => tag !== "learning in public")
+                  .map((tag) => (
+                    <li class="tag">{tag}</li>
+                  ))}
+              </ul>
             </a>
           </li>
         ))
@@ -34,6 +57,24 @@ const allPosts = (await getCollection("blog")).sort(
 </Layout>
 
 <style>
+  ul.tags {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    height: 100%;
+    align-items: end;
+    margin-top: auto;
+  }
+
+  li.tag {
+    background-color: var(--primary-lighter);
+    font-size: 0.9rem;
+    width: fit-content;
+    padding: 0.5rem 0.75rem;
+    box-shadow: none;
+  }
+
   section {
     display: flex;
     flex-direction: column;
@@ -45,11 +86,11 @@ const allPosts = (await getCollection("blog")).sort(
     border-radius: 10px;
   }
 
-  button.back {
+  a.back {
     border-color: var(--primary-light);
   }
 
-  button.back:hover {
+  a.back:hover {
     background: var(--primary-lighter);
   }
 

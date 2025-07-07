@@ -8,7 +8,7 @@ const allPosts = (await getCollection("blog")).sort(
 <section id="blog" transition:name="blog">
   <div class="wrapper">
     <h2 class="pill" transition:name="blog-title">Blog</h2>
-    <p>{allPosts.length} posts</p>
+    <p class="badge">{allPosts.length} posts</p>
     <p transition:name="blog-text">
       Read some stuff! From talks at FDND to new stuff I'm learning.
     </p>
@@ -17,10 +17,25 @@ const allPosts = (await getCollection("blog")).sort(
   <ul class="grid">
     {
       allPosts.slice(0, 4).map((post) => (
-        <li transition:name={`post-${post.id}`}>
-          <a href={`/blog/${post.id}`}>
-            <h3 transition:name={`title-${post.id}`}>{post.data.title}</h3>
-            <p transition:name={`description-${post.id}`}>
+        <li
+          transition:name={`post-${post.id}`}
+          style="view-transition-class: post"
+        >
+          <a
+            href={`/blog/${post.id}`}
+            transition:name={`post-content-${post.id}`}
+            style="view-transition-class: post"
+          >
+            <h3
+              transition:name={`title-${post.id}`}
+              style="view-transition-class: post"
+            >
+              {post.data.title}
+            </h3>
+            <p
+              transition:name={`description-${post.id}`}
+              style="view-transition-class: post"
+            >
               {post.data.description}
             </p>
           </a>
@@ -42,14 +57,16 @@ const allPosts = (await getCollection("blog")).sort(
     padding: 2rem;
     width: 100%;
     max-width: 65rem;
+    container: wrapper / inline-size;
   }
 
   .wrapper,
   .bottom {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
-    padding: 2rem;
+    gap: 1rem;
+    padding: 1.5rem;
+    align-items: center;
     background-color: var(--primary-light);
     border-radius: 10px;
   }
@@ -59,14 +76,16 @@ const allPosts = (await getCollection("blog")).sort(
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .wrapper p:first-of-type {
+  .wrapper p.badge {
+    font-size: 0.95rem;
+    color: var(--primary-lighter);
     background-color: var(--primary-dark);
-    color: var(--white);
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 20px;
     height: 2.5rem;
+    min-width: 2.5rem;
     padding: 1rem;
     justify-self: end;
     align-self: center;
@@ -114,6 +133,7 @@ const allPosts = (await getCollection("blog")).sort(
   h3 {
     font-family: var(--body-font);
     font-size: 1.35rem;
+    max-width: 30ch;
   }
 
   p {
@@ -124,18 +144,17 @@ const allPosts = (await getCollection("blog")).sort(
     ul.grid {
       flex-direction: row;
       justify-content: start;
-      padding: 1rem;
+      padding: 1rem 0.25rem;
       overflow-x: auto;
       scroll-snap-type: x mandatory;
       scroll-behavior: smooth;
-      max-width: 90%;
       justify-self: center;
       align-self: center;
     }
 
     li {
-      min-width: 23rem;
       max-width: 80%;
+      width: fit-content;
       scroll-snap-align: center;
       flex-shrink: 0;
     }
