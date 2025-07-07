@@ -15,15 +15,21 @@ relatedPosts:
 lang: "en"
 ---
 
-At FDND we had a special sprint where we got to let our creativity run free, build fun stuff, and let go of the styleguide of our client. Each week we got a new random prompt, focused on a certain new(-ish) feature or technology.
+At FDND we had a special sprint where we got to let our creativity run free, build fun stuff, and let go of the styleguide of our client. Each week we got a new random prompt, focused on a certain new feature or technology.
 
-This week my prompt was <em>Glitzy Brutalist View Transitions</em>. I loved this prompt, since I have always been interested in brutalism, and instantly had some cool ideas of how to implement this into this website.
+## The Challenge
 
-I started out analysing the prompt. I did end up kind of ignoring the glitzy part, leaning into brutalism. So what does brutalism mean? In architecture it's raw materials, visible structure, and no unnecessary decorations. When you look at brutalism in webdesign, it tends to be mostly black and white, with one or two colors as accent, simple fonts, often big headings, minimal to no decorative elements.
+This week my prompt was **_Glitzy Brutalist View Transitions_**.
 
-So how do I translate this to a view transition? I decided to go big and bold, and created an interactive screen with `P5.js` and the <a href="https://p5-svelte.netlify.app/">svelte library</a>. On their website,I saw <a href="https://p5-svelte.netlify.app/examples/wavemaker">this</a> example and was inspired to create something similar, but with the text "DDA" - Dutch Digital Agencies.
+I loved this prompt, since I’ve always been interested in brutalism and immediately had some cool ideas on how to implement that aesthetic into the Dutch Digital Agencies website. I ended up ignoring the glitzy part and leaning into the brutalist style.
 
-Before diving into that, I wanted to understand how view transitions actually worked. I started small, adding an animated active state indicator to the menu item using the `::before` pseudo-element. To my surprise, it was super straightforward:
+## My Solution
+
+I started by analyzing the prompt and breaking it down. In architecture, brutalism means raw materials, visible structure, and no unnecessary decorations. In web design, this often translates to black-and-white layouts, strong grid structure, minimalism, bold fonts, and functional aesthetics.
+
+I decided to translate this into a bold view transition.
+
+Before building anything fancy, I explored how view transitions work. I began small: animating the active link in the nav using a `::before` pseudo-element.
 
 ```css
 .active::before {
@@ -31,20 +37,17 @@ Before diving into that, I wanted to understand how view transitions actually wo
 }
 ```
 
-That one line already gave me a nice animation between active links—way easier than I expected, and a fun first win before tackling the more complex stuff.
+This one-liner already created a smooth animation between the nav items. Now that I understood how view transitions work, I moved on to the main transition.
 
+I wanted an interactive, brutalist graphic. I built this one using P5.js and Svelte. Inspired by [this wavemaker example](https://p5-svelte.netlify.app/examples/wavemaker), I created my own version that animated the text “DDA” in a glitchy, distorted way.
 
-Once I got the hang of basic transitions, I deciced to dive into the transition I had in mind. I turned the interactive graphic into a component, and imported it in the `Layout.svelte`. Here I used a boolean variable called `isTransitioning` to toggle it's visibility during page transitions. This component fades in when a transition is happening, and fades out when it's done. It sits on top of everything with `position: fixed`. 
-
-I used a boolean variable called `isTransitioning` to toggle its visibility during page transitions. This component fades in while a transition is happening and fades out when it’s done. It sits on top of everything using position: fixed.
+To integrate this into the site’s layout, I placed the component inside Layout.svelte and used a reactive boolean `isTransitioning` to toggle it's visibility during page transitions. This component fades in and out during navigation and sits on top of everything with `position: fixed`.
 
 ```html
-<div class="bg" class:show-transition={isTransitioning}>
+<div class="bg" class:show-transition="{isTransitioning}">
   <Graphic />
 </div>
 ```
-
-As you can see, the `show-transition` class gets applied when `isTransitioning = true`.
 
 ```css
 div.bg {
@@ -62,19 +65,40 @@ div.bg.show-transition {
 }
 ```
 
-For the page transitions themselves, I used the ::view-transition-old(root) and ::view-transition-new(root) selectors to define slide-in/out animations:
+For the actual view transitions between pages, I used `::view-transition-old(root)` and `::view-transition-new(root)` with custom keyframes to animate a sliding effect:
 
 ```css
 @keyframes slide-out {
-  from { transform: translateX(0); opacity: 1; }
-  to   { transform: translateX(-20%); opacity: 0; }
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(-20%);
+    opacity: 0;
+  }
 }
 
 @keyframes slide-in {
-  from { transform: translateX(20%); opacity: 0; }
-  to   { transform: translateX(0); opacity: 1; }
+  from {
+    transform: translateX(20%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
 }
 ```
 
-These gave the whole page a nice, smooth transition that felt deliberate and "designed". It turned out way better than I expected! 
-This is still one of my favourite projects I made in school. Definitely gonna make a cool transition screen for this website using this method.
+It gave the whole page a dramatic and intentional motion that felt super polished.
+
+## The Result
+
+A bold, brutalist-inspired transition with a custom glitchy animation overlay, smooth sliding effects, and fully custom interaction. The view transitions felt cohesive and visually interesting — and they completely transformed the way the site felt when navigating.
+
+This felt like a real departure from typical smooth/clean animations. It had character.
+
+## Reflection
+
+This is still one of my favorite projects I made in school! It was a great mix of concept, code, and creativity. I learned how powerful and even simple view transitions can be. I ended up using the view transition on the navigation on the end result of the real project! And have used that view transition on my personal website and other projects.

@@ -15,16 +15,28 @@ relatedPosts:
 lang: "en"
 ---
 
-At FDND, we had a special sprint where we got to let our creativity run free and build fun stuff, letting go of the styleguide of our client. Each week, we got a new random prompt focused on a new-ish technology.
+At FDND, we had a special sprint where we got to let our creativity run free and build fun stuff, letting go of the style of our client. Each week, we received a random prompt focused on a new-ish technology.
 
-This week we focused on scroll driven animations. My prompt was <em>Sad Acid Graphics Scroll Driven Animations</em>.
+## The Challenge
 
-I had already done CSS scroll driven animations plenty of times, so I decided to do something different. I began by researching the vibe of the prompt, by looking at images that represented this style. I found inspiration in wireframe shapes, grids, and black-and-white colors with bold, bright accents.
+This week’s focus was on scroll-driven animations. My specific prompt was **_Sad Acid Graphics Scroll Driven Animations_**..
 
-After sketching a rough concept, I dove right into building. I chose Three.js to create a rotating wireframe donut. I had dabbled in Three.js earlier in the year, so I could reuse much of that knowledge. Once the shape was in place, I fine-tuned the animation. My first attempt was too fast and not smooth enough, so I added easing to give it a more fluid feel.
+Since I had already done quite a few CSS-based scroll animations before, I challenged myself to take it up a notch and try something new!
 
-I spent a lot of time tweaking the animation, experimenting with different speeds and effects, and even more time searching for the perfect font. After many hours of refining, I settled on a bold font and finalized the design.
+## My Solution
 
-The result was a scroll-driven animation with a rotating 3D object that embodied the gritty, acid-inspired aesthetic of the prompt. The challenge of optimizing performance, especially with Three.js, was rewarding, and it was a great opportunity to experiment with something outside of my usual design scope.
+I started by researching the meaning of the words in the prompt. I looked up visuals that matched the aesthetic; wireframe shapes, grids, and black-and-white palettes with bold neon accents.
 
-I still love this project. It was a fun break from routine, a chance to push my skills, and a reminder of how endless the possibilities are with coding! It also inspired me to add something like this to my own website - hence the `three.js` shape on the home page.
+After sketching out a rough concept, I jumped into development. I wanted to use Three.js to create a rotating wireframe donut. I had experimented with Three.js earlier in the year, so I could build on that foundation, tweak it and play around with it.
+
+Once I had the shape working, I focused on the animation. My first version felt clunky, it was too fast and not smooth. It stopped abruptly when you stopped scrolling. So I added easing and tweaked the speed until it felt more fluid and responsive. I also experimented with performance, effects, and of course I spent way too long picking a font.
+
+## The Result
+
+At the end of the week I had a wireframe grid donut, which smoothly rotates on scroll. Making adjustments to the rest of the page really made it fit the prompt very well.
+
+## Reflection
+
+This project was very fun! I still think it's pretty cool. It was a fun break from serious client work and a chance to just build something cool and fun. It showed how much fun it is to experiment with unfamiliar technology, and how much impact motion has. 
+
+This project even inspired me to add a similar Three.js shape to my personal website’s homepage (old version), proof that creative spikes can have long-term impact.

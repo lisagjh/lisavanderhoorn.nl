@@ -26,8 +26,10 @@ const allPosts = await getCollection("projects");
     </p>
 
     {
-      frontmatter.liveiste ? (
-        <a href={frontmatter.livesite}>View this project here</a>
+      frontmatter.livesite ? (
+        <a href={frontmatter.livesite} target="_blank">
+          View this project here
+        </a>
       ) : null
     }
 
@@ -44,6 +46,14 @@ const allPosts = await getCollection("projects");
     }
 
     <slot />
+
+    {
+      frontmatter.livesite ? (
+        <a href={frontmatter.livesite} target="_blank">
+          View this project here
+        </a>
+      ) : null
+    }
 
     {
       frontmatter.notes ? (
@@ -203,7 +213,7 @@ const allPosts = await getCollection("projects");
   :global(.markdown-post img:not(.cover-image)) {
     width: 100%;
     max-width: 30rem;
-    border-radius: .4rem;
+    border-radius: 0.4rem;
   }
 
   :global(
