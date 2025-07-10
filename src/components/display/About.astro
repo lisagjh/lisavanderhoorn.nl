@@ -160,27 +160,29 @@ const quote = quotes[randomIndex];
   @supports (animation-timeline: view()) {
     div {
       animation-timeline: view();
-      animation-name: fade-in;
-      animation-fill-mode: forwards;
-      animation-range: 0% 30%;
+      animation-name: fade-in-out;
+      animation-fill-mode: both;
+      animation-range: entry 0% exit 100%;
     }
 
-    div.more {
-      animation-range: 0% 40%;
-    }
-
-    div.quote {
-      animation-range: 0% 20%;
-    }
-
-    @keyframes fade-in {
-      from {
-        transform: translateY(10rem);
+    @keyframes fade-in-out {
+      0% {
         opacity: 0;
+        transform: translateY(10rem);
       }
-      to {
-        transform: translateY(0);
+      25% {
         opacity: 1;
+        transform: translateY(0);
+      }
+      90% {
+        opacity: 1;
+        scale: 1;
+        transform: translateY(0);
+      }
+      100% {
+        opacity: 0;
+        scale: 0.8;
+        transform: translateY(-10rem);
       }
     }
   }

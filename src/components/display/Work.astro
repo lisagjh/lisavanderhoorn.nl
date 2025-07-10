@@ -183,22 +183,31 @@ const allProjects = projects.sort((a, b) => b.data.id - a.data.id);
   }
 
   @supports (animation-timeline: view()) {
-    section {
+    section, li {
       animation-timeline: view();
-      animation-name: fade-in;
-      animation-duration: 1s;
-      animation-fill-mode: forwards;
-      animation-range: 0% 30%;
+      animation-name: fade-in-out;
+      animation-fill-mode: both;
+      animation-range: entry 0% exit 100%;
     }
 
-    @keyframes fade-in {
-      from {
-        transform: translateY(10rem);
+    @keyframes fade-in-out {
+      0% {
         opacity: 0;
+        transform: translateY(10rem);
       }
-      to {
-        transform: translateY(0);
+      25% {
         opacity: 1;
+        transform: translateY(0);
+      }
+      90% {
+        opacity: 1;
+        scale: 1;
+        transform: translateY(0);
+      }
+      100% {
+        opacity: 0;
+        scale: 0.8;
+        transform: translateY(-10rem);
       }
     }
   }
