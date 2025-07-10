@@ -1,7 +1,7 @@
 <script>
 	import { onMount } from 'svelte';
 
-	let currentPath = $state('/');
+	let currentPath;
 
 	onMount(() => {
 		currentPath = window.location.pathname;
@@ -27,12 +27,7 @@
 					>
 				</a>
 			</li>
-			<li>
-				<a href="/work" class={currentPath.startsWith('/work') ? 'active' : ''}>Work</a>
-			</li>
-			<li>
-				<a href="/blog" class={currentPath.startsWith('/blog') ? 'active' : ''}>Blog</a>
-			</li>
+		
 		</ul>
 	</nav>
 </header>
@@ -41,7 +36,7 @@
 	header {
 		position: sticky;
 		top: 0;
-		width: 104%;
+		width: 100%;
 		max-width: 67rem;
 		padding: 1rem 2rem;
 		z-index: 50;
