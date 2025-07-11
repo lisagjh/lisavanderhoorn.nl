@@ -17,7 +17,7 @@
 		min-width: 100vw;
 		min-height: 85vh;
 		height: 100%;
-		background-color: var(--primary-dark);
+		background-color: var(--blue-dark);
 		color: var(--off-white);
 		display: flex;
 		flex-direction: column;
@@ -56,12 +56,12 @@
 
 	li::marker {
 		font-size: 1.2rem;
-		color: var(--primary);
+		color: var(--blue);
 	}
 
 	p.last {
 		color: #fff;
-		background-color: var(--primary-darker);
+		background-color: var(--blue-darker);
 		font-size: 0.85rem;
 		font-weight: lighter;
 		padding: 0.75rem;

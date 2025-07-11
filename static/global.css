@@ -29,17 +29,17 @@
     --bg: hsl(0deg 0% 99%);
     --text: #101010;
   
-    --primary: hsl(227deg 97% 57%);
-    --primary-light: hsl(222deg 100% 88%);
-    --primary-lighter: hsl(222deg 95% 95%);
-    --primary-dark: hsl(222deg 37% 44%);
-    --primary-darker: hsl(223, 58%, 21%);
+    --blue: hsl(227deg 97% 57%);
+    --blue-light: hsl(222deg 100% 88%);
+    --blue-lighter: hsl(222deg 95% 95%);
+    --blue-dark: hsl(222deg 37% 44%);
+    --blue-darker: hsl(223, 58%, 21%);
   
-    --secondary: hsl(12deg 96% 48%);
-    --secondary-light: hsl(12deg 95% 87%);
-    --secondary-lighter: hsl(12deg 100% 93%);
-    --secondary-dark: hsl(12deg 38% 50%);
-    --secondary-shadow: rgb(128, 75, 66, 0.1);
+    --red: hsl(12deg 96% 48%);
+    --red-light: hsl(12deg 95% 87%);
+    --red-lighter: hsl(12deg 100% 93%);
+    --red-dark: hsl(12deg 38% 50%);
+    --red-shadow: rgb(128, 75, 66, 0.1);
   
     --tertiary: hsl(43deg 89% 61%);
     --tertiary-light: hsl(43deg 100% 80%);
@@ -58,6 +58,11 @@
   @view-transition {
     navigation: auto;
   }
+
+  html {
+    scroll-behavior: smooth;
+    overscroll-behavior: none;
+  }
   
   body {
     font-family: var(--body-font);
@@ -66,6 +71,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    overscroll-behavior: none;
   }
   
   main {
@@ -136,7 +142,7 @@
   
   a {
     color: var(--black);
-    text-decoration-color: var(--primary);
+    text-decoration-color: var(--blue);
     text-decoration-thickness: 2px;
     text-underline-offset: 2px;
   }
@@ -146,7 +152,7 @@
     color: var(--black);
     padding: 1rem 0.5rem;
   
-    background: var(--secondary-lighter);
+    background: var(--red-lighter);
     border: none;
     border-radius: 2px;
     text-transform: lowercase;
@@ -173,11 +179,11 @@
   code {
     display: inline-block;
     font-size: 1rem;
-    color: var(--secondary-dark);
-    background-color: var(--secondary-light);
+    color: var(--red-dark);
+    background-color: var(--red-light);
     padding: 0.25rem 0.5rem;
     border-radius: 2px;
-    box-shadow: 0 0 2px var(--secondary);
+    box-shadow: 0 0 2px var(--red);
   }
   
   pre {
@@ -252,7 +258,7 @@
   .divider {
     height: 1.5px;
     width: 100%;
-    background-color: var(--secondary);
+    background-color: var(--red);
     margin: 1rem 0;
   }
   

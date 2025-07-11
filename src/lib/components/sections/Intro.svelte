@@ -97,7 +97,7 @@
 	}
 
 	h1 {
-		color: var(--primary);
+		color: var(--blue);
 		font-size: 3rem;
 	}
 
@@ -108,7 +108,7 @@
 		width: fit-content;
 
 		& p {
-			color: var(--secondary);
+			color: var(--red);
 		}
 
 		& span.underline {

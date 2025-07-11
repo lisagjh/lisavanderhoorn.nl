@@ -59,11 +59,11 @@
 		width: 100%;
 		padding: 1.5rem;
 		border-radius: 12px;
-		background-color: var(--secondary-light);
+		background-color: var(--red-light);
 	}
 
 	.more {
-		background-color: var(--primary-light);
+		background-color: var(--blue-light);
 	}
 
 	span {

@@ -56,8 +56,8 @@
 		justify-self: center;
 		justify-content: center;
 		box-shadow:
-			0 4px 4px var(--secondary-shadow),
-			0 2px 8px var(--secondary-shadow);
+			0 4px 4px var(--red-shadow),
+			0 2px 8px var(--red-shadow);
 	}
 
 	ul {
@@ -87,11 +87,11 @@
 	}
 
 	a:hover {
-		background-color: var(--primary-lighter);
+		background-color: var(--blue-lighter);
 	}
 
 	a.active {
-		color: var(--primary);
+		color: var(--blue);
 		font-weight: bold;
 		border-radius: 6px 6px 0 0;
 		z-index: 50;
@@ -104,7 +104,7 @@
 		left: 0;
 		height: 2px;
 		width: 100%;
-		background-color: var(--primary);
+		background-color: var(--blue);
 		opacity: 1 !important;
 		animation: none;
 		view-transition-name: active-link;
@@ -115,7 +115,7 @@
 		position: absolute;
 		bottom: 0;
 		left: 0;
-		background-color: var(--primary-light);
+		background-color: var(--blue-light);
 		height: 100%;
 		width: 100%;
 		border-radius: 2px 2px 0 0;
@@ -144,7 +144,7 @@
 		left: 0;
 		height: 2px;
 		width: 0%;
-		background-color: var(--primary);
+		background-color: var(--blue);
 		opacity: 0;
 		transform-origin: center;
 		transition: 0.25s ease-in-out;
@@ -163,7 +163,7 @@
 		left: 0;
 		height: 2px;
 		width: 100% !important;
-		background-color: var(--primary);
+		background-color: var(--blue);
 		opacity: 1 !important;
 		animation: none !important;
 	}
