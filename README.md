@@ -11,7 +11,7 @@ Deze site is mijn portfolio, blog, digital gardem; mijn digital home. Op mijn we
 ## 🚀 Features
 
 - 🎨 Animaties met CSS en GSAP
-- ✨ Blog vanuit mardkwon files met Astro's content collections
+- ✨ Blog met markdown files met Astro's content collections
 - 📱 Mobile-first design
 
 ## 🛠️ Tech Stack
