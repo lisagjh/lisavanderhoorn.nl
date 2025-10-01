@@ -1,4 +1,36 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a> to read the documentation</p>
+<script>
+	let { data } = $props();
+</script>
 
+<h1>My Bookshelf</h1>
 
+{#if data.error}
+	<p>Error loading books: {data.error}</p>
+{:else if data.books?.length === 0}
+	<p>No books found</p>
+{:else}
+	<div class="books">
+		{#each data.books as book}
+			<div class="book-card">
+				<h2>{book.Title}</h2>
+				<p>by {book.Author}</p>
+				<p>Rating: {book.Rating || 'Not rated'}</p>
+			</div>
+		{/each}
+	</div>
+{/if}
+
+<style>
+	.books {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+		gap: 1rem;
+		width: 100%;
+	}
+
+	.book-card {
+		border: 1px solid #ddd;
+		padding: 1rem;
+		border-radius: 8px;
+	}
+</style>
