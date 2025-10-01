@@ -1,0 +1,18 @@
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+body, main {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+header, main, footer {
+	max-width: 60rem;
+	padding: 1rem;
+	margin: 0 auto;
+}
