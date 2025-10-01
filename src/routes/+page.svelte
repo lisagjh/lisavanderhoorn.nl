@@ -1,5 +1,7 @@
 <script>
 	let { data } = $props();
+
+	console.log('page', data.books);
 </script>
 
 <h1>My Bookshelf</h1>
@@ -12,6 +14,8 @@
 	<div class="books">
 		{#each data.books as book}
 			<div class="book-card">
+				<img src={book.coverUrl} alt="{book.Title} cover" height="300"/>
+
 				<h2>{book.Title}</h2>
 				<p>by {book.Author}</p>
 				<p>Rating: {book.Rating || 'Not rated'}</p>
@@ -32,5 +36,9 @@
 		border: 1px solid #ddd;
 		padding: 1rem;
 		border-radius: 8px;
+
+		img {
+			width: 100%;
+		}
 	}
 </style>

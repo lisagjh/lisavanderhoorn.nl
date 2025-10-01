@@ -1,5 +1,15 @@
 import { VITE_GOOGLE_SHEETS_API_KEY, VITE_SHEET_ID, VITE_SHEET_NAME } from '$env/static/private';
 
+function getCoverUrl(isbn) {
+	if (!isbn) {
+		return '';
+	}
+	const cleanIsbn = isbn.replace(/[-\s]/g, '');
+	console.log(cleanIsbn);
+
+	return `https://covers.openlibrary.org/b/isbn/${cleanIsbn}-M.jpg`;
+}
+
 export async function load() {
 	const url = `https://sheets.googleapis.com/v4/spreadsheets/${VITE_SHEET_ID}/values/${VITE_SHEET_NAME}?key=${VITE_GOOGLE_SHEETS_API_KEY}`;
 
@@ -23,7 +33,9 @@ export async function load() {
 			return book;
 		});
 
-		console.log(books);
+		books.forEach((book) => {
+			book.coverUrl = getCoverUrl(book['ISBN/UID']);
+		});
 
 		return {
 			books
