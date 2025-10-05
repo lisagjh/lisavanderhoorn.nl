@@ -27,12 +27,15 @@
 	{:else}
 		<div class="books">
 			{#each filteredBooks as book}
-				<div class="book-card">
+				<!-- <div class="book-card">
 					<img src={book.coverUrl} alt="{book.Title} cover" height="300" />
 					<h2>{book.Title}</h2>
 					<p>by {book.Author}</p>
 					<p>Rating: {book.Rating || 'Not rated'}</p>
 					<p>status: {book.Read_Status}</p>
+				</div> -->
+				<div class="book-card">
+					<h2>{book.Title}</h2>
 				</div>
 			{/each}
 		</div>
