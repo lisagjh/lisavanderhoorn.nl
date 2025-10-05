@@ -1,35 +1,87 @@
-@font-face {
-	font-family: "Open Sans";
-	src: url(/static/fonts/OpenSans.woff2) format("woff2");
-	font-display: swap;
+:root {
+	--font: "Open Sans", sans-serif;
+	--font-italic: "Open Sans Italic", sans-serif;
+
+	--color-background: #f9f9f9;
+	--color-primary: #3498db;
+	--color-secondary: #9b59b6;
+	--color-text: #333;
+	--color-text-secondary: #666;
+	--color-border: #ddd;
+	--color-hover: #f2f2f2;
+	--color-active: #ccc;
+
+	--spacing-xs: 0.25rem;
+	--spacing-sm: 0.5rem;
+	--spacing-md: 1rem;
+	--spacing-lg: 2rem;
+
+	--border-radius-xs: 0.25rem;
+	--border-radius-sm: 0.5rem;
+	--border-radius-md: 1rem;
+	--border-radius-lg: 2rem;
 }
-
-@font-face {
-	font-family: "Open Sans Italic";
-	src: url(/static/fonts/OpenSans-Italic.woff2) format("woff2");
-	font-display: swap;
-	font-style: italic;
-}
-
-
 
 * {
-	font-family: "Open Sans", sans-serif;
+	font-family: var(--font);
 	box-sizing: border-box;
 	margin: 0;
 	padding: 0;
 	transition: .25s ease-in-out;
 }
 
-body, main {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
+body {
+	background-color: var(--color-background);
 }
 
-header, main, footer {
-	max-width: 60rem;
-	padding: 1rem;
-	margin: 0 auto;
+main {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: var(--spacing-md);
+}
+
+header, footer {
+	padding: var(--spacing-md);
+	border-bottom: 1px solid var(--color-border);
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: var(--font);
+	color: var(--color-text);
+	margin-bottom: var(--spacing-sm);
+}
+
+p {
+	font-family: var(--font);
+	color: var(--color-text-secondary);
+	margin-bottom: var(--spacing-xs);
+}
+
+a {
+	color: var(--color-primary);
+	text-decoration: none;
+	transition: color .25s ease-in-out;
+}
+
+a:hover {
+	color: var(--color-secondary);
+}
+
+button {
+	background-color: var(--color-primary);
+	color: var(--color-text);
+	border: none;
+	padding: var(--spacing-sm);
+	border-radius: var(--border-radius-sm);
+	cursor: pointer;
+	transition: background-color .25s ease-in-out;
+}
+
+button:hover {
+	background-color: var(--color-hover);
+}
+
+button:active {
+	background-color: var(--color-active);
 }
