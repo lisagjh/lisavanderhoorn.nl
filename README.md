@@ -1,6 +1,8 @@
 # lisavanderhoorn.nl
 
-> Een moderne, interactieve en toegankelijke persoonlijke website gebouwd met Astro.
+Een moderne, interactieve en toegankelijke persoonlijke website gebouwd met Astro.
+
+> Momenteel werk ik aan een nieuwe versie in SvelteKit!
 
 ## 📌 Over dit project
 
