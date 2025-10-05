@@ -5,7 +5,6 @@ function getCoverUrl(isbn) {
 		return '';
 	}
 	const cleanIsbn = isbn.replace(/[-\s]/g, '');
-	console.log(cleanIsbn);
 
 	return `https://covers.openlibrary.org/b/isbn/${cleanIsbn}-M.jpg`;
 }
@@ -24,7 +23,7 @@ export async function load() {
 		const rows = data.values;
 
 		// Eerste rij zijn headers
-		const headers = rows[0];
+		const headers = rows[0].map((header) => header.replace(/\s/g, '_'));
 		const books = rows.slice(1).map((row) => {
 			const book = {};
 			headers.forEach((header, index) => {
