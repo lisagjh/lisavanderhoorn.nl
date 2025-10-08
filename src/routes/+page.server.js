@@ -1,4 +1,4 @@
-import { GOOGLE_SHEETS_API_KEY, SHEET_ID, SHEET_NAME } from '$env/static/private';
+import { VITE_GOOGLE_SHEETS_API_KEY, VITE_SHEET_ID, VITE_SHEET_NAME } from '$env/static/private';
 
 function getCoverUrl(isbn) {
 	if (!isbn) {
@@ -10,7 +10,7 @@ function getCoverUrl(isbn) {
 }
 
 export async function load() {
-	const url = `https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${SHEET_NAME}?key=${GOOGLE_SHEETS_API_KEY}`;
+	const url = `https://sheets.googleapis.com/v4/spreadsheets/${VITE_SHEET_ID}/values/${VITE_SHEET_NAME}?key=${VITE_GOOGLE_SHEETS_API_KEY}`;
 
 	try {
 		const response = await fetch(url);
