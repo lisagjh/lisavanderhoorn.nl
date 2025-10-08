@@ -32,10 +32,33 @@
 	<h1>My Bookshelf</h1>
 
 	<section class="buttons">
-		<button class="currently" onclick={() => showStatus('currently-reading')} >
-			Currently Reading 
-			({data.books.filter(book => book.Read_Status === 'currently-reading').length})
+		<button class="currently" onclick={() => showStatus('currently-reading')}>
+			Currently Reading
+			<span>
+				({data.books.filter((book) => book.Read_Status === 'currently-reading').length})
+			</span>
 		</button>
+
+		<button class="to-read" onclick={() => showStatus('to-read')}>
+			To Read
+			<span>
+				({data.books.filter((book) => book.Read_Status === 'to-read').length})
+			</span>
+		</button>
+
+		<button class="read" onclick={() => showStatus('read')}>
+			Read
+			<span>
+				({data.books.filter((book) => book.Read_Status === 'read').length})
+			</span>
+		</button>
+
+		{#if filteredBooks.length !== data.books.length}
+			<button class="all" onclick={() => (filteredBooks = data.books)}>
+				All
+				<span>({data.books.length})</span>
+			</button>
+		{/if}
 	</section>
 
 	<!-- <div class="filter-section">
@@ -64,19 +87,19 @@
 			<p>Total books: {filteredBooks.length}</p>
 			{#each filteredBooks as book}
 				<article class="book">
-						<h2>{book.Title}</h2>
-						<img src={book.coverUrl} alt="{book.Title} cover" height="250" />
-						<p><strong>Author:</strong> {book.Authors}</p>
-						<p><strong>Status:</strong> {book.Read_Status}</p>
-						{#if book.Star_Rating}
-							<p><strong>Rating:</strong> {book.Star_Rating} / 5</p>
-						{/if}
-						{#if book.Dates_Read}
-							<p><strong>Dates Read:</strong> {book.Dates_Read}</p>
-						{/if}
-						{#if book.Review}
-							<p><strong>Review:</strong> {book.Review}</p>
-						{/if}
+					<h2>{book.Title}</h2>
+					<img src={book.coverUrl} alt="{book.Title} cover" height="250" />
+					<p><strong>Author:</strong> {book.Authors}</p>
+					<p><strong>Status:</strong> {book.Read_Status}</p>
+					{#if book.Star_Rating}
+						<p><strong>Rating:</strong> {book.Star_Rating} / 5</p>
+					{/if}
+					{#if book.Dates_Read}
+						<p><strong>Dates Read:</strong> {book.Dates_Read}</p>
+					{/if}
+					{#if book.Review}
+						<p><strong>Review:</strong> {book.Review}</p>
+					{/if}
 				</article>
 			{/each}
 		</div>
@@ -90,15 +113,26 @@
 		gap: 2rem;
 	}
 
-	.books-list {
-		display: grid;
-		grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+	.buttons {
+		display: flex;
 		gap: 1rem;
-	}
 
-	.book-card {
-		border: 1px solid #ccc;
-		padding: 1rem;
-		text-align: center;
+		& button {
+			padding: 0.5rem 1rem;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+			font-size: 1rem;
+
+			&:hover {
+				scale: 1.025;
+				translate: 0 -2px;
+			}
+
+			&:active {
+				scale: 0.975;
+				translate: 0 1px;
+			}
+		}
 	}
 </style>

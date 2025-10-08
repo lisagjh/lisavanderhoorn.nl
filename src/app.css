@@ -2,6 +2,7 @@
 	box-sizing: border-box;
 	margin: 0;
 	padding: 0;
+	transition: 0.15s ease-in-out;
 }
 
 body {
@@ -19,4 +20,8 @@ main {
 	@media screen and (width >= 600px) {
 		padding: 5%;
 	}
+}
+
+a {
+	color: inherit;
 }
