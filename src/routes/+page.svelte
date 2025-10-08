@@ -28,35 +28,33 @@
 	}
 </script>
 
-<section class="bookshelf-section">
-	<h1>My Bookshelf</h1>
-
+<div class="bookshelf-section">
 	<section class="buttons">
 		<button class="currently" onclick={() => showStatus('currently-reading')}>
-			Currently Reading
 			<span>
-				({data.books.filter((book) => book.Read_Status === 'currently-reading').length})
+				{data.books.filter((book) => book.Read_Status === 'currently-reading').length}
 			</span>
+			Currently Reading
 		</button>
 
 		<button class="to-read" onclick={() => showStatus('to-read')}>
-			To Read
 			<span>
-				({data.books.filter((book) => book.Read_Status === 'to-read').length})
+				{data.books.filter((book) => book.Read_Status === 'to-read').length}
 			</span>
+			To Read
 		</button>
 
 		<button class="read" onclick={() => showStatus('read')}>
-			Read
 			<span>
-				({data.books.filter((book) => book.Read_Status === 'read').length})
+				{data.books.filter((book) => book.Read_Status === 'read').length}
 			</span>
+			Read
 		</button>
 
 		{#if filteredBooks.length !== data.books.length}
 			<button class="all" onclick={() => (filteredBooks = data.books)}>
+				<span>{data.books.length}</span>
 				All
-				<span>({data.books.length})</span>
 			</button>
 		{/if}
 	</section>
@@ -104,7 +102,7 @@
 			{/each}
 		</div>
 	{/if}
-</section>
+</div>
 
 <style>
 	.bookshelf-section {
@@ -115,14 +113,29 @@
 
 	.buttons {
 		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		flex: 2;
 		gap: 1rem;
 
 		& button {
-			padding: 0.5rem 1rem;
-			border: none;
-			border-radius: 5px;
+			display: flex;
+			flex-direction: column;
+			align-items: start;
+			gap: .5rem;
+			background-color: var(--bg);
+			color: var(--text-light);
+			padding: 1rem;
+			border: 1px solid var(--border-color);
+			border-radius: 0.5rem;
 			cursor: pointer;
 			font-size: 1rem;
+
+			& span {
+				font-weight: bold;
+				font-size: 1.5rem;
+				color: var(--primary);
+			}
 
 			&:hover {
 				scale: 1.025;
@@ -133,6 +146,14 @@
 				scale: 0.975;
 				translate: 0 1px;
 			}
+		}
+
+		& button:nth-of-type(2) span {
+			color: var(--secondary);
+		}
+
+		& button:nth-of-type(3) span {
+			color: var(--tertiary);
 		}
 	}
 </style>
