@@ -1,4 +1,8 @@
 <script>
+	import { cubicOut } from 'svelte/easing';
+	import { crossfade } from 'svelte/transition';
+	import { fade, fly } from 'svelte/transition';
+
 	let { data } = $props();
 
 	console.log(data.books);
@@ -26,6 +30,18 @@
 				return dateB - dateA; // newest first
 			});
 	}
+
+	// custom transition for all button
+	function fadeFly(node, { duration = 150, y = 10 } = {}) {
+		return {
+			duration,
+			css: t => {
+				const opacity = t;
+				const transform = `translateY(${(1 - t) * y}px)`;
+				return `opacity: ${opacity}; transform: ${transform};`;
+			}
+		};
+	}
 </script>
 
 <div class="bookshelf-section">
@@ -52,7 +68,12 @@
 		</button>
 
 		{#if filteredBooks.length !== data.books.length}
-			<button class="all" onclick={() => (filteredBooks = data.books)}>
+			<button
+				class="all"
+				onclick={() => (filteredBooks = data.books)}
+						transition:fadeFly
+
+			>
 				<span>{data.books.length}</span>
 				All
 			</button>
@@ -122,7 +143,8 @@
 			display: flex;
 			flex-direction: column;
 			align-items: start;
-			gap: .5rem;
+			gap: 0.5rem;
+			min-width: 9rem;
 			background-color: var(--bg);
 			color: var(--text-light);
 			padding: 1rem;
@@ -145,6 +167,17 @@
 			&:active {
 				scale: 0.975;
 				translate: 0 1px;
+			}
+		}
+
+		& button.all {
+			background-color: var(--warning-bg);
+			color: var(--warning);
+			border-color: var(--warning-border);
+			min-width: 5rem;
+
+			& span {
+				color: var(--warning);
 			}
 		}
 

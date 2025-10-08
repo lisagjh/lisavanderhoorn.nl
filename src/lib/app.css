@@ -7,6 +7,10 @@
 	--primary: oklch(.546 .245 262.881);
 	--secondary: oklch(.627 .194 149.214);
 	--tertiary: oklch(.681 .162 75.834);
+	--warning: oklch(55.263% 0.15793 28.415);
+	--warning-bg: oklch(70.589% 0.16312 26.847 / 0.1);
+	--warning-border: oklch(70.589% 0.16312 26.847 / 0.3);
+	--error: oklch(.627 .194 25.214);
 }
 
 @media (prefers-color-scheme: dark) {
