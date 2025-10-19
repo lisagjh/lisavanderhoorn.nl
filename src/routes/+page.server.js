@@ -23,7 +23,8 @@ export async function load() {
 		const rows = data.values;
 
 		// Eerste rij zijn headers
-		const headers = rows[0].map((header) => header.replace(/\s/g, '_'));
+		// Eerste rij zijn headers
+		const headers = rows[0].map((header) => header.replace(/[\s\/]/g, '_'));
 		const books = rows.slice(1).map((row) => {
 			const book = {};
 			headers.forEach((header, index) => {
@@ -33,7 +34,7 @@ export async function load() {
 		});
 
 		books.forEach((book) => {
-			book.coverUrl = getCoverUrl(book['ISBN/UID']);
+			book.coverUrl = getCoverUrl(book['ISBN_UID']);
 		});
 
 		return {

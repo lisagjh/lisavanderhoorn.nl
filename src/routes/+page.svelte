@@ -10,7 +10,13 @@
 	let filteredBooks = $state(data.books);
 
 	function showStatus(status) {
-		filteredBooks = data.books.filter((book) => book.Read_Status === status);
+		if (document.startViewTransition) {
+			document.startViewTransition(() => {
+				filteredBooks = data.books.filter((book) => book.Read_Status === status);
+			});
+		} else {
+			filteredBooks = data.books.filter((book) => book.Read_Status === status);
+		}
 	}
 
 	function sortByDate() {
@@ -35,7 +41,7 @@
 	function fadeFly(node, { duration = 150, y = 10 } = {}) {
 		return {
 			duration,
-			css: t => {
+			css: (t) => {
 				const opacity = t;
 				const transform = `translateY(${(1 - t) * y}px)`;
 				return `opacity: ${opacity}; transform: ${transform};`;
@@ -44,7 +50,9 @@
 	}
 </script>
 
-<div class="bookshelf-section">
+<a href="/hello">hello</a>
+
+<div class="bookshelf-section" style="view-transition-name: bookshelf">
 	<section class="buttons">
 		<button class="currently" onclick={() => showStatus('currently-reading')}>
 			<span>
@@ -68,34 +76,12 @@
 		</button>
 
 		{#if filteredBooks.length !== data.books.length}
-			<button
-				class="all"
-				onclick={() => (filteredBooks = data.books)}
-						transition:fadeFly
-
-			>
+			<button class="all" onclick={() => (filteredBooks = data.books)} transition:fadeFly>
 				<span>{data.books.length}</span>
 				All
 			</button>
 		{/if}
 	</section>
-
-	<!-- <div class="filter-section">
-		<button onclick={() => (filteredBooks = data.books)}>all</button>
-		<button onclick={() => showStatus('read')}>read</button>
-		<button onclick={() => showStatus('to-read')}>want to read</button>
-		<button onclick={() => showStatus('did-not-finish')}>did not finish</button>
-	</div> -->
-
-	<!-- <div class="sort-section">
-		<button onclick={() => filteredBooks.sort((a, b) => a.Title.localeCompare(b.Title))}
-			>sort by title</button
-		>
-		<button onclick={() => filteredBooks.sort((a, b) => b.Star_Rating - a.Star_Rating)}
-			>sort by rating</button
-		>
-		<button onclick={() => sortByDate()}>sort by date read</button>
-	</div> -->
 
 	{#if data.error}
 		<p>Error loading books: {data.error}</p>
@@ -105,7 +91,12 @@
 		<div class="books-overview">
 			<p>Total books: {filteredBooks.length}</p>
 			{#each filteredBooks as book}
-				<article class="book">
+				<article
+					class="book"
+					style="view-transition-name: {book.ISBN_UID
+						? `book-${book.ISBN_UID}`
+						: `book-${book.Title.replace(/\s/g, '_')}`}"
+				>
 					<h2>{book.Title}</h2>
 					<img src={book.coverUrl} alt="{book.Title} cover" height="250" />
 					<p><strong>Author:</strong> {book.Authors}</p>

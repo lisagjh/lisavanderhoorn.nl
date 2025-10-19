@@ -1,10 +1,22 @@
 <script>
+	import { onNavigate } from '$app/navigation';
 	import favicon from '$lib/assets/favicon.svg';
-	
+
 	// import app.css
-	import '$lib/app.css';
+	import '../app.css';
 
 	let { children } = $props();
+
+	onNavigate((navigation) => {
+		if (!document.startViewTransition) return;
+
+		return new Promise((resolve) => {
+			document.startViewTransition(async () => {
+				resolve();
+				await navigation.complete;
+			});
+		});
+	});
 </script>
 
 <svelte:head>
