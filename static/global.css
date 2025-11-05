@@ -1,176 +1,50 @@
-@font-face {
-  font-family: "Momo Trust Sans";
-  src: url("/fonts/MomoTrustSans.woff2") format("woff2");
-  font-display: swap;
-}
 
-@font-face {
-  font-family: "Archivo Black";
-  src: url("/fonts/ArchivoBlack-Regular.ttf") format("truetype");
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Roboto Mono";
-  src: url("/fonts/RobotoMono-VariableFont_wght.ttf") format("truetype");
-  font-display: swap;
-}
-
-:root {
-  --heading-font: "Archivo Black", sans-serif;
-  --body-font: "Roboto Mono", sans-serif;
-
-  --bg: hsl(111, 10%, 14%);
-  --text: hsla(305, 90%, 80%, 1);
-
-  /* Fluid font sizes (min 16px @ 320px viewport, max 20px @ 1440px) */
-  --fs-base: clamp(1rem, 0.857rem + 0.357vw, 1.25rem);
-  --fs-sm: clamp(0.875rem, 0.75rem + 0.313vw, 1.094rem);
-  --fs-xs: clamp(0.75rem, 0.643rem + 0.268vw, 0.938rem);
-  --fs-lg: clamp(1.25rem, 1.071rem + 0.446vw, 1.563rem);
-  --fs-xl: clamp(1.563rem, 1.339rem + 0.558vw, 1.953rem);
-  --fs-2xl: clamp(1.953rem, 1.674rem + 0.696vw, 2.441rem);
-  --fs-3xl: clamp(2.441rem, 2.092rem + 0.871vw, 3.052rem);
-
-  /* Fluid spacing */
-  --space-xs: clamp(0.5rem, 0.429rem + 0.179vw, 0.625rem);
-  --space-sm: clamp(0.75rem, 0.643rem + 0.268vw, 0.938rem);
-  --space-md: clamp(1rem, 0.857rem + 0.357vw, 1.25rem);
-  --space-lg: clamp(1.5rem, 1.286rem + 0.536vw, 1.875rem);
-  --space-xl: clamp(2rem, 1.714rem + 0.714vw, 2.5rem);
-  --space-2xl: clamp(3rem, 2.571rem + 1.071vw, 3.75rem);
-}
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-* {
-  transition: background-color 0.25s ease-in-out, color 0.25s ease-in-out;
-}
 
 html {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
-  scroll-behavior: smooth;
-  hanging-punctuation: first last;
-}
+  --bg: #F8F6F2;
+  --bg-muted: #d7d2c8;
+  --text: #111111;
+  --text-muted: #555555;
 
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
+  @media (prefers-color-scheme: dark) {
+    --bg: #111111;
+    --bg-muted: #292929;
+    --text: #c4c2be;
+    --text-muted: #777577;
   }
 }
 
-body {
-  font-family: var(--body-font);
-  font-size: var(--fs-base);
-  line-height: 1.6;
-  background-color: var(--bg);
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
   color: var(--text);
+  overflow-x: hidden;
+}
+
+/* Preloader overlay */
+.loader {
+  position: fixed;
+  inset: 0;
+  background-color: #111111;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  min-height: 100vh;
-  min-height: 100dvh;
+  z-index: 50;
+  transform: translateY(0);
+  will-change: transform;
 }
 
-/* Improve text wrapping */
-h1, h2, h3, h4, h5, h6, p, li, figcaption {
-  text-wrap: pretty;
-  overflow-wrap: break-word;
-  hyphens: auto;
+.loader h1 {
+  font-family: 'Fraunces', serif;
+  color: white;
+  font-size: 3rem;
+  letter-spacing: 0.1em;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--heading-font);
-  line-height: 1.2;
-  font-weight: 900;
-}
-
-h1 { font-size: var(--fs-3xl); }
-h2 { font-size: var(--fs-2xl); }
-h3 { font-size: var(--fs-xl); }
-h4 { font-size: var(--fs-lg); }
-h5, h6 { font-size: var(--fs-base); }
-
-/* Remove list styles on ul, ol with list role */
-ul[role='list'],
-ol[role='list'], ul, ol {
-  list-style: none;
-}
-
-/* Make images easier to work with */
-img,
-picture,
-video,
-canvas,
-svg {
-  display: block;
-  max-width: 100%;
-  height: auto;
-}
-
-/* Inherit fonts for inputs and buttons */
-input,
-button,
-textarea,
-select {
-  font: inherit;
-  color: inherit;
-}
-
-/* Remove default button styles */
-button {
-  cursor: pointer;
-  background: none;
-  border: none;
-}
-
-/* Improve link accessibility */
-a {
-  color: inherit;
-  text-underline-offset: 0.2em;
-}
-
-a:not([class]) {
-  text-decoration-skip-ink: auto;
-}
-
-/* Remove all animations and transitions for people that prefer not to see them */
-@media (prefers-reduced-motion: reduce) {
-  html:focus-within {
-    scroll-behavior: auto;
-  }
-}
-
-/* Avoid text overflows */
-p, h1, h2, h3, h4, h5, h6 {
-  overflow-wrap: break-word;
-}
-
-/* Create a root stacking context */
-#root,
-#__next {
-  isolation: isolate;
-}
-
-@view-transition {
-  navigation: auto;
-}
-
-/* Focus styles for accessibility */
-:focus-visible {
-  outline: 2px solid var(--text);
-  outline-offset: 2px;
+/* Hero content */
+.hero {
+  opacity: 0;
+  transform: translateY(60px);
 }

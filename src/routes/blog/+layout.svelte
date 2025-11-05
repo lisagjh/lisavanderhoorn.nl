@@ -56,5 +56,19 @@
   </div>
   
 <style>
+.markdown-post {
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+	max-width: 100vw;
+	overflow: hidden;
+	padding: 1rem;
+}
 
+:global .markdown-post pre {
+	border-radius: 8px;
+	overflow-x: auto;
+	padding: var(--spacing-xs, .5rem);
+	border: 1px solid #121212;
+}
 </style>
