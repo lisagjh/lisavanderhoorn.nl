@@ -1,8 +1,8 @@
 <script>
-    import Layout from "./+layout.svelte";
+	import Layout from './+layout.svelte';
+	import Homepage from '$lib/components/display/Homepage.svelte';
 </script>
 
 <Layout>
-
-    <h1>Hi!</h1>
+	<Homepage />
 </Layout>
