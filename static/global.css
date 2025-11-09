@@ -1,26 +1,56 @@
+@font-face {
+  font-family: "Open Sauce Sans";
+  src: url('/fonts/OpenSauceSans-Regular.woff2') format('woff2');
+  font-display: swap;
+}
 
+@font-face {
+  font-family: "Perfectly Nineties";
+  src: url('/fonts/perfectly-nineties-regular.woff2') format('woff2');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Perfectly Nineties Bold";
+  src: url('/static/fonts/perfectly-nineties-bold.woff2') format('woff2');
+  font-display: swap;
+}
 
 html {
+  --body-font: 'Open Sauce Sans', sans-serif;
+  --heading-font: 'Perfectly Nineties', sans-serif;
+  --heading-font-bold: 'Perfectly Nineties Bold', sans-serif;
+
   --bg: #F8F6F2;
   --bg-muted: #d7d2c8;
   --text: #111111;
   --text-muted: #555555;
 
   @media (prefers-color-scheme: dark) {
-    --bg: #111111;
-    --bg-muted: #292929;
-    --text: #c4c2be;
+    --bg: #1d1827;
+    --bg-muted: #2f2348;
+    --text: #e2e1de;
     --text-muted: #777577;
   }
 }
 
-body, html {
+* {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: Arial, Helvetica, sans-serif;
+}
+
+body, html {
+  font-family: var(--body-font);
   background: var(--bg);
   color: var(--text);
   overflow-x: hidden;
+}
+
+/* heading */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--heading-font);
+  color: var(--text);
 }
 
 /* Preloader overlay */
