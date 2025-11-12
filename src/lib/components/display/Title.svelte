@@ -38,56 +38,19 @@
 			}
 		});
 
-		// animate the text out on top and in from bottom, repeat 3 times
-		// for (let i = 0; i < 3; i++) {
-		// 	tl.to(
-		// 		subSplit.chars,
-		// 		{
-		// 			y: '-100%',
-		// 			autoAlpha: 0,
-		// 			stagger: 0.03,
-		// 			duration: 0.4,
-		// 			ease: 'power2.inOut'
-		// 		},
-		// 		i > 0 ? '+=0.2' : undefined
-		// 	) // pauze na eerste loop
-		// 		.set(subSplit.chars, {
-		// 			y: '100%'
-		// 		})
-		// 		.to(subSplit.chars, {
-		// 			y: '0%',
-		// 			autoAlpha: 1,
-		// 			duration: 0.4,
-		// 			stagger: 0.03,
-		// 			ease: 'power2.inOut'
-		// 		});
-		// }
-
-		subSplit.chars.forEach((char, index) => {
-			const charTimeline = gsap.timeline({
-				repeat: 2,
-				delay: index * 0.03 // stagger effect
-			});
-
-			charTimeline
-				.set(char, {
-					y: '100%'
-				})
-				.to(char, {
-					y: '-100%',
-					autoAlpha: 0,
-					duration: 0.8,
-					ease: 'power2.inOut'
-				})
-				.set(char, {
-					y: '100%'
-				})
-				.to(char, {
-					y: '-100%',
-					autoAlpha: 1,
-					duration: 0.8,
-					ease: 'power2.inOut'
-				});
+		gsap.to(subSplit.chars, {
+			y: '-75%',
+			autoAlpha: 0,
+			stagger: 1,
+			duration: 1,
+			ease: 'power2.inOut',
+			scrollTrigger: {
+				trigger: '.wrapper',
+				start: 'center 10%',
+				end: 'bottom 40%',
+				scrub: true
+				// markers: true
+			}
 		});
 	});
 </script>
@@ -108,13 +71,13 @@
 		width: 100vw;
 		overflow: visible;
 	}
+
 	h1 {
 		font-family: var(--heading-font);
 		font-size: 10rem;
 		text-transform: uppercase;
 		text-wrap: nowrap;
 		letter-spacing: -5px;
-		text-box: trim-both cap alphabetic;
 	}
 
 	h1.first {
