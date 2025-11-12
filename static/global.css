@@ -12,14 +12,32 @@
 
 @font-face {
   font-family: "Perfectly Nineties Bold";
-  src: url('/static/fonts/perfectly-nineties-bold.woff2') format('woff2');
+  src: url('/fonts/perfectly-nineties-bold.woff2') format('woff2');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Barlow Condensed Black";
+  src: url('/fonts/BarlowCondensed-Black.woff2') format('woff2');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Barlow Condensed Bold";
+  src: url('/fonts/BarlowCondensed-Bold.woff2') format('woff2');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url('/fonts/PlusJakartaSans-VariableFont.woff2') format('woff2');
   font-display: swap;
 }
 
 html {
-  --body-font: 'Open Sauce Sans', sans-serif;
-  --heading-font: 'Perfectly Nineties', sans-serif;
-  --heading-font-bold: 'Perfectly Nineties Bold', sans-serif;
+  --body-font: 'Plus Jakarta Sans', sans-serif;
+  --heading-font: 'Barlow Condensed Bold', sans-serif;
+  --heading-font-bold: 'Barlow Condensed Black', sans-serif;
 
   --bg: #F8F6F2;
   --bg-muted: #d7d2c8;
