@@ -17,18 +17,33 @@ const allProjects = projects.sort((a, b) => b.data.id - a.data.id);
           class={index % 2 !== 0 ? "odd" : "even"}
           data-index={index}
           transition:name={`project-${project.id}`}
-          style="view-transition-class: post"
+          style="view-transition-class: project"
         >
-          <a href={`/posts/${project.id}`}>
+          <a 
+            href={`/posts/${project.id}`}
+            transition:name={`project-content-${project.id}`}
+            style="view-transition-class: project"
+          >
             <img
               src={project.data.image.url}
               alt={project.data.image.alt}
               loading="lazy"
               width="100"
               transition:name={`project-image-${project.id}`}
+              style="view-transition-class: project"
             />
-            <h3>{project.data.title}</h3>
-            <p>{project.data.description}</p>
+            <h3 
+              transition:name={`project-title-${project.id}`}
+              style="view-transition-class: project"
+            >
+              {project.data.title}
+            </h3>
+            <p 
+              transition:name={`project-description-${project.id}`}
+              style="view-transition-class: project"
+            >
+              {project.data.description}
+            </p>
           </a>
         </li>
       ))
@@ -115,7 +130,6 @@ const allProjects = projects.sort((a, b) => b.data.id - a.data.id);
       grid-template-columns: repeat(2, 1fr);
     }
   }
-
 
   li {
     display: flex;

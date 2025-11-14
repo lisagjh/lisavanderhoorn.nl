@@ -301,12 +301,27 @@ section.wrapper {
 }
 
 /* view transitions */
+/* view transitions voor blog posts */
 ::view-transition-old(.post):only-child {
   animation-duration: 0.5s;
   animation-name: scale-out;
 }
 
 ::view-transition-new(.post):only-child {
+  scale: 0;
+  transform-origin: left center;
+  animation-duration: 0.5s;
+  animation-name: scale-in;
+  animation-delay: 0.15s;
+}
+
+/* view transitions voor work projects */
+::view-transition-old(.project):only-child {
+  animation-duration: 0.5s;
+  animation-name: scale-out;
+}
+
+::view-transition-new(.project):only-child {
   scale: 0;
   transform-origin: left center;
   animation-duration: 0.5s;
