@@ -1,12 +1,89 @@
-<section><h1>Lisa van der Hoorn</h1></section>
+<div class="wrapper">
+	<h1 class="first">Lisa</h1>
+	<h1 class="last">van der Hoorn</h1>
+	<p class="subheading">Frontend Developer</p>
+</div>
+
+<script>
+	import gsap from 'gsap';
+	import { ScrollTrigger, SplitText } from 'gsap/all';
+
+	gsap.registerPlugin(ScrollTrigger, SplitText);
+
+	const lastName = document.querySelector('.last');
+	const firstName = document.querySelector('.first');
+
+	const subHeading = document.querySelector('.subheading');
+	const subSplit = new SplitText(subHeading, { type: 'chars', mask: 'chars' });
+
+  gsap.to(firstName, {
+		x: '15%',
+		ease: 'back.inOut(1.7)',
+		duration: 1,
+		scrollTrigger: {
+			trigger: '.wrapper',
+			start: 'top top',
+			end: 'bottom 50%',
+			scrub: true
+		}
+	});
+
+	gsap.to(lastName, {
+		x: '-125%',
+		ease: 'back.inOut(1.7)',
+		duration: 1,
+		scrollTrigger: {
+			trigger: '.wrapper',
+			start: 'top 10%',
+			end: 'bottom 80%',
+			scrub: true		}
+	});
+
+	gsap.to(subSplit.chars, {
+		y: '-75%',
+		autoAlpha: 0,
+		stagger: 1,
+		duration: 1,
+		ease: 'power2.inOut',
+		scrollTrigger: {
+			trigger: '.wrapper',
+			start: 'center 50%',
+			end: 'bottom 90%',
+			scrub: true,
+      markers: true
+
+		}
+	});
+</script>
 
 <style>
-  section {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    min-height: 65vh;
-    height: 100%;
-  }
+	.wrapper {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		gap: 0.5rem;
+		height: 100vh;
+		width: 100vw;
+		overflow: hidden;
+	}
+
+	h1 {
+		font-family: var(--heading-font);
+		font-size: 10rem;
+		text-transform: uppercase;
+		text-wrap: nowrap;
+		letter-spacing: -5px;
+	}
+
+	h1.first {
+		font-size: 15rem;
+	}
+
+	p {
+		font-weight: bold;
+		font-size: 1.2rem;
+		color: var(--color-accent);
+		align-self: center;
+		text-transform: lowercase;
+	}
 </style>

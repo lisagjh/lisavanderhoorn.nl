@@ -1,24 +1,30 @@
 @font-face {
-  font-family: "ITC Garamond";
-  src: url("/fonts/itc-garamond.woff2") format("woff2");
+  font-family: "Barlow Condensed Black";
+  src: url('/fonts/BarlowCondensed-Black.woff2') format('woff2');
   font-display: swap;
 }
 
 @font-face {
-  font-family: "Host Grotesk";
-  src: url("/fonts/HostGrotesk.woff2") format("woff2");
+  font-family: "Barlow Condensed Bold";
+  src: url('/fonts/BarlowCondensed-Bold.woff2') format('woff2');
   font-display: swap;
 }
 
 @font-face {
-  font-family: "Host Grotesk Italic";
-  src: url("/fonts/HostGrotesk-Italic.woff2") format("woff2");
+  font-family: "Open Sauce Sans";
+  src: url('/fonts/OpenSauceSans-Regular.woff2') format('woff2');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url('/fonts/PlusJakartaSans-VariableFont.woff2') format('woff2');
   font-display: swap;
 }
 
 :root {
-  --heading-font: "ITC Garamond", sans-serif;
-  --body-font: "Host Grotesk", sans-serif;
+  --heading-font: "Barlow Condensed Black", sans-serif;
+  --body-font: "Open Sauce Sans", sans-serif;
   --body-italic: "Host Grotesk Italic", sans-serif;
 
   --white: hsl(0deg 0% 99%);
@@ -93,6 +99,7 @@ h6 {
 
 h1 {
   font-size: 5.61rem;
+  letter-spacing: -3px;
 }
 
 h2 {
@@ -130,7 +137,7 @@ section {
 }
 
 p {
-  font-weight: 400;
+  font-weight: 600;
   max-width: 55ch;
   font-weight: lighter;
 }
