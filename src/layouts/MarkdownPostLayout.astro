@@ -85,7 +85,7 @@ const allPosts = await getCollection("projects");
     gap: 2rem;
     padding: 2rem;
     width: 100%;
-    max-width: 100vw;
+    max-width: 65rem;
   }
 
   img {
@@ -207,11 +207,7 @@ const allPosts = await getCollection("projects");
   }
 
   :global(.markdown-post pre) {
-    overflow: hidden;
-
-    & code {
-      overflow: scroll;
-    }
+    max-width: 100%;
   }
 
   :global(.markdown-post img:not(.cover-image)) {
