@@ -1,0 +1,12 @@
+---
+const { classname, title, description, image, url, lang } = Astro.props;
+---
+
+<li class={classname}>
+  <a href={url}>
+    {image ? <img src={image.url} alt={image.alt} /> : null}
+    <h3>{title}</h3>
+    <p>{description}</p>
+    {lang ? <p>{lang === "en" ? "English" : "Dutch"}</p> : null}
+  </a>
+</li>
