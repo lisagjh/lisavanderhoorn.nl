@@ -1,0 +1,15 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import TextHover from "../../lib/components/display/TextHover.svelte";
+---
+
+<Layout>
+    <h1>Fun Stuff</h1>
+    <p>im working on!</p>
+
+    <div class="showcase">
+        <TextHover  href="/" text="home" client:only />
+        <TextHover href="/#" text="about" client:only />
+        <TextHover href="/#" text="projects" client:only />
+    </div>
+</Layout>
